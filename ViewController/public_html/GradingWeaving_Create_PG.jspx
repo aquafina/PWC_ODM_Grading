@@ -89,7 +89,6 @@
                           required="#{bindings.QtyReceivedLooming.hints.mandatory}"
                           columns="#{bindings.QtyReceivedLooming.hints.displayWidth}"
                           maximumLength="#{bindings.QtyReceivedLooming.hints.precision}"
-                          shortDesc="#{bindings.QtyReceivedLooming.hints.tooltip}"
                           partialTriggers="jobId" id="it2">
               <f:validator binding="#{bindings.QtyReceivedLooming.validator}"/>
               <af:convertNumber groupingUsed="false"

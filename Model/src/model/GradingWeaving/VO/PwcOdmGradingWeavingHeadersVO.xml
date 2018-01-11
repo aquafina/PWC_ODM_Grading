@@ -290,8 +290,6 @@
           ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.GdDate_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.GdDate_FMT_FORMATTER"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
