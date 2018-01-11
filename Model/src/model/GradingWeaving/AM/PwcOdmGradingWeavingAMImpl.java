@@ -53,7 +53,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
 
     public void Exceed_TOTALQTY() {
 
-        Double Qty_Rec_Looming = 0.0;
+      /*  Double Qty_Rec_Looming = 0.0;
         Double Total_D = 0.0;
         Double TotalQuantity_D = 0.00;
 
@@ -108,7 +108,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
              else {  this.getDBTransaction().commit(); }
              
          }
-        lvoit.closeRowSetIterator();
+        lvoit.closeRowSetIterator();*/
     }
  // End of AM
 }
