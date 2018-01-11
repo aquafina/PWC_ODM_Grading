@@ -115,12 +115,7 @@
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="TOTAL_QUANTITY">
     <Properties>
-      <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.TotalQuantity_FMT_FORMATTER"/>
-        <FMT_FORMAT
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.TotalQuantity_FMT_FORMAT"/>
-      </SchemaBasedProperties>
+      <SchemaBasedProperties/>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
@@ -130,12 +125,7 @@
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="GRADEA">
     <Properties>
-      <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Gradea_FMT_FORMATTER"/>
-        <FMT_FORMAT
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Gradea_FMT_FORMAT"/>
-      </SchemaBasedProperties>
+      <SchemaBasedProperties/>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
@@ -145,12 +135,7 @@
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="GRADEB">
     <Properties>
-      <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Gradeb_FMT_FORMATTER"/>
-        <FMT_FORMAT
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Gradeb_FMT_FORMAT"/>
-      </SchemaBasedProperties>
+      <SchemaBasedProperties/>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
@@ -160,12 +145,7 @@
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="GRADEC">
     <Properties>
-      <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Gradec_FMT_FORMATTER"/>
-        <FMT_FORMAT
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Gradec_FMT_FORMAT"/>
-      </SchemaBasedProperties>
+      <SchemaBasedProperties/>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
@@ -175,12 +155,7 @@
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="GRADED">
     <Properties>
-      <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Graded_FMT_FORMATTER"/>
-        <FMT_FORMAT
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO.Graded_FMT_FORMAT"/>
-      </SchemaBasedProperties>
+      <SchemaBasedProperties/>
     </Properties>
   </ViewAttribute>
   <ViewAttribute

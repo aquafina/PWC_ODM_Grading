@@ -4,16 +4,14 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PwcOdmGradingWeavingAM"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   ComponentClass="model.GradingWeaving.AM.PwcOdmGradingWeavingAMImpl"
-  DefClass="model.GradingWeaving.AM.PwcOdmGradingWeavingAMDefImpl"
   ClearCacheOnRollback="true"
   ComponentInterface="model.GradingWeaving.AM.common.PwcOdmGradingWeavingAM"
   ClientProxyName="model.GradingWeaving.AM.client.PwcOdmGradingWeavingAMClient">
   <DesignTime>
     <Attr Name="_deployType" Value="0"/>
-    <Attr Name="_isDefCodegen" Value="true"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <Properties>
@@ -38,11 +36,4 @@
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>
   </ResourceBundle>
-  <ClientInterface>
-    <Method
-      Name="Exceed_TOTALQTY">
-      <Return
-        Type="void"/>
-    </Method>
-  </ClientInterface>
 </AppModule>

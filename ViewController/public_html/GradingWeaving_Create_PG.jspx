@@ -52,16 +52,14 @@
                           required="#{bindings.ItemDescription.hints.mandatory}"
                           columns="#{bindings.ItemDescription.hints.displayWidth}"
                           maximumLength="#{bindings.ItemDescription.hints.precision}"
-                          shortDesc="#{bindings.ItemDescription.hints.tooltip}"
                           partialTriggers="itemCodeId" id="it1"
                           readOnly="true">
               <f:validator binding="#{bindings.ItemDescription.validator}"/>
             </af:inputText>
             <af:inputDate value="#{bindings.GdDate.inputValue}" label="Date"
-                          required="#{bindings.GdDate.hints.mandatory}"
-                          shortDesc="#{bindings.GdDate.hints.tooltip}" id="id1">
+                          required="#{bindings.GdDate.hints.mandatory}" id="id1">
               <f:validator binding="#{bindings.GdDate.validator}"/>
-              <af:convertDateTime pattern="#{bindings.GdDate.format}"/>
+              <!--<af:convertDateTime pattern="#{bindings.GdDate.format}"/>-->
             </af:inputDate>
             <af:inputListOfValues id="jobId"
                                   popupTitle="Search and Select: #{bindings.Job.hints.label}"
@@ -78,7 +76,6 @@
                           required="#{bindings.JobQuantity.hints.mandatory}"
                           columns="#{bindings.JobQuantity.hints.displayWidth}"
                           maximumLength="#{bindings.JobQuantity.hints.precision}"
-                          shortDesc="#{bindings.JobQuantity.hints.tooltip}"
                           partialTriggers="jobId" id="it3">
               <f:validator binding="#{bindings.JobQuantity.validator}"/>
               <af:convertNumber groupingUsed="false"
@@ -89,7 +86,6 @@
                           required="#{bindings.QtyReceivedLooming.hints.mandatory}"
                           columns="#{bindings.QtyReceivedLooming.hints.displayWidth}"
                           maximumLength="#{bindings.QtyReceivedLooming.hints.precision}"
-                          shortDesc="#{bindings.QtyReceivedLooming.hints.tooltip}"
                           partialTriggers="jobId" id="it2">
               <f:validator binding="#{bindings.QtyReceivedLooming.validator}"/>
               <af:convertNumber groupingUsed="false"
@@ -187,7 +183,8 @@
                             id="it6"
                             contentStyle="text-align:right;"
                             valueChangeListener="#{ManagedBean.TotalQty_ValueChange}"
-                            autoSubmit="true">
+                            autoSubmit="true"
+                            validator="#{ManagedBean.totalQtyValidator}">
                 <f:validator binding="#{row.bindings.TotalQuantity.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.format}"/>

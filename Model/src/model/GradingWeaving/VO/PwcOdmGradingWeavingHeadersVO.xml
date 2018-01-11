@@ -286,12 +286,8 @@
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.GdDate_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.GdDate_FMT_FORMATTER"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -383,10 +379,6 @@
     AliasName="JOB_QUANTITY">
     <Properties>
       <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.JobQuantity_FMT_FORMATTER"/>
-        <FMT_FORMAT
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.JobQuantity_FMT_FORMAT"/>
         <DISPLAYWIDTH
           Value="30"/>
       </SchemaBasedProperties>
@@ -424,10 +416,6 @@
     AliasName="QTY_RECEIVED_LOOMING">
     <Properties>
       <SchemaBasedProperties>
-        <FMT_FORMATTER
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.QtyReceivedLooming_FMT_FORMATTER"/>
-        <FMT_FORMAT
-          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.QtyReceivedLooming_FMT_FORMAT"/>
         <DISPLAYWIDTH
           Value="30"/>
       </SchemaBasedProperties>
