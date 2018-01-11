@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO
+END
+PwcOdmBreakDownWeftCountVO.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownWeftCountVO.xml
+END
+PwcOdmBreakDownHdrVO.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownHdrVO.xml
+END
+PwcOdmBreakDownWarpCountVO.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownWarpCountVO.xml
+END
+PwcOdmBreakDownWarpCountVOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownWarpCountVOImpl.java
+END
+PwcOdmBreakDownHdrVOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownHdrVOImpl.java
+END
+PwcOdmBreakDownWeftCountVOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownWeftCountVOImpl.java
+END
+PwcOdmBreakDownPileCountVO.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownPileCountVO.xml
+END
+PwcOdmBreakDownCountFactsVO.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/ADFRepository/!svn/ver/2/branches/Model/src/model/BreakDownPaper/VO/PwcOdmBreakDownCountFactsVO.xml
+END

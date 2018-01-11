@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="y">251.20117</property>
+      <property
+         name="x">118.041016</property>
+   </OverallProperties>
+   <View
+      id="View2">
+      <property
+         name="activityId">GradingWeaving_Create_PG</property>
+      <property
+         name="page">/GradingWeaving_Create_PG.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>GradingWeaving_Create_PG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">83.5</property>
+      <property
+         name="x">118.041016</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">GradingWeaving_Search_PG</property>
+      <property
+         name="page">/GradingWeaving_Search_PG.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>GradingWeaving_Search_PG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">83.5</property>
+      <property
+         name="x">355.125</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">To Search</property>
+      <property
+         name="sdm:polyPoints">R46,159.04102,79.649414,314.125,79.649414,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">To Create</property>
+      <property
+         name="sdm:polyPoints">L54,314.125,86.649414,159.04102,86.649414,R54</property>
+   </ControlFlowCase>
+</SDM>

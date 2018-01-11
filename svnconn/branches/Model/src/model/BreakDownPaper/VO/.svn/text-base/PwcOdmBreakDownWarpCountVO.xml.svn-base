@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PwcOdmBreakDownWarpCountVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  ComponentClass="model.BreakDownPaper.VO.PwcOdmBreakDownWarpCountVOImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.BreakDownPaper.VO.PwcOdmBreakDownWarpCountVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="PwcOdmCountVO1"
+    ViewObjectName="model.BreakDownPaper.LOV.PwcOdmCountVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmPlyVO1"
+    ViewObjectName="model.BreakDownPaper.LOV.PwcOdmPlyVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmRatioVO1"
+    ViewObjectName="model.BreakDownPaper.LOV.PwcOdmRatioVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmYarnBlend1"
+    ViewObjectName="model.BreakDownPaper.LOV.PwcOdmYarnBlend"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmBrandVO1"
+    ViewObjectName="model.BreakDownPaper.LOV.PwcOdmBrandVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmYarnTypeVO1"
+    ViewObjectName="model.BreakDownPaper.LOV.PwcOdmYarnTypeVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="PwcOdmItemCode1"
+    ViewObjectName="model.BreakDownPaper.LOV.PwcOdmItemCode">
+    <ViewCriteriaUsage
+      Name="PwcOdmItemCodeCriteria"
+      FullName="model.BreakDownPaper.LOV.PwcOdmItemCode.PwcOdmItemCodeCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="P_ORDER_NUMBER">
+        <TransientExpression><![CDATA[PwcOdmBreakDownHdrVO.SaleOrderNumber]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ORG_ID">
+        <TransientExpression><![CDATA[PwcOdmBreakDownHdrVO.OrgId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_Blend"
+    ListVOName="PwcOdmYarnBlend1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Blend"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Brand"
+    ListVOName="PwcOdmBrandVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Brand"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Ply"
+    ListVOName="PwcOdmPlyVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Ply"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Ratio"
+    ListVOName="PwcOdmRatioVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Ratio"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Type"
+    ListVOName="PwcOdmYarnTypeVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Type"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlexValueMeaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ItemCode"
+    ListVOName="PwcOdmItemCode1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_ItemCode_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ItemCode"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ItemId"/>
+      <Item Value="ItemDesc"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrderedItem"/>
+      <Item Value="InventoryItemId"/>
+      <Item Value="ItemDesc"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrderedItem"/>
+      <Item Value="ItemDesc"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="PwcOdmItemCodeCriteria"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT PwcOdmBreakDownWarpCountEO.ATTRIBUTE1, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE10, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE11, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE12, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE13, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE14, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE15, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE2, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE3, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE4, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE5, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE6, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE7, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE8, 
+       PwcOdmBreakDownWarpCountEO.ATTRIBUTE9, 
+       PwcOdmBreakDownWarpCountEO.BLEND, 
+       PwcOdmBreakDownWarpCountEO.BRAND, 
+       PwcOdmBreakDownWarpCountEO.COUNT, 
+       PwcOdmBreakDownWarpCountEO.CREATED_BY, 
+       PwcOdmBreakDownWarpCountEO.CREATION_DATE, 
+       PwcOdmBreakDownWarpCountEO.ENABLE, 
+       PwcOdmBreakDownWarpCountEO.HEADER_ID, 
+       PwcOdmBreakDownWarpCountEO.LAST_UPDATE_DATE, 
+       PwcOdmBreakDownWarpCountEO.LAST_UPDATE_LOGIN, 
+       PwcOdmBreakDownWarpCountEO.LAST_UPDATED_BY, 
+       PwcOdmBreakDownWarpCountEO.LOT, 
+       PwcOdmBreakDownWarpCountEO.PLY, 
+       PwcOdmBreakDownWarpCountEO.RATIO, 
+       PwcOdmBreakDownWarpCountEO.SINGLE_COUNT, 
+       PwcOdmBreakDownWarpCountEO.STATUS, 
+       PwcOdmBreakDownWarpCountEO.TYPE, 
+       PwcOdmBreakDownWarpCountEO.WARP_COUNT_ID, 
+       PwcOdmBreakDownWarpCountEO.ALLOCATE_IN_KG, 
+       PwcOdmBreakDownWarpCountEO.AVAILABLE_STOCK, 
+       PwcOdmBreakDownWarpCountEO.BAL_YARM_REMAINING, 
+       PwcOdmBreakDownWarpCountEO.PURCHASE, 
+       PwcOdmBreakDownWarpCountEO.REQ_IN_KG, 
+       PwcOdmBreakDownWarpCountEO.ITEM_ID,
+       (SELECT MSI.SEGMENT1||'-'||MSI.SEGMENT2||'-'||MSI.SEGMENT3||'-'||MSI.SEGMENT4
+        FROM MTL_SYSTEM_ITEMS_B MSI
+        WHERE MSI.INVENTORY_ITEM_ID = PwcOdmBreakDownWarpCountEO.ITEM_ID
+        AND MSI.ORGANIZATION_ID = 353
+        AND ROWNUM = 1) ITEM_CODE,
+       (SELECT MSI.DESCRIPTION
+        FROM MTL_SYSTEM_ITEMS_B MSI
+        WHERE MSI.INVENTORY_ITEM_ID = PwcOdmBreakDownWarpCountEO.ITEM_ID
+        AND MSI.ORGANIZATION_ID = 353
+        AND ROWNUM = 1) ITEM_DESC
+FROM PWC_ODM_BREAK_DOWN_WARP_COUNT PwcOdmBreakDownWarpCountEO]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="PwcOdmBreakDownWarpCountEO"
+    Entity="model.BreakDownPaper.EO.PwcOdmBreakDownWarpCountEO"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE1"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="Attribute11"
+    PrecisionRule="true"
+    EntityAttrName="Attribute11"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE11"/>
+  <ViewAttribute
+    Name="Attribute12"
+    PrecisionRule="true"
+    EntityAttrName="Attribute12"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE12"/>
+  <ViewAttribute
+    Name="Attribute13"
+    PrecisionRule="true"
+    EntityAttrName="Attribute13"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE13"/>
+  <ViewAttribute
+    Name="Attribute14"
+    PrecisionRule="true"
+    EntityAttrName="Attribute14"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE14"/>
+  <ViewAttribute
+    Name="Attribute15"
+    PrecisionRule="true"
+    EntityAttrName="Attribute15"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE15"/>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="Blend"
+    PrecisionRule="true"
+    EntityAttrName="Blend"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="BLEND"
+    LOVName="LOV_Blend">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Brand"
+    PrecisionRule="true"
+    EntityAttrName="Brand"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="BRAND"
+    LOVName="LOV_Brand">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Count1"
+    PrecisionRule="true"
+    EntityAttrName="Count1"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="COUNT"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="Enable"
+    PrecisionRule="true"
+    EntityAttrName="Enable"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ENABLE"/>
+  <ViewAttribute
+    Name="HeaderId"
+    PrecisionRule="true"
+    EntityAttrName="HeaderId"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="HEADER_ID"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="LAST_UPDATE_LOGIN"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="Lot"
+    PrecisionRule="true"
+    EntityAttrName="Lot"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="LOT"/>
+  <ViewAttribute
+    Name="Ply"
+    PrecisionRule="true"
+    EntityAttrName="Ply"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="PLY"
+    LOVName="LOV_Ply">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Ratio"
+    PrecisionRule="true"
+    EntityAttrName="Ratio"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="RATIO"
+    LOVName="LOV_Ratio">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SingleCount"
+    PrecisionRule="true"
+    EntityAttrName="SingleCount"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="SINGLE_COUNT"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="STATUS"/>
+  <ViewAttribute
+    Name="Type"
+    PrecisionRule="true"
+    EntityAttrName="Type"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="TYPE"
+    LOVName="LOV_Type">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WarpCountId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="WarpCountId"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="WARP_COUNT_ID"/>
+  <ViewAttribute
+    Name="AllocateInKg"
+    PrecisionRule="true"
+    EntityAttrName="AllocateInKg"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ALLOCATE_IN_KG"/>
+  <ViewAttribute
+    Name="AvailableStock"
+    PrecisionRule="true"
+    EntityAttrName="AvailableStock"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="AVAILABLE_STOCK"/>
+  <ViewAttribute
+    Name="BalYarmRemaining"
+    PrecisionRule="true"
+    EntityAttrName="BalYarmRemaining"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="BAL_YARM_REMAINING"/>
+  <ViewAttribute
+    Name="Purchase"
+    PrecisionRule="true"
+    EntityAttrName="Purchase"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="PURCHASE"/>
+  <ViewAttribute
+    Name="ReqInKg"
+    PrecisionRule="true"
+    EntityAttrName="ReqInKg"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="REQ_IN_KG"/>
+  <ViewAttribute
+    Name="ItemId"
+    PrecisionRule="true"
+    EntityAttrName="ItemId"
+    EntityUsage="PwcOdmBreakDownWarpCountEO"
+    AliasName="ITEM_ID"/>
+  <ViewAttribute
+    Name="ItemCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="163"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEM_CODE"
+    Expression="ITEM_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_ItemCode">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="163"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemDesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEM_DESC"
+    Expression="ITEM_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TransCountPlyResult"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[(Count1!=null?Count1:0)+(Ply>1?"/"+Ply:"")]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Count1"/>
+      <Item
+        Value="Ply"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="transTotalRatio"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[getRowSet().sum("Ratio")]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Ratio"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="transCountRatio"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[transTotalRatio == null ? 0 : transTotalRatio == 0 ? 0 : (((Count1==null ? 0 : Count1) * (Ratio == null ? 0 : Ratio)) / transTotalRatio)]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Count1"/>
+      <Item
+        Value="Ratio"/>
+      <Item
+        Value="transTotalRatio"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="PwcOdmBreakDownHdrVO"
+    ViewLink="model.BreakDownPaper.VL.PwcOdmBreakDownHeaderWarpCountVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

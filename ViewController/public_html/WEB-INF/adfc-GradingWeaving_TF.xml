@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="GradingWeaving_Create_PG">
+    <page>/GradingWeaving_Create_PG.jspx</page>
+  </view>
+  <view id="GradingWeaving_Search_PG">
+    <page>/GradingWeaving_Search_PG.jspx</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id id="__2">GradingWeaving_Search_PG</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome id="__5">To Create</from-outcome>
+      <to-activity-id id="__3">GradingWeaving_Create_PG</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__6">
+    <from-activity-id id="__7">GradingWeaving_Create_PG</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome id="__10">To Search</from-outcome>
+      <to-activity-id id="__9">GradingWeaving_Search_PG</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__14">
+    <managed-bean-name id="__11">ManagedBean</managed-bean-name>
+    <managed-bean-class id="__12">model.GradingWeaving.ManagedBean</managed-bean-class>
+    <managed-bean-scope id="__13">request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

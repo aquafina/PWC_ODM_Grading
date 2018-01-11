@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ADFRepository/!svn/ver/2/branches/ViewController/public_html/WEB-INF
+END
+faces-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ADFRepository/!svn/ver/2/branches/ViewController/public_html/WEB-INF/faces-config.xml
+END
+trinidad-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ADFRepository/!svn/ver/2/branches/ViewController/public_html/WEB-INF/trinidad-config.xml
+END
+adfc-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ADFRepository/!svn/ver/2/branches/ViewController/public_html/WEB-INF/adfc-config.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ADFRepository/!svn/ver/2/branches/ViewController/public_html/WEB-INF/web.xml
+END

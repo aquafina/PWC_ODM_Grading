@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/ADFRepository/!svn/ver/2/branches/src/META-INF
+END
+weblogic-application.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ADFRepository/!svn/ver/2/branches/src/META-INF/weblogic-application.xml
+END
+jps-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/ADFRepository/!svn/ver/2/branches/src/META-INF/jps-config.xml
+END
+cwallet.sso
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/ADFRepository/!svn/ver/2/branches/src/META-INF/cwallet.sso
+END

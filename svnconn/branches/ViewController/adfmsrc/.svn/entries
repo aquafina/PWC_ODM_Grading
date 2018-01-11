@@ -1,0 +1,34 @@
+10
+
+dir
+5
+http://usman:81/svn/ADFRepository/branches/ViewController/adfmsrc
+http://usman:81/svn/ADFRepository
+
+
+
+2017-10-12T13:30:10.119543Z
+2
+leghari
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+976e6411-1d06-a84d-82ba-63d56ed52c71
+
+META-INF
+dir
+
+view
+dir
+

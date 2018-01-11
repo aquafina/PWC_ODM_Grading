@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="BreakDownPaper_CreatePGPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PwcOdmBreakDownHdrVO1" RangeSize="25"
+              DataControl="PwcOdmBreakDownPaperAMDataControl"
+              id="PwcOdmBreakDownHdrVO1Iterator"/>
+    <iterator Binds="PwcOdmBreakDownWarpCountVO1" RangeSize="25"
+              DataControl="PwcOdmBreakDownPaperAMDataControl"
+              id="PwcOdmBreakDownWarpCountVO1Iterator"/>
+    <searchRegion Binds="PwcOdmBreakDownWarpCountVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PwcOdmBreakDownWarpCountVO1Query"/>
+    <iterator Binds="PwcOdmBreakDownWeftCountVO1" RangeSize="25"
+              DataControl="PwcOdmBreakDownPaperAMDataControl"
+              id="PwcOdmBreakDownWeftCountVO1Iterator"/>
+    <searchRegion Binds="PwcOdmBreakDownWeftCountVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PwcOdmBreakDownWeftCountVO1Query"/>
+    <iterator Binds="PwcOdmBreakDownPileCountVO1" RangeSize="25"
+              DataControl="PwcOdmBreakDownPaperAMDataControl"
+              id="PwcOdmBreakDownPileCountVO1Iterator"/>
+    <searchRegion Binds="PwcOdmBreakDownPileCountVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PwcOdmBreakDownPileCountVO1Query"/>
+    <iterator Binds="PwcOdmBreakDownCountFactsVO1" RangeSize="25"
+              DataControl="PwcOdmBreakDownPaperAMDataControl"
+              id="PwcOdmBreakDownCountFactsVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="ItemDesc">
+      <AttrNames>
+        <Item Value="ItemDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="Constraction1">
+      <AttrNames>
+        <Item Value="Constraction1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="Contraction2">
+      <AttrNames>
+        <Item Value="Contraction2"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                  Uses="LOV_Blend" id="Blend"/>
+    <tree IterBinding="PwcOdmBreakDownWarpCountVO1Iterator"
+          id="PwcOdmBreakDownWarpCountVO1">
+      <nodeDefinition DefName="model.BreakDownPaper.VO.PwcOdmBreakDownWarpCountVO"
+                      Name="PwcOdmBreakDownWarpCountVO10">
+        <AttrNames>
+          <Item Value="Count1"/>
+          <Item Value="Ply"/>
+          <Item Value="SingleCount"/>
+          <Item Value="Type"/>
+          <Item Value="Ratio"/>
+          <Item Value="Brand"/>
+          <Item Value="Blend"/>
+          <Item Value="Lot"/>
+          <Item Value="TransCountPlyResult"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PwcOdmBreakDownWarpCountVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PwcOdmBreakDownWarpCountVO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="PwcOdmBreakDownWeftCountVO1Iterator"
+          id="PwcOdmBreakDownWeftCountVO1">
+      <nodeDefinition DefName="model.BreakDownPaper.VO.PwcOdmBreakDownWeftCountVO"
+                      Name="PwcOdmBreakDownWeftCountVO10">
+        <AttrNames>
+          <Item Value="Count1"/>
+          <Item Value="Ply"/>
+          <Item Value="SingleCount"/>
+          <Item Value="Type"/>
+          <Item Value="Ratio"/>
+          <Item Value="Brand"/>
+          <Item Value="Blend"/>
+          <Item Value="Lot"/>
+          <Item Value="TransCountPly"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PwcOdmBreakDownWeftCountVO1Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PwcOdmBreakDownWeftCountVO1Iterator" id="Delete1"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <listOfValues StaticList="false" IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                  Uses="LOV_ItemCode" id="ItemCode"/>
+    <methodAction id="warpDialogListener"
+                  InstanceName="PwcOdmBreakDownPaperAMDataControl.dataProvider"
+                  DataControl="PwcOdmBreakDownPaperAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="warpDialogListener" IsViewObjectMethod="false"/>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="TotalEnds">
+      <AttrNames>
+        <Item Value="TotalEnds"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="BeamWidth">
+      <AttrNames>
+        <Item Value="BeamWidth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="BeamDiaMm">
+      <AttrNames>
+        <Item Value="BeamDiaMm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="ReqSizeLength">
+      <AttrNames>
+        <Item Value="ReqSizeLength"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="WtOfWarp">
+      <AttrNames>
+        <Item Value="WtOfWarp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WarpingStartDate">
+      <AttrNames>
+        <Item Value="WarpingStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WarpYarnCount">
+      <AttrNames>
+        <Item Value="WarpYarnCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="YarnLot">
+      <AttrNames>
+        <Item Value="YarnLot"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="BeamLength">
+      <AttrNames>
+        <Item Value="BeamLength"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalWarpReq">
+      <AttrNames>
+        <Item Value="TotalWarpReq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WeaveFinishingDate">
+      <AttrNames>
+        <Item Value="WeaveFinishingDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalYarnReq">
+      <AttrNames>
+        <Item Value="TotalYarnReq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalYarnAllocated">
+      <AttrNames>
+        <Item Value="TotalYarnAllocated"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="RemainingYarnReq">
+      <AttrNames>
+        <Item Value="RemainingYarnReq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalYarnAvailable">
+      <AttrNames>
+        <Item Value="TotalYarnAvailable"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="YarnPurchaseReq">
+      <AttrNames>
+        <Item Value="YarnPurchaseReq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreyEpiWeaving">
+      <AttrNames>
+        <Item Value="GreyEpiWeaving"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="SelvedgeEndsBothSides">
+      <AttrNames>
+        <Item Value="SelvedgeEndsBothSides"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="LoomProdPerDay">
+      <AttrNames>
+        <Item Value="LoomProdPerDay"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="WeftCount">
+      <AttrNames>
+        <Item Value="WeftCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WeftYarnType">
+      <AttrNames>
+        <Item Value="WeftYarnType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WtOfWeftYarn">
+      <AttrNames>
+        <Item Value="WtOfWeftYarn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalWeavableLength">
+      <AttrNames>
+        <Item Value="TotalWeavableLength"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="SelvedgeEnds">
+      <AttrNames>
+        <Item Value="SelvedgeEnds"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreyPpiWeaving">
+      <AttrNames>
+        <Item Value="GreyPpiWeaving"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreyWidthWeaving">
+      <AttrNames>
+        <Item Value="GreyWidthWeaving"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="ReedSpaceInch">
+      <AttrNames>
+        <Item Value="ReedSpaceInch"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="LoomStartDate">
+      <AttrNames>
+        <Item Value="LoomStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalProdPerDay">
+      <AttrNames>
+        <Item Value="TotalProdPerDay"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalWeftReq">
+      <AttrNames>
+        <Item Value="TotalWeftReq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="DayReqToFinish">
+      <AttrNames>
+        <Item Value="DayReqToFinish"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreyEpiTable">
+      <AttrNames>
+        <Item Value="GreyEpiTable"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreyWidthTable">
+      <AttrNames>
+        <Item Value="GreyWidthTable"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="GreyGsm">
+      <AttrNames>
+        <Item Value="GreyGsm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="ReqFoldingProdDay">
+      <AttrNames>
+        <Item Value="ReqFoldingProdDay"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreyPpiTable">
+      <AttrNames>
+        <Item Value="GreyPpiTable"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreyWidthFolding">
+      <AttrNames>
+        <Item Value="GreyWidthFolding"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="GreyFabWt">
+      <AttrNames>
+        <Item Value="GreyFabWt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="InspectionFinishedDate">
+      <AttrNames>
+        <Item Value="InspectionFinishedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PwcOdmBreakDownPileCountVO1Iterator"
+          id="PwcOdmBreakDownPileCountVO1">
+      <nodeDefinition DefName="model.BreakDownPaper.VO.PwcOdmBreakDownPileCountVO"
+                      Name="PwcOdmBreakDownPileCountVO10">
+        <AttrNames>
+          <Item Value="Count1"/>
+          <Item Value="Ply"/>
+          <Item Value="SingleCount"/>
+          <Item Value="Type"/>
+          <Item Value="Ratio"/>
+          <Item Value="Brand"/>
+          <Item Value="Blend"/>
+          <Item Value="Lot"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PwcOdmBreakDownPileCountVO1Iterator" id="CreateInsert2"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PwcOdmBreakDownPileCountVO1Iterator" id="Delete2"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="PwcOdmBreakDownWarpCountVO1Iterator"
+          id="PwcOdmBreakDownWarpCountVO11">
+      <nodeDefinition DefName="model.BreakDownPaper.VO.PwcOdmBreakDownWarpCountVO"
+                      Name="PwcOdmBreakDownWarpCountVO110">
+        <AttrNames>
+          <Item Value="Count1"/>
+          <Item Value="Ply"/>
+          <Item Value="SingleCount"/>
+          <Item Value="Type"/>
+          <Item Value="Ratio"/>
+          <Item Value="Brand"/>
+          <Item Value="Blend"/>
+          <Item Value="Lot"/>
+          <Item Value="ReqInKg"/>
+          <Item Value="ItemCode"/>
+          <Item Value="ItemDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="pileYarnCountDialogListener"
+                  InstanceName="PwcOdmBreakDownPaperAMDataControl.dataProvider"
+                  DataControl="PwcOdmBreakDownPaperAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="pileYarnCountDialogListener"
+                  IsViewObjectMethod="false"/>
+    <methodAction id="weftDialogListener"
+                  InstanceName="PwcOdmBreakDownPaperAMDataControl.dataProvider"
+                  DataControl="PwcOdmBreakDownPaperAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="weftDialogListener" IsViewObjectMethod="false"/>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="YarnBrand1">
+      <AttrNames>
+        <Item Value="YarnBrand"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="YarnType1">
+      <AttrNames>
+        <Item Value="YarnType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="YarnBlend1">
+      <AttrNames>
+        <Item Value="YarnBlend"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WeftYarnBrand1">
+      <AttrNames>
+        <Item Value="WeftYarnBrand"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WeftYarnBlend1">
+      <AttrNames>
+        <Item Value="WeftYarnBlend"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="CreateInsert3"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="PwcOdmBreakDownWeftCountVO1Iterator"
+          id="PwcOdmBreakDownWeftCountVO11">
+      <nodeDefinition DefName="model.BreakDownPaper.VO.PwcOdmBreakDownWeftCountVO"
+                      Name="PwcOdmBreakDownWeftCountVO110">
+        <AttrNames>
+          <Item Value="Count1"/>
+          <Item Value="Ply"/>
+          <Item Value="SingleCount"/>
+          <Item Value="Type"/>
+          <Item Value="Ratio"/>
+          <Item Value="Brand"/>
+          <Item Value="Blend"/>
+          <Item Value="Lot"/>
+          <Item Value="ReqInKg"/>
+          <Item Value="ItemCode"/>
+          <Item Value="ItemDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues StaticList="false" IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                  Uses="LOV_OrgName" id="OrgName"/>
+    <listOfValues StaticList="false" IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                  Uses="LOV_GdNumber" id="GdNumber"/>
+    <listOfValues StaticList="false" IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                  Uses="LOV_SaleOrderNumber" id="SaleOrderNumber"/>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="Contraction3">
+      <AttrNames>
+        <Item Value="Contraction3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="Contraction4">
+      <AttrNames>
+        <Item Value="Contraction4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="GreigeWidth">
+      <AttrNames>
+        <Item Value="GreigeWidth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="FinishWidth">
+      <AttrNames>
+        <Item Value="FinishWidth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="Weave">
+      <AttrNames>
+        <Item Value="Weave"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="FebricProcess">
+      <AttrNames>
+        <Item Value="FebricProcess"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="OrderQtyYds">
+      <AttrNames>
+        <Item Value="OrderQtyYds"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="OrderQtyMtr">
+      <AttrNames>
+        <Item Value="OrderQtyMtr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="LastDeliveryDate">
+      <AttrNames>
+        <Item Value="LastDeliveryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="ProcessLoss">
+      <AttrNames>
+        <Item Value="ProcessLoss"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                  id="LoomType" Uses="LOV_LoomType"/>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="NumberBeam">
+      <AttrNames>
+        <Item Value="NumberBeam"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="CWPer">
+      <AttrNames>
+        <Item Value="CWPer"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="PileYarnCount">
+      <AttrNames>
+        <Item Value="PileYarnCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="PileYarnBrand">
+      <AttrNames>
+        <Item Value="PileYarnBrand"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="PileYarnEndsInch">
+      <AttrNames>
+        <Item Value="PileYarnEndsInch"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="TotalPileYarnEnds">
+      <AttrNames>
+        <Item Value="TotalPileYarnEnds"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="Splits">
+      <AttrNames>
+        <Item Value="Splits"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="SizeTerry">
+      <AttrNames>
+        <Item Value="SizeTerry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="Design">
+      <AttrNames>
+        <Item Value="Design"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="WeightPileYarn">
+      <AttrNames>
+        <Item Value="WeightPileYarn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="DropperThicknessMm">
+      <AttrNames>
+        <Item Value="DropperThicknessMm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="ReedCount">
+      <AttrNames>
+        <Item Value="ReedCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="EndDent">
+      <AttrNames>
+        <Item Value="EndDent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="SelvedgeSize">
+      <AttrNames>
+        <Item Value="SelvedgeSize"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="PlanLoom">
+      <AttrNames>
+        <Item Value="PlanLoom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="LoomEfficiency">
+      <AttrNames>
+        <Item Value="LoomEfficiency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="SelvedgeEndsDent">
+      <AttrNames>
+        <Item Value="SelvedgeEndsDent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator" id="LoomRpm">
+      <AttrNames>
+        <Item Value="LoomRpm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmBreakDownHdrVO1Iterator"
+                     id="transHdrCountRatio">
+      <AttrNames>
+        <Item Value="transHdrCountRatio"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="PwcOdmBreakDownPaperAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="PwcOdmBreakDownPaperAMDataControl"/>
+    <attributeValues IterBinding="PwcOdmBreakDownCountFactsVO1Iterator"
+                     id="CountFact">
+      <AttrNames>
+        <Item Value="CountFact"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

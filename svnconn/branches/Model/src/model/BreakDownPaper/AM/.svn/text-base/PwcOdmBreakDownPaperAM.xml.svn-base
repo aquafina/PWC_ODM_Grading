@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PwcOdmBreakDownPaperAM"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  ComponentClass="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAMImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="model.BreakDownPaper.AM.common.PwcOdmBreakDownPaperAM"
+  ClientProxyName="model.BreakDownPaper.AM.client.PwcOdmBreakDownPaperAMClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="PwcOdmBreakDownHdrVO1"
+    ViewObjectName="model.BreakDownPaper.VO.PwcOdmBreakDownHdrVO"/>
+  <ViewUsage
+    Name="PwcOdmBreakDownWarpCountVO1"
+    ViewObjectName="model.BreakDownPaper.VO.PwcOdmBreakDownWarpCountVO"/>
+  <ViewUsage
+    Name="PwcOdmBreakDownWeftCountVO1"
+    ViewObjectName="model.BreakDownPaper.VO.PwcOdmBreakDownWeftCountVO"/>
+  <ViewUsage
+    Name="PwcOdmBreakDownPileCountVO1"
+    ViewObjectName="model.BreakDownPaper.VO.PwcOdmBreakDownPileCountVO"/>
+  <ViewUsage
+    Name="PwcOdmBreakDownCountFactsVO1"
+    ViewObjectName="model.BreakDownPaper.VO.PwcOdmBreakDownCountFactsVO"/>
+  <ViewLinkUsage
+    Name="PwcOdmBreakDownHeaderWarpCountVL1"
+    ViewLinkObjectName="model.BreakDownPaper.VL.PwcOdmBreakDownHeaderWarpCountVL"
+    SrcViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownHdrVO1"
+    DstViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownWarpCountVO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PwcOdmBreakDownHeaderWeftCountVL1"
+    ViewLinkObjectName="model.BreakDownPaper.VL.PwcOdmBreakDownHeaderWeftCountVL"
+    SrcViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownHdrVO1"
+    DstViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownWeftCountVO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PwcOdmBreakDownHeaderPileCountVL1"
+    ViewLinkObjectName="model.BreakDownPaper.VL.PwcOdmBreakDownHeaderPileCountVL"
+    SrcViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownHdrVO1"
+    DstViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownPileCountVO1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="PwcOdmBreakDownHdrCountFactsVL1"
+    ViewLinkObjectName="model.BreakDownPaper.VL.PwcOdmBreakDownHdrCountFactsVL"
+    SrcViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownHdrVO1"
+    DstViewUsageName="model.BreakDownPaper.AM.PwcOdmBreakDownPaperAM.PwcOdmBreakDownCountFactsVO1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="warpDialogListener">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="weftDialogListener">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="pileYarnCountDialogListener">
+      <Return
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</AppModule>
