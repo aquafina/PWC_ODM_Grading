@@ -213,7 +213,8 @@
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.tooltip}"
                             id="it5"
-                            contentStyle="text-align:right;">
+                            contentStyle="text-align:right;"
+                            validator="#{ManagedBean.gradeAQtyValidator}">
                 <f:validator binding="#{row.bindings.Gradea.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.format}"/>
@@ -242,7 +243,8 @@
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.tooltip}"
                             id="it4"
-                            contentStyle="text-align:right;">
+                            contentStyle="text-align:right;"
+                            validator="#{ManagedBean.gradeBQtyValidator}">
                 <f:validator binding="#{row.bindings.Gradeb.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.format}"/>
@@ -272,7 +274,8 @@
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.tooltip}"
                             id="it7"
-                            contentStyle="text-align:right;">
+                            contentStyle="text-align:right;"
+                            validator="#{ManagedBean.gradeCQtyValidator}">
                 <f:validator binding="#{row.bindings.Gradec.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.format}"/>
@@ -301,7 +304,8 @@
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.tooltip}"
                             id="it8"
-                            contentStyle="text-align:right;">
+                            contentStyle="text-align:right;"
+                            validator="#{ManagedBean.gradeDQtyValidator}">
                 <f:validator binding="#{row.bindings.Graded.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.format}"/>
