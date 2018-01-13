@@ -33,8 +33,6 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
-            DataControl="PwcOdmGradingWeavingAMDataControl"/>
     <action id="Rollback" RequiresUpdateModel="false"
             Action="rollbackTransaction"
             DataControl="PwcOdmGradingWeavingAMDataControl"/>

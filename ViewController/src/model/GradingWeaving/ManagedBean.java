@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 
 import model.GradingWeaving.AM.PwcOdmGradingWeavingAMImpl;
@@ -26,6 +27,8 @@ import oracle.jbo.ViewObject;
 import oracle.jbo.server.ApplicationModuleImpl;
 
 public class ManagedBean {
+    private RichInputText totalQtyInputText;
+
     public ManagedBean() { }
 
     /*****Generic Method to Get BindingContainer**/
@@ -60,10 +63,10 @@ public class ManagedBean {
         // Customzied Method Name 
         OperationBinding operationBinding =  executeOperation("Exceed_TOTALQTY");
         operationBinding.execute();*/
+        Double totalQty = Double.parseDouble(valueChangeEvent.getNewValue().toString());
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         Double qtyReceivedLooming = Double.parseDouble(currVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString());
-        Double sumTotalQtyValue = Double.parseDouble(currVO.getCurrentRow().getAttribute("SUMTOTQTY").toString());
         /*if (sumTotalQtyValue > qtyReceivedLooming) {
             showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
         }*/
@@ -79,61 +82,38 @@ public class ManagedBean {
     
     public void totalQtyValidator(FacesContext facesContext,
                                   UIComponent uIComponent, Object object) {
-        oracle.jbo.domain.Number totalQty = (oracle.jbo.domain.Number)object;
-        System.out.println("object = "+object.toString());
+        Double totalQty = Double.parseDouble(object.toString());
         ApplicationModuleImpl am = getApplicationModule();
-        ViewObject currVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
-        Double qtyReceivedLooming = Double.parseDouble(currVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString());
-        Double sumTotalQtyValue = Double.parseDouble(currVO.getCurrentRow().getAttribute("SUMTOTQTY").toString());
-        oracle.jbo.domain.Number qtyReceivedLoomingNumber = new oracle.jbo.domain.Number(0);
-        try {
-            qtyReceivedLoomingNumber = new oracle.jbo.domain.Number(qtyReceivedLooming);
-            System.out.println("qtyReceivedLoomingNumber = "+qtyReceivedLoomingNumber);
-            if (totalQty.compareTo(qtyReceivedLoomingNumber)==1) {
-                FacesMessage message =
-                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                       "Invalid Value",
-                       "Total Quantity cannot exceed Quantity Received for Looming");
-                       facesContext.addMessage(uIComponent.getClientId(facesContext),
-                       message);
-                ((RichInputText)uIComponent).setValid(false);
-            }
-            /*else if (sumTotalQtyValue > qtyReceivedLooming) {
-                FacesMessage message =
-                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                       "Invalid Value",
-                       "Sum of Total Quantities cannot exceed Quantity Received for Looming");
-                       facesContext.addMessage(uIComponent.getClientId(facesContext),
-                       message);
-                ((RichInputText)uIComponent).setValid(false);
-                //showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
-            }*/
-            
-            System.out.println("SUMTOTQTY = "+getSumTotalQuantities(am,totalQty));
-            
-        } catch (SQLException e) {
+        ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
+        ViewObject currLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString());
+        Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString());
+        if (totalQty.compareTo(qtyReceivedLooming)==1) {
+            FacesMessage message =
+                   new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                   "Invalid Value",
+                   "Total Quantity cannot exceed Quantity Received for Looming");
+                   facesContext.addMessage(uIComponent.getClientId(facesContext),
+                   message);
+            ((RichInputText)uIComponent).setValid(false);
         }
         System.out.println("totalQty = "+totalQty);
-    }
+}
 
 
     public void gradeAQtyValidator(FacesContext facesContext,
                                    UIComponent uIComponent, Object object) {
         // Add event code here...
-        oracle.jbo.domain.Number gradeAQty = (oracle.jbo.domain.Number)object;
+        Double gradeAQty = Double.parseDouble(object.toString());
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
         Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
         Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
         Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
         Double gradeDQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Graded")!=null?currVO.getCurrentRow().getAttribute("Graded").toString():"0.0");
-        oracle.jbo.domain.Number totalQtyNumber = new oracle.jbo.domain.Number(0);
-        oracle.jbo.domain.Number totalGradeQuantitiesNumber = new oracle.jbo.domain.Number(0);
-        try {
-            totalQtyNumber = new oracle.jbo.domain.Number(totalQty);
-            totalGradeQuantitiesNumber = new oracle.jbo.domain.Number(gradeBQty + gradeCQty + gradeDQty);
-//            System.out.println("qtyReceivedLoomingNumber = "+qtyReceivedLoomingNumber);
-            if (totalGradeQuantitiesNumber.compareTo(totalQtyNumber)==1) {
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+            if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
                        "Invalid Value",
@@ -142,34 +122,84 @@ public class ManagedBean {
                        message);
                 ((RichInputText)uIComponent).setValid(false);
             }
-        } catch (SQLException e) {
-        }
-    }
+    } 
 
     public void gradeBQtyValidator(FacesContext facesContext,
                                    UIComponent uIComponent, Object object) {
         // Add event code here...
+        Double gradeBQty = Double.parseDouble(object.toString());
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
+        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
+        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
+        Double gradeDQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Graded")!=null?currVO.getCurrentRow().getAttribute("Graded").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+            if (totalGradeQuantities.compareTo(totalQty)==1) {
+                FacesMessage message =
+                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                       "Invalid Value",
+                       "Total Grade Quantities cannot exceed the Total Quantity");
+                       facesContext.addMessage(uIComponent.getClientId(facesContext),
+                       message);
+                ((RichInputText)uIComponent).setValid(false);
+            }
     }
 
     public void gradeCQtyValidator(FacesContext facesContext,
                                    UIComponent uIComponent, Object object) {
         // Add event code here...
+        Double gradeCQty = Double.parseDouble(object.toString());
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
+        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
+        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
+        Double gradeDQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Graded")!=null?currVO.getCurrentRow().getAttribute("Graded").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+            if (totalGradeQuantities.compareTo(totalQty)==1) {
+                FacesMessage message =
+                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                       "Invalid Value",
+                       "Total Grade Quantities cannot exceed the Total Quantity");
+                       facesContext.addMessage(uIComponent.getClientId(facesContext),
+                       message);
+                ((RichInputText)uIComponent).setValid(false);
+            }
     }
 
     public void gradeDQtyValidator(FacesContext facesContext,
                                    UIComponent uIComponent, Object object) {
         // Add event code here...
+        Double gradeDQty = Double.parseDouble(object.toString());
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
+        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
+        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
+        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+            if (totalGradeQuantities.compareTo(totalQty)==1) {
+                FacesMessage message =
+                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                       "Invalid Value",
+                       "Total Grade Quantities cannot exceed the Total Quantity");
+                       facesContext.addMessage(uIComponent.getClientId(facesContext),
+                       message);
+                ((RichInputText)uIComponent).setValid(false);
+            }
     }
     
-    public oracle.jbo.domain.Number getSumTotalQuantities(ApplicationModule am, oracle.jbo.domain.Number changedValue) {
+    /*public Double getSumTotalQuantities(ApplicationModule am, Double changedValue) {
         ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
         RowSetIterator iter = currVO.createRowSetIterator(null);
         Double sum = 0.0;
         int i=0;
         while (iter.next()!=null) {
-            System.out.println("row no = "+ ++i);
-            sum = sum + Double.parseDouble(iter.getCurrentRow().getAttribute("TotalQuantity")!=null?iter.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
-            System.out.println("sum = "+sum);
+                sum += Double.parseDouble(iter.getCurrentRow().getAttribute("TotalQuantity")!=null?iter.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
         }
         /*if (rows.length>0) {
             System.out.println("length = "+rows.length);
@@ -178,7 +208,27 @@ public class ManagedBean {
                 System.out.println("sum = "+sum);
             }
 //            System.out.println("sum = "+sum);
-        }*/
-        return new oracle.jbo.domain.Number(0);
+        }
+        return sum+changedValue;
+    }*/
+
+    public void setTotalQtyInputText(RichInputText totalQtyInputText) {
+        this.totalQtyInputText = totalQtyInputText;
+    }
+
+    public RichInputText getTotalQtyInputText() {
+        return totalQtyInputText;
+    }
+
+    public void saveChanges(ActionEvent actionEvent) {
+        // Add event code here...
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
+        ViewObject currLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString());
+        Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString());
+        if (sumTotalQtyValue.compareTo(qtyReceivedLooming)==1)
+            showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
+        else am.getTransaction().commit();
     }
 }

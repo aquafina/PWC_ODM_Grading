@@ -97,9 +97,10 @@
           <f:facet name="menus"/>
           <f:facet name="toolbar">
             <af:toolbar id="t2">
-              <af:commandButton actionListener="#{bindings.Commit.execute}"
+              <af:commandButton
                                 text=" Save        "
-                                id="cb1" action="To Search"/>
+                                id="cb1"
+                                actionListener="#{ManagedBean.saveChanges}"/>
               <af:commandButton actionListener="#{bindings.Rollback.execute}"
                                 text=" Back    "
                                 immediate="true" id="cb2" action="To Search">
@@ -184,7 +185,8 @@
                             contentStyle="text-align:right;"
                             valueChangeListener="#{ManagedBean.TotalQty_ValueChange}"
                             autoSubmit="true"
-                            validator="#{ManagedBean.totalQtyValidator}">
+                            validator="#{ManagedBean.totalQtyValidator}"
+                            binding="#{ManagedBean.totalQtyInputText}">
                 <f:validator binding="#{row.bindings.TotalQuantity.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.format}"/>
@@ -214,7 +216,8 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.tooltip}"
                             id="it5"
                             contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeAQtyValidator}">
+                            validator="#{ManagedBean.gradeAQtyValidator}"
+                            autoSubmit="true">
                 <f:validator binding="#{row.bindings.Gradea.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.format}"/>
@@ -244,7 +247,8 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.tooltip}"
                             id="it4"
                             contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeBQtyValidator}">
+                            validator="#{ManagedBean.gradeBQtyValidator}"
+                            autoSubmit="true">
                 <f:validator binding="#{row.bindings.Gradeb.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.format}"/>
@@ -275,7 +279,8 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.tooltip}"
                             id="it7"
                             contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeCQtyValidator}">
+                            validator="#{ManagedBean.gradeCQtyValidator}"
+                            autoSubmit="true">
                 <f:validator binding="#{row.bindings.Gradec.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.format}"/>
@@ -305,7 +310,8 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.tooltip}"
                             id="it8"
                             contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeDQtyValidator}">
+                            validator="#{ManagedBean.gradeDQtyValidator}"
+                            autoSubmit="true">
                 <f:validator binding="#{row.bindings.Graded.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.format}"/>
