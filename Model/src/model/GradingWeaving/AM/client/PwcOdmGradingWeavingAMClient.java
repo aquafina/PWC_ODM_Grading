@@ -21,4 +21,11 @@ public class PwcOdmGradingWeavingAMClient extends ApplicationModuleImpl implemen
             this.riInvokeExportedMethod(this,"Exceed_TOTALQTY",null,null);
         return;
     }
+
+    public void setSessionValues(String orgId, String userId, String respId,
+                                 String respAppl, String mfgOrgId) {
+        Object _ret =
+            this.riInvokeExportedMethod(this,"setSessionValues",new String [] {"java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"},new Object[] {orgId, userId, respId, respAppl, mfgOrgId});
+        return;
+    }
 }

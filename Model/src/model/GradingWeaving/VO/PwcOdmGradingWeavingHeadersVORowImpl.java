@@ -415,6 +415,28 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
             }
         }
         ,
+        SalesOrderHeaderId {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getSalesOrderHeaderId();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setSalesOrderHeaderId((String)value);
+            }
+        }
+        ,
+        SalesOrderGdNo {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getSalesOrderGdNo();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setSalesOrderGdNo((String)value);
+            }
+        }
+        ,
         PwcOdmGradingWaveingLinesVO {
             public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
                 return obj.getPwcOdmGradingWaveingLinesVO();
@@ -535,6 +557,8 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
     public static final int SUMGRADEB = AttributesEnum.SumGradeb.index();
     public static final int SUMGRADEC = AttributesEnum.SumGradec.index();
     public static final int SUMGRADED = AttributesEnum.SumGraded.index();
+    public static final int SALESORDERHEADERID = AttributesEnum.SalesOrderHeaderId.index();
+    public static final int SALESORDERGDNO = AttributesEnum.SalesOrderGdNo.index();
     public static final int PWCODMGRADINGWAVEINGLINESVO = AttributesEnum.PwcOdmGradingWaveingLinesVO.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSGDNO1 = AttributesEnum.PwcOdmGradingWeavingHeadersGdNo1.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSSALEORDERNO1 = AttributesEnum.PwcOdmGradingWeavingHeadersSaleOrderNo1.index();
@@ -1131,6 +1155,39 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
      */
     public void setSumGraded(Number value) {
         setAttributeInternal(SUMGRADED, value);
+    }
+
+
+    /**
+     * Gets the attribute value for the calculated attribute SalesOrderHeaderId.
+     * @return the SalesOrderHeaderId
+     */
+    public String getSalesOrderHeaderId() {
+        return (String) getAttributeInternal(SALESORDERHEADERID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute SalesOrderHeaderId.
+     * @param value value to set the  SalesOrderHeaderId
+     */
+    public void setSalesOrderHeaderId(String value) {
+        setAttributeInternal(SALESORDERHEADERID, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute SalesOrderGdNo.
+     * @return the SalesOrderGdNo
+     */
+    public String getSalesOrderGdNo() {
+        return (String) getAttributeInternal(SALESORDERGDNO);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute SalesOrderGdNo.
+     * @param value value to set the  SalesOrderGdNo
+     */
+    public void setSalesOrderGdNo(String value) {
+        setAttributeInternal(SALESORDERGDNO, value);
     }
 
     /**

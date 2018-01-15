@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PwcOdmGradingWeavingHeadersJob"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   OrderBy="3"
   BindingStyle="OracleName"
@@ -20,19 +20,50 @@
         ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <Variable
+    Name="p_gd_no"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_sales_order"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <SQLQuery>
     <![CDATA[select  sum(mmt.TRANSACTION_QUANTITY) job_quantity    
         ,sum(wdj.QUANTITY_COMPLETED) stitching_quantity
-        ,we.WIP_ENTITY_NAME 
+        ,we.WIP_ENTITY_NAME
+        ,msi.concatenated_segments
+        ,msi.DESCRIPTION
 from   wip_discrete_jobs wdj
        ,wip_entities we
        ,mtl_material_transactions mmt
        ,mtl_transaction_types  mtt
+       ,mtl_system_items_KFV msi
 where  we.WIP_ENTITY_ID = wdj.WIP_ENTITY_ID
 and    mmt.TRANSACTION_SOURCE_ID = wdj.WIP_ENTITY_ID
 and    mmt.TRANSACTION_TYPE_ID = mtt.TRANSACTION_TYPE_ID
-and    upper(mtt.TRANSACTION_TYPE_NAME) = 'WIP COMPLETION'                  
-group by we.WIP_ENTITY_NAME]]>
+and    upper(mtt.TRANSACTION_TYPE_NAME) = 'WIP COMPLETION'
+and wdj.status_type = 3
+and mmt.INVENTORY_ITEM_ID = msi.INVENTORY_ITEM_ID
+and mmt.ORGANIZATION_ID = msi.ORGANIZATION_ID
+and wdj.ATTRIBUTE11 = nvl(:p_gd_no,wdj.ATTRIBUTE11)
+and wdj.ATTRIBUTE12 = nvl(:p_sales_order,wdj.ATTRIBUTE12)                   
+group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION
+ORDER BY 3]]>
   </SQLQuery>
   <ViewAttribute
     Name="JobQuantity"
@@ -95,6 +126,36 @@ group by we.WIP_ENTITY_NAME]]>
           Value="30"/>
       </SchemaBasedProperties>
     </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ConcatenatedSegments"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="245"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CONCATENATED_SEGMENTS"
+    Expression="CONCATENATED_SEGMENTS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="245"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
   </ViewAttribute>
   <ResourceBundle>
     <PropertiesBundle

@@ -7,4 +7,7 @@ import oracle.jbo.ApplicationModule;
 // ---------------------------------------------------------------------
 public interface PwcOdmGradingWeavingAM extends ApplicationModule {
     void Exceed_TOTALQTY();
+
+    void setSessionValues(String orgId, String userId, String respId,
+                          String respAppl, String mfgOrgId);
 }

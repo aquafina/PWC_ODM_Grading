@@ -7,6 +7,8 @@ import model.GradingWeaving.AM.common.PwcOdmGradingWeavingAM;
 import model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVOImpl;
 import model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVOImpl;
 
+import oracle.adf.share.ADFContext;
+
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewObject;
@@ -109,6 +111,16 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
              
          }
         lvoit.closeRowSetIterator();*/
+    }
+    
+    public void setSessionValues(String orgId, String userId, String respId, String respAppl, String mfgOrgId) {
+        
+    //        System.out.println(orgId+" "+userId);
+        ADFContext.getCurrent().getSessionScope().put("user_id", userId);
+        ADFContext.getCurrent().getSessionScope().put("org_id", orgId);
+        ADFContext.getCurrent().getSessionScope().put("resp_id", respId);
+        ADFContext.getCurrent().getSessionScope().put("resp_appl_id", respAppl);
+        ADFContext.getCurrent().getSessionScope().put("mfg_org_id", mfgOrgId);
     }
  // End of AM
 }

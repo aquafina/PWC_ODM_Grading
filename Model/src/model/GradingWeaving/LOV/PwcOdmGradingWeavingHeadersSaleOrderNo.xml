@@ -24,10 +24,45 @@
     Name="P_ORD_NO"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="p_gd_no"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <SQLQuery>
-    <![CDATA[select ooha.ORDER_NUMBER
- from oe_order_headers_all ooha]]>
+    <![CDATA[select ooha.HEADER_ID, ooha.ORDER_NUMBER, oola.ATTRIBUTE1 Sales_Order_Gd_No
+ from oe_order_headers_all ooha, oe_order_lines_all oola 
+ where ooha.HEADER_ID = oola.HEADER_ID
+ and oola.ATTRIBUTE1 = nvl(:p_gd_no,oola.ATTRIBUTE1)
+ORDER BY 1]]>
   </SQLQuery>
+  <ViewAttribute
+    Name="HeaderId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HEADER_ID"
+    Expression="HEADER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="OrderNumber"
     IsUpdateable="false"
@@ -46,6 +81,27 @@
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Salesordergdno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SALES_ORDER_GD_NO"
+    Expression="SALESORDERGDNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PwcOdmGradingWeavingHeadersVO"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   FromList="PWC_ODM_GRADING_WEAVING_HDRS PwcOdmGradingWeavingHeadersE1"
   BindingStyle="OracleName"
@@ -68,12 +68,22 @@
     Type="java.lang.String"/>
   <ViewAccessor
     Name="PwcOdmGradingWeavingHeadersGdNo1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersGdNo"
-    RowLevelBinds="true"/>
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersGdNo">
+    <ParameterMap>
+      <PIMap Variable="P_GD_NO">
+        <TransientExpression><![CDATA[SalesOrderGdNo]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="PwcOdmGradingWeavingHeadersSaleOrderNo1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersSaleOrderNo"
-    RowLevelBinds="true"/>
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersSaleOrderNo">
+    <ParameterMap>
+      <PIMap Variable="p_gd_no">
+        <TransientExpression><![CDATA[GdNo]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ViewAccessor
     Name="PwcOdmGradingWeavingHeadersItemCode1"
     ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersItemCode">
@@ -85,8 +95,16 @@
   </ViewAccessor>
   <ViewAccessor
     Name="PwcOdmGradingWeavingHeadersJob1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob"
-    RowLevelBinds="true"/>
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob">
+    <ParameterMap>
+      <PIMap Variable="p_gd_no">
+        <TransientExpression><![CDATA[GdNo]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_sales_order">
+        <TransientExpression><![CDATA[SalesOrderHeaderId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="PWC_ODM_REP_GDNO_LOV"
     ListVOName="PwcOdmGradingWeavingHeadersGdNo1"
@@ -142,11 +160,15 @@
     <AttrArray Name="DerivedAttrNames">
       <Item Value="JobQuantity"/>
       <Item Value="QtyReceivedLooming"/>
+      <Item Value="ItemCode"/>
+      <Item Value="ItemDescription"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="WipEntityName"/>
       <Item Value="JobQuantity"/>
       <Item Value="StitchingQuantity"/>
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="Description"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="WipEntityName"/>
@@ -164,8 +186,14 @@
     <AttrArray Name="AttrNames">
       <Item Value="SalesOrderNumber"/>
     </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="SalesOrderHeaderId"/>
+      <Item Value="SalesOrderGdNo"/>
+    </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="OrderNumber"/>
+      <Item Value="HeaderId"/>
+      <Item Value="Salesordergdno"/>
     </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>
@@ -364,10 +392,10 @@
     LOVName="PWC_ODM_REP_JOB_LOV">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -430,10 +458,10 @@
     LOVName="PWC_ODM_REP_SALES_ORD_NO_LOV">
     <Properties>
       <SchemaBasedProperties>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -493,6 +521,24 @@
     SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Graded")]]></TransientExpression>
   </ViewAttribute>
+  <ViewAttribute
+    Name="SalesOrderHeaderId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="SalesOrderGdNo"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewCriteria
     Name="PwcOdmGradingWeavingHeadersVOCriteria"
     ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"

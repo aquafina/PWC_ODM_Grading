@@ -36,4 +36,31 @@
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>
   </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="Exceed_TOTALQTY">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="setSessionValues">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="orgId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="respId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="respAppl"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="mfgOrgId"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
 </AppModule>

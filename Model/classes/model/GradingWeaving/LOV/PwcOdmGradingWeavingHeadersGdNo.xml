@@ -22,14 +22,23 @@
   </Properties>
   <Variable
     Name="P_GD_NO"
-    Kind="viewcriteria"
-    Type="java.lang.String"/>
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <SQLQuery>
     <![CDATA[SELECT  ffvv.FLEX_VALUE GR_NUMBER
      FROM apps.fnd_flex_values_vl ffvv
           ,apps.fnd_flex_value_sets ffvs
     WHERE ffvv.flex_value_set_id = ffvs.flex_value_set_id
-      AND ffvs.flex_value_set_name = 'NG_GD_NUMBER']]>
+      AND ffvs.flex_value_set_name = 'NG_GD_NUMBER'
+      and ffvv.FLEX_VALUE = nvl(:P_GD_NO,ffvv.FLEX_VALUE)
+ORDER BY 1]]>
   </SQLQuery>
   <ViewAttribute
     Name="GrNumber"

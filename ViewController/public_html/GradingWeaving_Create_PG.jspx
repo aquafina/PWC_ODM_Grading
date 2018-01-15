@@ -44,7 +44,9 @@
                                   model="#{bindings.ItemCode.listOfValuesModel}"
                                   required="#{bindings.ItemCode.hints.mandatory}"
                                   columns="#{bindings.ItemCode.hints.displayWidth}"
-                                  shortDesc="#{bindings.ItemCode.hints.tooltip}">
+                                  shortDesc="#{bindings.ItemCode.hints.tooltip}"
+                                  disabled="#{bindings.Job.inputValue!=null}"
+                                  partialTriggers="jobId">
               <f:validator binding="#{bindings.ItemCode.validator}"/>
             </af:inputListOfValues>
             <af:inputText value="#{bindings.ItemDescription.inputValue}"
@@ -76,7 +78,7 @@
                           required="#{bindings.JobQuantity.hints.mandatory}"
                           columns="#{bindings.JobQuantity.hints.displayWidth}"
                           maximumLength="#{bindings.JobQuantity.hints.precision}"
-                          partialTriggers="jobId" id="it3">
+                          partialTriggers="jobId" id="it3" readOnly="true">
               <f:validator binding="#{bindings.JobQuantity.validator}"/>
               <af:convertNumber groupingUsed="false"
                                 pattern="#{bindings.JobQuantity.format}"/>
@@ -86,7 +88,7 @@
                           required="#{bindings.QtyReceivedLooming.hints.mandatory}"
                           columns="#{bindings.QtyReceivedLooming.hints.displayWidth}"
                           maximumLength="#{bindings.QtyReceivedLooming.hints.precision}"
-                          partialTriggers="jobId" id="it2">
+                          partialTriggers="jobId" id="it2" readOnly="true">
               <f:validator binding="#{bindings.QtyReceivedLooming.validator}"/>
               <af:convertNumber groupingUsed="false"
                                 pattern="#{bindings.QtyReceivedLooming.format}"/>
