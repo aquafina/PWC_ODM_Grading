@@ -44,7 +44,9 @@
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_DATE, 
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_LOGIN, 
        PwcOdmGradingWaveingLinesEO.RETRUN_FLAG"
-  FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO">
+  FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -56,23 +58,27 @@
     </SchemaBasedProperties>
   </Properties>
   <ViewAccessor
-    Name="PwcOdmGradingWeavingLinesMachineNo1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo"
+    Name="PwcOdmGradingWeavingLinesMachineNo1_1"
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_MachineNumber"
-    ListVOName="PwcOdmGradingWeavingLinesMachineNo1"
-    ListRangeSize="-1"
-    NullValueFlag="start"
-    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    ListVOName="PwcOdmGradingWeavingLinesMachineNo1_1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_MachineNumber_LOVUIHints_NullValueId"
     MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="MachineNumber"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
-      <Item Value="MachineNo"/>
+      <Item Value="SerialNumber"/>
     </AttrArray>
-    <DisplayCriteria/>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SerialNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
   </ListBinding>
   <EntityUsage
     Name="PwcOdmGradingWaveingLinesEO"
@@ -94,7 +100,7 @@
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
-          Value="choice"/>
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -286,7 +292,7 @@
     Type="java.lang.Boolean"
     ColumnType="BIT"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+    SQLType="BIT"/>
   <ViewLinkAccessor
     Name="PwcOdmGradingWeavingHeadersVO"
     ViewLink="model.GradingWeaving.VL.PwcOdmGradingWeavingHeaderLinesVL"

@@ -117,12 +117,6 @@
         <Item Value="N"/>
       </ValueList>
     </button>
-    <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
-                     id="ItemCode">
-      <AttrNames>
-        <Item Value="ItemCode"/>
-      </AttrNames>
-    </attributeValues>
     <button IterBinding="PwcOdmGradingWaveingLinesVO1Iterator" id="SelectedRow"
             DTSupportsMRU="false" StaticList="true">
       <AttrNames>
@@ -139,5 +133,14 @@
             RequiresUpdateModel="false" Action="removeCurrentRow"/>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
             DataControl="PwcOdmGradingWeavingAMDataControl"/>
+    <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+                     id="ItemCode">
+      <AttrNames>
+        <Item Value="ItemCode"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false"
+                  IterBinding="PwcOdmGradingWaveingLinesVO1Iterator"
+                  Uses="LOV_MachineNumber" id="MachineNumber"/>
   </bindings>
 </pageDefinition>

@@ -403,6 +403,17 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
                 obj.setAttributeInternal(index(), value);
             }
         }
+        ,
+        PwcOdmGradingWeavingLinesMachineNo1_1 {
+            public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
+                return obj.getPwcOdmGradingWeavingLinesMachineNo1_1();
+            }
+
+            public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
+                            Object value) {
+                obj.setAttributeInternal(index(), value);
+            }
+        }
         ;
         private static AttributesEnum[] vals = null;
         private static int firstIndex = 0;
@@ -468,6 +479,7 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
     public static final int SELECTEDROW = AttributesEnum.SelectedRow.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSVO = AttributesEnum.PwcOdmGradingWeavingHeadersVO.index();
     public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1.index();
+    public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1_1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1_1.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1030,6 +1042,13 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      */
     public RowSet getPwcOdmGradingWeavingLinesMachineNo1() {
         return (RowSet)getAttributeInternal(PWCODMGRADINGWEAVINGLINESMACHINENO1);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> PwcOdmGradingWeavingLinesMachineNo1_1.
+     */
+    public RowSet getPwcOdmGradingWeavingLinesMachineNo1_1() {
+        return (RowSet)getAttributeInternal(PWCODMGRADINGWEAVINGLINESMACHINENO1_1);
     }
 
     /**
