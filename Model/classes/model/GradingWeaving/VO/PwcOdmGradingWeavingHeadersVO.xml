@@ -43,7 +43,8 @@
        PwcOdmGradingWeavingHeadersE1.LAST_UPDATED_LOGIN, 
        PwcOdmGradingWeavingHeadersE1.ORG_ID, 
        PwcOdmGradingWeavingHeadersE1.QTY_RECEIVED_LOOMING, 
-       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_NUMBER">
+       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_NUMBER, 
+       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_HEADER_ID">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -522,15 +523,6 @@
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Graded")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
-    Name="SalesOrderHeaderId"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
-  <ViewAttribute
     Name="SalesOrderGdNo"
     IsSelected="false"
     IsPersistent="false"
@@ -539,6 +531,12 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="SalesOrderHeaderId"
+    PrecisionRule="true"
+    EntityAttrName="SalesOrderHeaderId"
+    EntityUsage="PwcOdmGradingWeavingHeadersE1"
+    AliasName="SALES_ORDER_HEADER_ID"/>
   <ViewCriteria
     Name="PwcOdmGradingWeavingHeadersVOCriteria"
     ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"

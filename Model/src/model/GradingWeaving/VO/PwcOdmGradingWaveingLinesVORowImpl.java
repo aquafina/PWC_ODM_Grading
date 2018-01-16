@@ -371,6 +371,17 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             }
         }
         ,
+        SelectedRow {
+            public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
+                return obj.getSelectedRow();
+            }
+
+            public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
+                            Object value) {
+                obj.setSelectedRow((Boolean)value);
+            }
+        }
+        ,
         PwcOdmGradingWeavingHeadersVO {
             public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
                 return obj.getPwcOdmGradingWeavingHeadersVO();
@@ -454,6 +465,7 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
     public static final int LASTUPDATEDLOGIN = AttributesEnum.LastUpdatedLogin.index();
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
+    public static final int SELECTEDROW = AttributesEnum.SelectedRow.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSVO = AttributesEnum.PwcOdmGradingWeavingHeadersVO.index();
     public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1.index();
 
@@ -981,6 +993,22 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      */
     public void setRetrunFlag(String value) {
         setAttributeInternal(RETRUNFLAG, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute SelectedRow.
+     * @return the SelectedRow
+     */
+    public Boolean getSelectedRow() {
+        return (Boolean) getAttributeInternal(SELECTEDROW);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute SelectedRow.
+     * @param value value to set the  SelectedRow
+     */
+    public void setSelectedRow(Boolean value) {
+        setAttributeInternal(SELECTEDROW, value);
     }
 
     /**

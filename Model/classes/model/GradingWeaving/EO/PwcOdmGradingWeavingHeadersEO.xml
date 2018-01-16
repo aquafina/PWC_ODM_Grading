@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PwcOdmGradingWeavingHeadersEO"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   DBObjectType="table"
   DBObjectName="PWC_ODM_GRADING_WEAVING_HDRS"
@@ -377,6 +377,17 @@
     ColumnName="LAST_UPDATED_LOGIN"
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PWC_ODM_GRADING_WEAVING_HDRS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SalesOrderHeaderId"
+    ColumnName="SALES_ORDER_HEADER_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="PWC_ODM_GRADING_WEAVING_HDRS">
     <DesignTime>

@@ -225,10 +225,23 @@ public class ManagedBean {
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         ViewObject currLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
-        Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString());
-        Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString());
+        Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming")!=null?currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString():"0.0");
+        Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY")!=null?currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString():"0.0");
         if (sumTotalQtyValue.compareTo(qtyReceivedLooming)==1)
             showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
         else am.getTransaction().commit();
+    }
+
+    public void deleteSelectedRows(ActionEvent actionEvent) {
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject linesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        RowSetIterator rsi = linesVO.createRowSetIterator(null);
+        while (rsi.next()!=null) {
+            Row currRow = rsi.getCurrentRow();
+            if ((Boolean)currRow.getAttribute("SelectedRow")==true)
+                currRow.remove();
+        }
+        rsi.closeRowSetIterator();
+        am.getDBTransaction().commit();
     }
 }

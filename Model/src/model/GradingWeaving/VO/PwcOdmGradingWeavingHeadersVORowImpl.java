@@ -1,5 +1,7 @@
 package model.GradingWeaving.VO;
 
+import java.math.BigDecimal;
+
 import model.GradingWeaving.EO.PwcOdmGradingWeavingHeadersEOImpl;
 
 import oracle.jbo.RowIterator;
@@ -415,17 +417,6 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
             }
         }
         ,
-        SalesOrderHeaderId {
-            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
-                return obj.getSalesOrderHeaderId();
-            }
-
-            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
-                            Object value) {
-                obj.setSalesOrderHeaderId((String)value);
-            }
-        }
-        ,
         SalesOrderGdNo {
             public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
                 return obj.getSalesOrderGdNo();
@@ -434,6 +425,17 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
             public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
                             Object value) {
                 obj.setSalesOrderGdNo((String)value);
+            }
+        }
+        ,
+        SalesOrderHeaderId {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getSalesOrderHeaderId();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setSalesOrderHeaderId((BigDecimal)value);
             }
         }
         ,
@@ -557,8 +559,8 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
     public static final int SUMGRADEB = AttributesEnum.SumGradeb.index();
     public static final int SUMGRADEC = AttributesEnum.SumGradec.index();
     public static final int SUMGRADED = AttributesEnum.SumGraded.index();
-    public static final int SALESORDERHEADERID = AttributesEnum.SalesOrderHeaderId.index();
     public static final int SALESORDERGDNO = AttributesEnum.SalesOrderGdNo.index();
+    public static final int SALESORDERHEADERID = AttributesEnum.SalesOrderHeaderId.index();
     public static final int PWCODMGRADINGWAVEINGLINESVO = AttributesEnum.PwcOdmGradingWaveingLinesVO.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSGDNO1 = AttributesEnum.PwcOdmGradingWeavingHeadersGdNo1.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSSALEORDERNO1 = AttributesEnum.PwcOdmGradingWeavingHeadersSaleOrderNo1.index();
@@ -1159,22 +1161,6 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
 
 
     /**
-     * Gets the attribute value for the calculated attribute SalesOrderHeaderId.
-     * @return the SalesOrderHeaderId
-     */
-    public String getSalesOrderHeaderId() {
-        return (String) getAttributeInternal(SALESORDERHEADERID);
-    }
-
-    /**
-     * Sets <code>value</code> as the attribute value for the calculated attribute SalesOrderHeaderId.
-     * @param value value to set the  SalesOrderHeaderId
-     */
-    public void setSalesOrderHeaderId(String value) {
-        setAttributeInternal(SALESORDERHEADERID, value);
-    }
-
-    /**
      * Gets the attribute value for the calculated attribute SalesOrderGdNo.
      * @return the SalesOrderGdNo
      */
@@ -1188,6 +1174,23 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
      */
     public void setSalesOrderGdNo(String value) {
         setAttributeInternal(SALESORDERGDNO, value);
+    }
+
+
+    /**
+     * Gets the attribute value for SALES_ORDER_HEADER_ID using the alias name SalesOrderHeaderId.
+     * @return the SALES_ORDER_HEADER_ID
+     */
+    public BigDecimal getSalesOrderHeaderId() {
+        return (BigDecimal) getAttributeInternal(SALESORDERHEADERID);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SALES_ORDER_HEADER_ID using the alias name SalesOrderHeaderId.
+     * @param value value to set the SALES_ORDER_HEADER_ID
+     */
+    public void setSalesOrderHeaderId(BigDecimal value) {
+        setAttributeInternal(SALESORDERHEADERID, value);
     }
 
     /**
