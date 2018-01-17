@@ -58,12 +58,12 @@
     </SchemaBasedProperties>
   </Properties>
   <ViewAccessor
-    Name="PwcOdmGradingWeavingLinesMachineNo1_1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1"
+    Name="PwcOdmGradingWeavingLinesMachineNo1"
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_MachineNumber"
-    ListVOName="PwcOdmGradingWeavingLinesMachineNo1_1"
+    ListVOName="PwcOdmGradingWeavingLinesMachineNo1"
     ListRangeSize="10"
     NullValueFlag="none"
     NullValueId="LOV_MachineNumber_LOVUIHints_NullValueId"
@@ -77,8 +77,7 @@
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="SerialNumber"/>
     </AttrArray>
-    <DisplayCriteria
-      Hint="showAndExecute"/>
+    <DisplayCriteria/>
   </ListBinding>
   <EntityUsage
     Name="PwcOdmGradingWaveingLinesEO"

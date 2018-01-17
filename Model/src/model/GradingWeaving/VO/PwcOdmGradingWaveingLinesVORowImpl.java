@@ -393,9 +393,9 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             }
         }
         ,
-        PwcOdmGradingWeavingLinesMachineNo1 {
+        PwcOdmGradingWeavingLinesMachineNo1_1 {
             public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
-                return obj.getPwcOdmGradingWeavingLinesMachineNo1();
+                return obj.getPwcOdmGradingWeavingLinesMachineNo1_1();
             }
 
             public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
@@ -404,9 +404,9 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             }
         }
         ,
-        PwcOdmGradingWeavingLinesMachineNo1_1 {
+        PwcOdmGradingWeavingLinesMachineNo1 {
             public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
-                return obj.getPwcOdmGradingWeavingLinesMachineNo1_1();
+                return obj.getPwcOdmGradingWeavingLinesMachineNo1();
             }
 
             public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
@@ -478,8 +478,8 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
     public static final int SELECTEDROW = AttributesEnum.SelectedRow.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSVO = AttributesEnum.PwcOdmGradingWeavingHeadersVO.index();
-    public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1.index();
     public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1_1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1_1.index();
+    public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1.index();
 
     /**
      * This is the default constructor (do not remove).
