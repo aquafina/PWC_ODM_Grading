@@ -371,9 +371,31 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             }
         }
         ,
+        SelectedRow {
+            public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
+                return obj.getSelectedRow();
+            }
+
+            public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
+                            Object value) {
+                obj.setSelectedRow((Boolean)value);
+            }
+        }
+        ,
         PwcOdmGradingWeavingHeadersVO {
             public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
                 return obj.getPwcOdmGradingWeavingHeadersVO();
+            }
+
+            public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
+                            Object value) {
+                obj.setAttributeInternal(index(), value);
+            }
+        }
+        ,
+        PwcOdmGradingWeavingLinesMachineNo1_1 {
+            public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
+                return obj.getPwcOdmGradingWeavingLinesMachineNo1_1();
             }
 
             public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
@@ -454,7 +476,9 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
     public static final int LASTUPDATEDLOGIN = AttributesEnum.LastUpdatedLogin.index();
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
+    public static final int SELECTEDROW = AttributesEnum.SelectedRow.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSVO = AttributesEnum.PwcOdmGradingWeavingHeadersVO.index();
+    public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1_1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1_1.index();
     public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1.index();
 
     /**
@@ -984,6 +1008,22 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for the calculated attribute SelectedRow.
+     * @return the SelectedRow
+     */
+    public Boolean getSelectedRow() {
+        return (Boolean) getAttributeInternal(SELECTEDROW);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute SelectedRow.
+     * @param value value to set the  SelectedRow
+     */
+    public void setSelectedRow(Boolean value) {
+        setAttributeInternal(SELECTEDROW, value);
+    }
+
+    /**
      * Gets the associated <code>Row</code> using master-detail link PwcOdmGradingWeavingHeadersVO.
      */
     public Row getPwcOdmGradingWeavingHeadersVO() {
@@ -1002,6 +1042,13 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      */
     public RowSet getPwcOdmGradingWeavingLinesMachineNo1() {
         return (RowSet)getAttributeInternal(PWCODMGRADINGWEAVINGLINESMACHINENO1);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> PwcOdmGradingWeavingLinesMachineNo1_1.
+     */
+    public RowSet getPwcOdmGradingWeavingLinesMachineNo1_1() {
+        return (RowSet)getAttributeInternal(PWCODMGRADINGWEAVINGLINESMACHINENO1_1);
     }
 
     /**

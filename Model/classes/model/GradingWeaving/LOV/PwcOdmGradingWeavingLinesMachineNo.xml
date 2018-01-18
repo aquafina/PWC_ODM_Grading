@@ -4,13 +4,16 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PwcOdmGradingWeavingLinesMachineNo"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   OrderBy="1"
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20"
+  RangeSize="21">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
@@ -20,35 +23,65 @@
         ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String"
+    DefaultValue="1786">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <SQLQuery>
-    <![CDATA[SELECT  ffvv.FLEX_VALUE MACHINE_NO
-     FROM apps.fnd_flex_values_vl ffvv
-          ,apps.fnd_flex_value_sets ffvs
-    WHERE ffvv.flex_value_set_id = ffvs.flex_value_set_id
-      AND ffvs.flex_value_set_name = 'NG_ODM_CUST_FORM_GRADING_WEAVE_MACHINE_NO']]>
+    <![CDATA[Select a.SERIAL_NUMBER , a.DESCRIPTIVE_TEXT
+From MTL_EAM_ASSET_NUMBERS_ALL_V a
+Where 1=1 
+and a.CURRENT_ORGANIZATION_ID = nvl(:p_org_id,a.CURRENT_ORGANIZATION_ID)
+And a.SERIAL_NUMBER like '%WV%'
+Order By SERIAL_NUMBER]]>
   </SQLQuery>
   <ViewAttribute
-    Name="MachineNo"
+    Name="SerialNumber"
     IsUpdateable="false"
     IsPersistent="false"
-    IsNotNull="true"
     PrecisionRule="true"
-    Precision="255"
+    Precision="30"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    AliasName="MACHINE_NO"
-    Expression="MACHINE_NO"
+    AliasName="SERIAL_NUMBER"
+    Expression="SERIAL_NUMBER"
     SQLType="VARCHAR">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="150"/>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DescriptiveText"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTIVE_TEXT"
+    Expression="DESCRIPTIVE_TEXT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <DISPLAYWIDTH
-          Value="30"/>
+        <DISPLAYHINT
+          Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="SerialNumber"/>
+  </AttrArray>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="model.ModelBundle"/>

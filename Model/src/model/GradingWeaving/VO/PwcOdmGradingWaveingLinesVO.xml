@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PwcOdmGradingWaveingLinesVO"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -44,7 +44,9 @@
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_DATE, 
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_LOGIN, 
        PwcOdmGradingWaveingLinesEO.RETRUN_FLAG"
-  FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO">
+  FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -60,23 +62,22 @@
     ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo"
     RowLevelBinds="true"/>
   <ListBinding
-    Name="PWC_ODM_REP_MACHINE_NO_LOV"
+    Name="LOV_MachineNumber"
     ListVOName="PwcOdmGradingWeavingLinesMachineNo1"
     ListRangeSize="10"
     NullValueFlag="none"
-    NullValueId="PWC_ODM_REP_MACHINE_NO_LOV_LOVUIHints_NullValueId"
+    NullValueId="LOV_MachineNumber_LOVUIHints_NullValueId"
     MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="MachineNumber"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
-      <Item Value="MachineNo"/>
+      <Item Value="SerialNumber"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="MachineNo"/>
+      <Item Value="SerialNumber"/>
     </AttrArray>
-    <DisplayCriteria
-      Hint="showAndExecute"/>
+    <DisplayCriteria/>
   </ListBinding>
   <EntityUsage
     Name="PwcOdmGradingWaveingLinesEO"
@@ -94,7 +95,7 @@
     EntityAttrName="MachineNumber"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="MACHINE_NUMBER"
-    LOVName="PWC_ODM_REP_MACHINE_NO_LOV">
+    LOVName="LOV_MachineNumber">
     <Properties>
       <SchemaBasedProperties>
         <CONTROLTYPE
@@ -113,51 +114,31 @@
     PrecisionRule="true"
     EntityAttrName="TotalQuantity"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
-    AliasName="TOTAL_QUANTITY">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    AliasName="TOTAL_QUANTITY"/>
   <ViewAttribute
     Name="Gradea"
     PrecisionRule="true"
     EntityAttrName="Gradea"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
-    AliasName="GRADEA">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    AliasName="GRADEA"/>
   <ViewAttribute
     Name="Gradeb"
     PrecisionRule="true"
     EntityAttrName="Gradeb"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
-    AliasName="GRADEB">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    AliasName="GRADEB"/>
   <ViewAttribute
     Name="Gradec"
     PrecisionRule="true"
     EntityAttrName="Gradec"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
-    AliasName="GRADEC">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    AliasName="GRADEC"/>
   <ViewAttribute
     Name="Graded"
     PrecisionRule="true"
     EntityAttrName="Graded"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
-    AliasName="GRADED">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    AliasName="GRADED"/>
   <ViewAttribute
     Name="OrgId"
     PrecisionRule="true"
@@ -302,6 +283,15 @@
     EntityAttrName="RetrunFlag"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="RETRUN_FLAG"/>
+  <ViewAttribute
+    Name="SelectedRow"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="BIT"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"/>
   <ViewLinkAccessor
     Name="PwcOdmGradingWeavingHeadersVO"
     ViewLink="model.GradingWeaving.VL.PwcOdmGradingWeavingHeaderLinesVL"

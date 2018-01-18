@@ -1,5 +1,7 @@
 package model.GradingWeaving.EO;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
 import oracle.jbo.RowIterator;
@@ -363,6 +365,17 @@ public class PwcOdmGradingWeavingHeadersEOImpl extends EntityImpl {
             }
         }
         ,
+        SalesOrderHeaderId {
+            public Object get(PwcOdmGradingWeavingHeadersEOImpl obj) {
+                return obj.getSalesOrderHeaderId();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersEOImpl obj,
+                            Object value) {
+                obj.setSalesOrderHeaderId((BigDecimal)value);
+            }
+        }
+        ,
         PwcOdmGradingWaveingLinesEO {
             public Object get(PwcOdmGradingWeavingHeadersEOImpl obj) {
                 return obj.getPwcOdmGradingWaveingLinesEO();
@@ -401,6 +414,7 @@ public class PwcOdmGradingWeavingHeadersEOImpl extends EntityImpl {
             return vals;
         }
     }
+
     public static final int GDID = AttributesEnum.GdId.index();
     public static final int GDNO = AttributesEnum.GdNo.index();
     public static final int SALESORDERNUMBER = AttributesEnum.SalesOrderNumber.index();
@@ -432,12 +446,23 @@ public class PwcOdmGradingWeavingHeadersEOImpl extends EntityImpl {
     public static final int LASTUPDATEDBY = AttributesEnum.LastUpdatedBy.index();
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
     public static final int LASTUPDATEDLOGIN = AttributesEnum.LastUpdatedLogin.index();
+    public static final int SALESORDERHEADERID = AttributesEnum.SalesOrderHeaderId.index();
     public static final int PWCODMGRADINGWAVEINGLINESEO = AttributesEnum.PwcOdmGradingWaveingLinesEO.index();
 
     /**
      * This is the default constructor (do not remove).
      */
     public PwcOdmGradingWeavingHeadersEOImpl() {
+    }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        if (mDefinitionObject == null) {
+            mDefinitionObject = EntityDefImpl.findDefObject("model.GradingWeaving.EO.PwcOdmGradingWeavingHeadersEO");
+        }
+        return mDefinitionObject;
     }
 
     /**
@@ -937,6 +962,22 @@ public class PwcOdmGradingWeavingHeadersEOImpl extends EntityImpl {
     }
 
     /**
+     * Gets the attribute value for SalesOrderHeaderId, using the alias name SalesOrderHeaderId.
+     * @return the SalesOrderHeaderId
+     */
+    public BigDecimal getSalesOrderHeaderId() {
+        return (BigDecimal)getAttributeInternal(SALESORDERHEADERID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for SalesOrderHeaderId.
+     * @param value value to set the SalesOrderHeaderId
+     */
+    public void setSalesOrderHeaderId(BigDecimal value) {
+        setAttributeInternal(SALESORDERHEADERID, value);
+    }
+
+    /**
      * getAttrInvokeAccessor: generated method. Do not modify.
      * @param index the index identifying the attribute
      * @param attrDef the attribute
@@ -976,6 +1017,7 @@ public class PwcOdmGradingWeavingHeadersEOImpl extends EntityImpl {
         return (RowIterator)getAttributeInternal(PWCODMGRADINGWAVEINGLINESEO);
     }
 
+
     /**
      * @param gdId key constituent
 
@@ -983,16 +1025,6 @@ public class PwcOdmGradingWeavingHeadersEOImpl extends EntityImpl {
      */
     public static Key createPrimaryKey(Number gdId) {
         return new Key(new Object[]{gdId});
-    }
-
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        if (mDefinitionObject == null) {
-            mDefinitionObject = EntityDefImpl.findDefObject("model.GradingWeaving.EO.PwcOdmGradingWeavingHeadersEO");
-        }
-        return mDefinitionObject;
     }
 
     /**

@@ -37,18 +37,11 @@
               <af:convertNumber groupingUsed="false"
                                 pattern="#{bindings.SalesOrderNumber.format}"/>
             </af:inputListOfValues>
-            <af:inputListOfValues id="itemCodeId"
-                                  popupTitle="Search and Select: #{bindings.ItemCode.hints.label}"
-                                  value="#{bindings.ItemCode.inputValue}"
-                                  label="Item Code"
-                                  model="#{bindings.ItemCode.listOfValuesModel}"
-                                  required="#{bindings.ItemCode.hints.mandatory}"
-                                  columns="#{bindings.ItemCode.hints.displayWidth}"
-                                  shortDesc="#{bindings.ItemCode.hints.tooltip}"
-                                  disabled="#{bindings.Job.inputValue!=null}"
-                                  partialTriggers="jobId">
-              <f:validator binding="#{bindings.ItemCode.validator}"/>
-            </af:inputListOfValues>
+            <af:panelLabelAndMessage label="Item Code"
+                                     id="plam1">
+              <af:outputText value="#{bindings.ItemCode.inputValue}"
+                             id="itemCodeId"/>
+            </af:panelLabelAndMessage>
             <af:inputText value="#{bindings.ItemDescription.inputValue}"
                           label="Description"
                           required="#{bindings.ItemDescription.hints.mandatory}"
@@ -93,27 +86,40 @@
               <af:convertNumber groupingUsed="false"
                                 pattern="#{bindings.QtyReceivedLooming.format}"/>
             </af:inputText>
+            <af:separator id="s1" inlineStyle="height:10px;"/>
+            <af:toolbar id="t3">
+              <af:commandButton actionListener="#{bindings.Create.execute}"
+                                text="Create"
+                                disabled="#{!bindings.Create.enabled}"
+                                id="cb8"/>
+              <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                text="Save"
+                                disabled="#{!bindings.Commit.enabled}"
+                                id="cb7"/>
+              <af:commandButton actionListener="#{bindings.Delete.execute}"
+                                text="Delete"
+                                disabled="#{!bindings.Delete.enabled}"
+                                id="cb9"/>
+            </af:toolbar>
           </af:panelFormLayout>
         </af:panelHeader>
         <af:panelCollection id="pc1" inlineStyle="width:1225px;">
           <f:facet name="menus"/>
           <f:facet name="toolbar">
             <af:toolbar id="t2">
+              <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                text="Insert" id="cb3"/>
               <af:commandButton
                                 text=" Save        "
                                 id="cb1"
                                 actionListener="#{ManagedBean.saveChanges}"/>
+              <af:commandButton actionListener="#{bindings.Delete.execute}"
+                                text="Delete  " id="cb4"/>
               <af:commandButton actionListener="#{bindings.Rollback.execute}"
                                 text=" Back    "
                                 immediate="true" id="cb2" action="To Search">
                 <af:resetActionListener/>
               </af:commandButton>
-              <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
-                                text="Create  "
-                                id="cb3"/>
-              <af:commandButton actionListener="#{bindings.Delete.execute}"
-                                text="Delete  "
-                                id="cb4"/>
               <af:commandButton text="Complete" id="cb5"/>
               <af:commandButton text="Return   " id="cb6"/>
             </af:toolbar>
@@ -165,13 +171,14 @@
                        sortable="true" headerText="Machine Number" id="c2"
                        align="center" width="150">
               <af:inputListOfValues id="machineNumberId"
-                                    popupTitle="Search and Select: #{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.label}"
-                                    value="#{row.bindings.MachineNumber.inputValue}"
-                                    model="#{row.bindings.MachineNumber.listOfValuesModel}"
-                                    required="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.mandatory}"
-                                    columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.displayWidth}"
-                                    shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.tooltip}">
-                <f:validator binding="#{row.bindings.MachineNumber.validator}"/>
+                                    popupTitle="Search and Select: #{bindings.MachineNumber.hints.label}"
+                                    value="#{bindings.MachineNumber.inputValue}"
+                                    model="#{bindings.MachineNumber.listOfValuesModel}"
+                                    required="#{bindings.MachineNumber.hints.mandatory}"
+                                    columns="#{bindings.MachineNumber.hints.displayWidth}"
+                                    shortDesc="#{bindings.MachineNumber.hints.tooltip}"
+                                    label="#{bindings.MachineNumber.hints.label}">
+                <f:validator binding="#{bindings.MachineNumber.validator}"/>
               </af:inputListOfValues>
             </af:column>
             <af:column sortProperty="TotalQuantity" filterable="true"

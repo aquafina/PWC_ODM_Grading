@@ -23,7 +23,18 @@
     Name="p_org_id"
     Kind="where"
     Type="java.lang.String"
+<<<<<<< HEAD
     DefaultValue="1786"/>
+=======
+    DefaultValue="1786">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+>>>>>>> feature
   <ViewAccessor
     Name="PwcOdmGradingWeavingLinesMachineNo1"
     ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1"
@@ -48,7 +59,18 @@ Order By SERIAL_NUMBER]]>
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="30"/>
+<<<<<<< HEAD
     </DesignTime>
+=======
+      <Attr Name="_diagramName" Value="Machine Number"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1.SerialNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+>>>>>>> feature
   </ViewAttribute>
   <ViewAttribute
     Name="DescriptiveText"
@@ -64,6 +86,15 @@ Order By SERIAL_NUMBER]]>
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
+<<<<<<< HEAD
+=======
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+>>>>>>> feature
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="SerialNumber"/>

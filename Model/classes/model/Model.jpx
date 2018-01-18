@@ -9,7 +9,7 @@
   PackageName="model">
   <DesignTime>
     <Attr Name="_jprName" Value="../../Model.jpr"/>
-    <Attr Name="_NamedConnection" Value="NGDEV"/>
+    <Attr Name="_NamedConnection" Value="Conn1"/>
     <Attr Name="_appModuleNames0"
       Value="model.GradingWeaving.AM.PwcOdmGradingWeavingAM"/>
     <Attr Name="_jbo.TypeMapEntries" Value="Java"/>
