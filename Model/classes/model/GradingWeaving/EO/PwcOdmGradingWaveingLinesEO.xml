@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PwcOdmGradingWaveingLinesEO"
-  Version="11.1.1.62.29"
+  Version="11.1.1.64.93"
   InheritPersonalization="true"
   DBObjectType="table"
   DBObjectName="PWC_ODM_GRADING_WAVEING_LINES"
@@ -146,11 +146,10 @@
   </Attribute>
   <Attribute
     Name="Attribute1"
-    Precision="240"
     ColumnName="ATTRIBUTE1"
     SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
     TableName="PWC_ODM_GRADING_WAVEING_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
@@ -158,11 +157,10 @@
   </Attribute>
   <Attribute
     Name="Attribute2"
-    Precision="240"
     ColumnName="ATTRIBUTE2"
     SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
     TableName="PWC_ODM_GRADING_WAVEING_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
@@ -170,11 +168,10 @@
   </Attribute>
   <Attribute
     Name="Attribute3"
-    Precision="240"
     ColumnName="ATTRIBUTE3"
     SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
     TableName="PWC_ODM_GRADING_WAVEING_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
@@ -182,11 +179,10 @@
   </Attribute>
   <Attribute
     Name="Attribute4"
-    Precision="240"
     ColumnName="ATTRIBUTE4"
     SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
     TableName="PWC_ODM_GRADING_WAVEING_LINES">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>

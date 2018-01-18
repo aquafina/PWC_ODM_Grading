@@ -10,8 +10,6 @@
   CustomQuery="false"
   PageIterMode="Full"
   UseGlueCode="false"
-  RowClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVORowImpl"
-  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVOImpl"
   SelectList="PwcOdmGradingWaveingLinesEO.LINE_ID, 
        PwcOdmGradingWaveingLinesEO.MACHINE_NUMBER, 
        PwcOdmGradingWaveingLinesEO.ROLL_NUMBER, 
@@ -46,7 +44,9 @@
        PwcOdmGradingWaveingLinesEO.RETRUN_FLAG"
   FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO"
   FetchMode="FETCH_AS_NEEDED"
-  FetchSize="20">
+  FetchSize="20"
+  RowClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVORowImpl"
+  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVOImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>

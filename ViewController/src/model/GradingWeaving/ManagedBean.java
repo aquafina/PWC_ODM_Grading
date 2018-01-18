@@ -66,7 +66,7 @@ public class ManagedBean {
         Double totalQty = Double.parseDouble(valueChangeEvent.getNewValue().toString());
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
-        Double qtyReceivedLooming = Double.parseDouble(currVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString());
+        Double qtyReceivedLooming = Double.parseDouble(currVO.getCurrentRow().getAttribute("QtyReceivedLooming")!=null?currVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString():"0.0");
         /*if (sumTotalQtyValue > qtyReceivedLooming) {
             showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
         }*/
@@ -86,8 +86,8 @@ public class ManagedBean {
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         ViewObject currLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
-        Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString());
-        Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString());
+        Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming")!=null?currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString():"0.0");
+        Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY")!=null?currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString():"0.0");
         if (totalQty.compareTo(qtyReceivedLooming)==1) {
             FacesMessage message =
                    new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -110,8 +110,11 @@ public class ManagedBean {
         Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
         Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
         Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
-        Double gradeDQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Graded")!=null?currVO.getCurrentRow().getAttribute("Graded").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        Double gradeD0to1Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute1")!=null?currVO.getCurrentRow().getAttribute("Attribute1").toString():"0.0");
+        Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
+        Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
+        Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
         System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
@@ -133,8 +136,11 @@ public class ManagedBean {
         Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
         Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
         Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
-        Double gradeDQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Graded")!=null?currVO.getCurrentRow().getAttribute("Graded").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        Double gradeD0to1Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute1")!=null?currVO.getCurrentRow().getAttribute("Attribute1").toString():"0.0");
+        Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
+        Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
+        Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
         System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
@@ -156,8 +162,11 @@ public class ManagedBean {
         Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
         Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
         Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
-        Double gradeDQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Graded")!=null?currVO.getCurrentRow().getAttribute("Graded").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        Double gradeD0to1Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute1")!=null?currVO.getCurrentRow().getAttribute("Attribute1").toString():"0.0");
+        Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
+        Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
+        Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
         System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
@@ -170,17 +179,20 @@ public class ManagedBean {
             }
     }
 
-    public void gradeDQtyValidator(FacesContext facesContext,
+    public void gradeD0to1QtyValidator(FacesContext facesContext,
                                    UIComponent uIComponent, Object object) {
         // Add event code here...
-        Double gradeDQty = Double.parseDouble(object.toString());
+        Double gradeD0to1Qty = Double.parseDouble(object.toString());
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
         Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
         Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
         Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
         Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
-        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeDQty;
+        Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
+        Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
+        Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;        
         System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
@@ -193,6 +205,83 @@ public class ManagedBean {
             }
     }
     
+    public void gradeD1to5QtyValidator(FacesContext facesContext,
+                                   UIComponent uIComponent, Object object) {
+        // Add event code here...
+        Double gradeD1to5Qty = Double.parseDouble(object.toString());
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
+        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
+        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
+        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
+        Double gradeD0to1Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute1")!=null?currVO.getCurrentRow().getAttribute("Attribute1").toString():"0.0");
+        Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
+        Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;        
+        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+            if (totalGradeQuantities.compareTo(totalQty)==1) {
+                FacesMessage message =
+                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                       "Invalid Value",
+                       "Total Grade Quantities cannot exceed the Total Quantity");
+                       facesContext.addMessage(uIComponent.getClientId(facesContext),
+                       message);
+                ((RichInputText)uIComponent).setValid(false);
+            }
+    }
+
+    public void gradeD6to19QtyValidator(FacesContext facesContext,
+                                   UIComponent uIComponent, Object object) {
+        // Add event code here...
+        Double gradeD6to19Qty = Double.parseDouble(object.toString());
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
+        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
+        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
+        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
+        Double gradeD0to1Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute1")!=null?currVO.getCurrentRow().getAttribute("Attribute1").toString():"0.0");
+        Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
+        Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
+        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+            if (totalGradeQuantities.compareTo(totalQty)==1) {
+                FacesMessage message =
+                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                       "Invalid Value",
+                       "Total Grade Quantities cannot exceed the Total Quantity");
+                       facesContext.addMessage(uIComponent.getClientId(facesContext),
+                       message);
+                ((RichInputText)uIComponent).setValid(false);
+            }
+    }    
+    
+    public void gradeD20AboveQtyValidator(FacesContext facesContext,
+                                   UIComponent uIComponent, Object object) {
+        // Add event code here...
+        Double gradeD20AboveQty = Double.parseDouble(object.toString());
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        Double totalQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("TotalQuantity")!=null?currVO.getCurrentRow().getAttribute("TotalQuantity").toString():"0.0");
+        Double gradeBQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradeb")!=null?currVO.getCurrentRow().getAttribute("Gradeb").toString():"0.0");
+        Double gradeCQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradec")!=null?currVO.getCurrentRow().getAttribute("Gradec").toString():"0.0");
+        Double gradeAQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Gradea")!=null?currVO.getCurrentRow().getAttribute("Gradea").toString():"0.0");
+        Double gradeD0to1Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute1")!=null?currVO.getCurrentRow().getAttribute("Attribute1").toString():"0.0");
+        Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
+        Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
+        Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
+        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+            if (totalGradeQuantities.compareTo(totalQty)==1) {
+                FacesMessage message =
+                       new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                       "Invalid Value",
+                       "Total Grade Quantities cannot exceed the Total Quantity");
+                       facesContext.addMessage(uIComponent.getClientId(facesContext),
+                       message);
+                ((RichInputText)uIComponent).setValid(false);
+            }
+    }
     /*public Double getSumTotalQuantities(ApplicationModule am, Double changedValue) {
         ViewObject currVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
         RowSetIterator iter = currVO.createRowSetIterator(null);

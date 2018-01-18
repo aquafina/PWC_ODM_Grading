@@ -31,6 +31,10 @@
           <Item Value="Remarks"/>
           <Item Value="RetrunFlag" Binds="RetrunFlag"/>
           <Item Value="SelectedRow" Binds="SelectedRow"/>
+          <Item Value="Attribute1"/>
+          <Item Value="Attribute2"/>
+          <Item Value="Attribute3"/>
+          <Item Value="Attribute4"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -142,5 +146,29 @@
     <listOfValues StaticList="false"
                   IterBinding="PwcOdmGradingWaveingLinesVO1Iterator"
                   Uses="LOV_MachineNumber" id="MachineNumber"/>
+    <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+                     id="SumGradeD0to1">
+      <AttrNames>
+        <Item Value="SumGradeD0to1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+                     id="SumGradeD6to19">
+      <AttrNames>
+        <Item Value="SumGradeD6to19"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+                     id="SumGradeD20Above">
+      <AttrNames>
+        <Item Value="SumGradeD20Above"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+                     id="SumGradeD1to5">
+      <AttrNames>
+        <Item Value="SumGradeD1to5"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

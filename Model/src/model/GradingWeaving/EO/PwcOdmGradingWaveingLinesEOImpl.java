@@ -149,7 +149,7 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
 
             public void put(PwcOdmGradingWaveingLinesEOImpl obj,
                             Object value) {
-                obj.setAttribute1((String)value);
+                obj.setAttribute1((Integer)value);
             }
         }
         ,
@@ -160,7 +160,7 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
 
             public void put(PwcOdmGradingWaveingLinesEOImpl obj,
                             Object value) {
-                obj.setAttribute2((String)value);
+                obj.setAttribute2((Integer)value);
             }
         }
         ,
@@ -171,7 +171,7 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
 
             public void put(PwcOdmGradingWaveingLinesEOImpl obj,
                             Object value) {
-                obj.setAttribute3((String)value);
+                obj.setAttribute3((Integer)value);
             }
         }
         ,
@@ -182,7 +182,7 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
 
             public void put(PwcOdmGradingWaveingLinesEOImpl obj,
                             Object value) {
-                obj.setAttribute4((String)value);
+                obj.setAttribute4((Integer)value);
             }
         }
         ,
@@ -644,15 +644,15 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
      * Gets the attribute value for Attribute1, using the alias name Attribute1.
      * @return the Attribute1
      */
-    public String getAttribute1() {
-        return (String)getAttributeInternal(ATTRIBUTE1);
+    public Integer getAttribute1() {
+        return (Integer)getAttributeInternal(ATTRIBUTE1);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for Attribute1.
      * @param value value to set the Attribute1
      */
-    public void setAttribute1(String value) {
+    public void setAttribute1(Integer value) {
         setAttributeInternal(ATTRIBUTE1, value);
     }
 
@@ -660,15 +660,15 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
      * Gets the attribute value for Attribute2, using the alias name Attribute2.
      * @return the Attribute2
      */
-    public String getAttribute2() {
-        return (String)getAttributeInternal(ATTRIBUTE2);
+    public Integer getAttribute2() {
+        return (Integer)getAttributeInternal(ATTRIBUTE2);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for Attribute2.
      * @param value value to set the Attribute2
      */
-    public void setAttribute2(String value) {
+    public void setAttribute2(Integer value) {
         setAttributeInternal(ATTRIBUTE2, value);
     }
 
@@ -676,15 +676,15 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
      * Gets the attribute value for Attribute3, using the alias name Attribute3.
      * @return the Attribute3
      */
-    public String getAttribute3() {
-        return (String)getAttributeInternal(ATTRIBUTE3);
+    public Integer getAttribute3() {
+        return (Integer)getAttributeInternal(ATTRIBUTE3);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for Attribute3.
      * @param value value to set the Attribute3
      */
-    public void setAttribute3(String value) {
+    public void setAttribute3(Integer value) {
         setAttributeInternal(ATTRIBUTE3, value);
     }
 
@@ -692,15 +692,15 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
      * Gets the attribute value for Attribute4, using the alias name Attribute4.
      * @return the Attribute4
      */
-    public String getAttribute4() {
-        return (String)getAttributeInternal(ATTRIBUTE4);
+    public Integer getAttribute4() {
+        return (Integer)getAttributeInternal(ATTRIBUTE4);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for Attribute4.
      * @param value value to set the Attribute4
      */
-    public void setAttribute4(String value) {
+    public void setAttribute4(Integer value) {
         setAttributeInternal(ATTRIBUTE4, value);
     }
 
