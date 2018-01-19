@@ -8,7 +8,17 @@
     <af:document id="d1">
       <af:messages id="m1"/>
       <af:form id="f1">
-        <af:panelHeader text="Create / Edit Page" id="ph1">
+        <af:panelGroupLayout layout="vertical" id="pgl9">
+          <af:panelHeader text="PwcOdmGradingWeavingHeadersEO" id="ph2">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.PwcOdmGradingWeavingHeadersVOCriteria1Query.queryDescriptor}"
+                      model="#{bindings.PwcOdmGradingWeavingHeadersVOCriteria1Query.queryModel}"
+                      queryListener="#{bindings.PwcOdmGradingWeavingHeadersVOCriteria1Query.processQuery}"
+                      queryOperationListener="#{bindings.PwcOdmGradingWeavingHeadersVOCriteria1Query.processQueryOperation}"/>
+          </af:panelHeader>
+        </af:panelGroupLayout>
+        <af:panelHeader text="Create / Edit Page" id="ph1"
+                        partialTriggers="qryId1">
           <f:facet name="context"/>
           <f:facet name="menuBar"/>
           <f:facet name="toolbar"/>

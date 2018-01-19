@@ -14,6 +14,11 @@
     <searchRegion Binds="PwcOdmGradingWaveingLinesVO1Iterator" Criteria=""
                   Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
                   id="PwcOdmGradingWaveingLinesVO1Query"/>
+    <searchRegion Criteria="PwcOdmGradingWeavingHeadersVOCriteria1"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PwcOdmGradingWeavingHeadersVO1Iterator"
+                  id="PwcOdmGradingWeavingHeadersVOCriteria1Query"/>
+    <invokeAction Binds="setSessionValues" id="setSession" Refresh="always"/>
   </executables>
   <bindings>
     <tree IterBinding="PwcOdmGradingWaveingLinesVO1Iterator"
@@ -170,5 +175,21 @@
         <Item Value="SumGradeD1to5"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="setSessionValues"
+                  InstanceName="PwcOdmGradingWeavingAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingWeavingAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setSessionValues" IsViewObjectMethod="false"
+                  ReturnName="data.PwcOdmGradingWeavingAMDataControl.methodResults.setSessionValues_PwcOdmGradingWeavingAMDataControl_dataProvider_setSessionValues_result">
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respAppl" NDValue=" #{viewScope.RespApplId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="mfgOrgId" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

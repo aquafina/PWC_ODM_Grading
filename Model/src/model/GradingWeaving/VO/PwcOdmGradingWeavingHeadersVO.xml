@@ -83,6 +83,9 @@
       <PIMap Variable="p_gd_no">
         <TransientExpression><![CDATA[GdNo]]></TransientExpression>
       </PIMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+      </PIMap>
     </ParameterMap>
   </ViewAccessor>
   <ViewAccessor
@@ -103,6 +106,9 @@
       </PIMap>
       <PIMap Variable="p_sales_order">
         <TransientExpression><![CDATA[SalesOrderHeaderId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -545,7 +551,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="BIGINT"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute1")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -556,7 +562,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="INTEGER">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute2")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -567,7 +573,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="INTEGER">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute3")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -578,7 +584,7 @@
     Type="oracle.jbo.domain.Number"
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
+    SQLType="INTEGER">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute4")]]></TransientExpression>
   </ViewAttribute>
   <ViewCriteria
@@ -628,6 +634,58 @@
         ViewAttribute="SalesOrderNumber"
         Operator="="
         Conjunction="AND"
+        Value=":P_SALES_ORDER_NO"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="PwcOdmGradingWeavingHeadersVOCriteria1"
+    ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow104"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="GdNo"
+        ViewAttribute="GdNo"
+        Operator="="
+        Conjunction="AND"
+        Value=":P_GD_NUMBER"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Job"
+        ViewAttribute="Job"
+        Operator="="
+        Conjunction="OR"
+        Value=":P_JOB_NO"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SalesOrderNumber"
+        ViewAttribute="SalesOrderNumber"
+        Operator="="
+        Conjunction="OR"
         Value=":P_SALES_ORDER_NO"
         IsBindVarValue="true"
         Required="Optional"/>

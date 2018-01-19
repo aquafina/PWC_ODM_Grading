@@ -42,25 +42,21 @@
       </SchemaBasedProperties>
     </Properties>
   </Variable>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <ViewAccessor
     Name="PwcOdmGradingWeavingJobNames1"
     ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobNames"
     RowLevelBinds="true"/>
-  <ListBinding
-    Name="LOV_WipEntityName"
-    ListVOName="PwcOdmGradingWeavingJobNames1"
-    ListRangeSize="-1"
-    NullValueFlag="start"
-    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="WipEntityName"/>
-    </AttrArray>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="WipEntityName"/>
-    </AttrArray>
-    <DisplayCriteria/>
-  </ListBinding>
   <SQLQuery>
     <![CDATA[select  we.WIP_ENTITY_NAME
         ,msi.concatenated_segments
@@ -80,7 +76,8 @@ and wdj.status_type in (3,4)
 and mmt.INVENTORY_ITEM_ID = msi.INVENTORY_ITEM_ID
 and mmt.ORGANIZATION_ID = msi.ORGANIZATION_ID
 and wdj.ATTRIBUTE11 = nvl(:p_gd_no,wdj.ATTRIBUTE11)
-and wdj.ATTRIBUTE12 = nvl(:p_sales_order,wdj.ATTRIBUTE12)                   
+and wdj.ATTRIBUTE12 = nvl(:p_sales_order,wdj.ATTRIBUTE12)
+and msi.ORGANIZATION_ID = nvl(:p_org_id,msi.ORGANIZATION_ID)                 
 group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION
 ORDER BY 3]]>
   </SQLQuery>
@@ -95,8 +92,7 @@ ORDER BY 3]]>
     ColumnType="VARCHAR2"
     AliasName="WIP_ENTITY_NAME"
     Expression="WIP_ENTITY_NAME"
-    SQLType="VARCHAR"
-    LOVName="LOV_WipEntityName">
+    SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
@@ -106,8 +102,6 @@ ORDER BY 3]]>
           ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.WipEntityName_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
-        <CONTROLTYPE
-          Value="choice"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

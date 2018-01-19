@@ -35,11 +35,23 @@
       </SchemaBasedProperties>
     </Properties>
   </Variable>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <SQLQuery>
     <![CDATA[select ooha.HEADER_ID, ooha.ORDER_NUMBER, oola.ATTRIBUTE1 Sales_Order_Gd_No
  from oe_order_headers_all ooha, oe_order_lines_all oola 
  where ooha.HEADER_ID = oola.HEADER_ID
  and oola.ATTRIBUTE1 = nvl(:p_gd_no,oola.ATTRIBUTE1)
+ and oola.ORG_ID = nvl(:p_org_id,oola.ORG_ID)
 ORDER BY 1]]>
   </SQLQuery>
   <ViewAttribute

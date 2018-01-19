@@ -9,7 +9,10 @@
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20"
+  RangeSize="21">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
@@ -22,8 +25,7 @@
   <Variable
     Name="p_org_id"
     Kind="where"
-    Type="java.lang.String"
-    DefaultValue="1786">
+    Type="java.lang.String">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYHINT
