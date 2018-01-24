@@ -123,7 +123,7 @@
                                 text=" Save        "
                                 id="cb1"
                                 actionListener="#{ManagedBean.saveChanges}"/>
-              <af:commandButton actionListener="#{bindings.Delete.execute}"
+              <af:commandButton actionListener="#{ManagedBean.deleteSelectedRows}"
                                 text="Delete  " id="cb4"/>
               <af:commandButton actionListener="#{bindings.Rollback.execute}"
                                 text=" Back    "
@@ -150,9 +150,9 @@
                     styleClass="width:100%;">
             <af:column
                        id="c9" align="center" width="53">
-              <af:selectBooleanCheckbox value="#{row.bindings.RetrunFlag.inputValue}"
-                                        label="#{row.bindings.RetrunFlag.label}"
-                                        shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RetrunFlag.tooltip}"
+              <af:selectBooleanCheckbox value="#{row.bindings.SelectedRow.inputValue}"
+                                        label="#{row.bindings.SelectedRow.label}"
+                                        shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.SelectedRow.tooltip}"
                                         id="sbc1"/>
             </af:column>
             <af:column sortProperty="RollNumber" filterable="true"
