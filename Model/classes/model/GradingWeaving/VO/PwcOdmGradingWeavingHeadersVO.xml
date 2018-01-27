@@ -536,7 +536,11 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties/>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="SalesOrderHeaderId"
     PrecisionRule="true"

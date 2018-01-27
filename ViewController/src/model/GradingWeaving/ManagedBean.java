@@ -327,8 +327,9 @@ public class ManagedBean {
         RowSetIterator rsi = linesVO.createRowSetIterator(null);
         while (rsi.next()!=null) {
             Row currRow = rsi.getCurrentRow();
-            if ((Boolean)currRow.getAttribute("SelectedRow")==true)
-                currRow.remove();
+            /*if ((Boolean)currRow.getAttribute("SelectedRow")==true)
+                currRow.remove();*/
+            System.out.println("selected row = "+currRow.getAttribute("SelectedRow")); 
         }
         rsi.closeRowSetIterator();
         am.getDBTransaction().commit();
