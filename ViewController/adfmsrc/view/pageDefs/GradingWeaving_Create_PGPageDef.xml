@@ -7,7 +7,8 @@
     <variableIterator id="variables"/>
     <iterator Binds="PwcOdmGradingWeavingHeadersVO1" RangeSize="25"
               DataControl="PwcOdmGradingWeavingAMDataControl"
-              id="PwcOdmGradingWeavingHeadersVO1Iterator"/>
+              id="PwcOdmGradingWeavingHeadersVO1Iterator"
+              RefreshCondition="#{!adfFacesContext.initialRender}"/>
     <iterator Binds="PwcOdmGradingWaveingLinesVO1" RangeSize="25"
               DataControl="PwcOdmGradingWeavingAMDataControl"
               id="PwcOdmGradingWaveingLinesVO1Iterator"/>
@@ -19,6 +20,8 @@
                   Binds="PwcOdmGradingWeavingHeadersVO1Iterator"
                   id="PwcOdmGradingWeavingHeadersVOCriteria1Query"/>
     <invokeAction Binds="setSessionValues" id="setSession" Refresh="always"/>
+    <invokeAction id="initialResetHeaderVO" Binds="resetHeaderVO"
+                  Refresh="prepareModel"/>
   </executables>
   <bindings>
     <tree IterBinding="PwcOdmGradingWaveingLinesVO1Iterator"
@@ -191,5 +194,10 @@
                  NDType="java.lang.String"/>
       <NamedData NDName="mfgOrgId" NDType="java.lang.String"/>
     </methodAction>
+    <methodAction id="resetHeaderVO"
+                  InstanceName="PwcOdmGradingWeavingAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingWeavingAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="resetHeaderVO" IsViewObjectMethod="false"/>
   </bindings>
 </pageDefinition>
