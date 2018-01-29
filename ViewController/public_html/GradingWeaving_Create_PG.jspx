@@ -176,7 +176,7 @@
             </af:column>
             <af:column sortProperty="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.name}"
                        sortable="true"
-                       headerText="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.label}" id="c2"
+                       headerText="Machine Number" id="c2"
                        align="center" filterable="true">
               <af:inputListOfValues id="machineNumberId"
                                     popupTitle="Search and Select: #{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.label}"
