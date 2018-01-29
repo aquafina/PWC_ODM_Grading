@@ -6,48 +6,16 @@
   Name="PwcOdmGradingWeavingHeadersVO"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
-  FromList="PWC_ODM_GRADING_WEAVING_HDRS PwcOdmGradingWeavingHeadersE1"
   BindingStyle="OracleName"
-  CustomQuery="false"
+  CustomQuery="true"
   PageIterMode="Full"
   UseGlueCode="false"
-  SelectList="PwcOdmGradingWeavingHeadersE1.ATTRIBUTE1, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE10, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE11, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE12, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE13, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE14, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE15, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE2, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE3, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE4, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE5, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE6, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE7, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE8, 
-       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE9, 
-       PwcOdmGradingWeavingHeadersE1.CREATED_BY, 
-       PwcOdmGradingWeavingHeadersE1.CREATION_DATE, 
-       PwcOdmGradingWeavingHeadersE1.GD_DATE, 
-       PwcOdmGradingWeavingHeadersE1.GD_ID, 
-       PwcOdmGradingWeavingHeadersE1.GD_NO, 
-       PwcOdmGradingWeavingHeadersE1.ITEM_CODE, 
-       PwcOdmGradingWeavingHeadersE1.ITEM_DESCRIPTION, 
-       PwcOdmGradingWeavingHeadersE1.ITEM_ID, 
-       PwcOdmGradingWeavingHeadersE1.JOB, 
-       PwcOdmGradingWeavingHeadersE1.JOB_QUANTITY, 
-       PwcOdmGradingWeavingHeadersE1.LAST_UPDATED_BY, 
-       PwcOdmGradingWeavingHeadersE1.LAST_UPDATED_DATE, 
-       PwcOdmGradingWeavingHeadersE1.LAST_UPDATED_LOGIN, 
-       PwcOdmGradingWeavingHeadersE1.ORG_ID, 
-       PwcOdmGradingWeavingHeadersE1.QTY_RECEIVED_LOOMING, 
-       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_NUMBER, 
-       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_HEADER_ID"
   RowClass="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVORowImpl"
   ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVOImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
   <Properties>
     <SchemaBasedProperties>
@@ -67,6 +35,18 @@
     Name="P_JOB_NO"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+  </Variable>
   <ViewAccessor
     Name="PwcOdmGradingWeavingHeadersGdNo1"
     ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersGdNo">
@@ -82,9 +62,6 @@
     <ParameterMap>
       <PIMap Variable="p_gd_no">
         <TransientExpression><![CDATA[GdNo]]></TransientExpression>
-      </PIMap>
-      <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -105,7 +82,7 @@
         <TransientExpression><![CDATA[GdNo]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_sales_order">
-        <TransientExpression><![CDATA[SalesOrderHeaderId]]></TransientExpression>
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_org_id">
         <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
@@ -180,7 +157,7 @@
       <Item Value="ConcatenatedSegments"/>
       <Item Value="Description"/>
       <Item Value="Attribute11"/>
-      <Item Value="Attribute12"/>
+      <Item Value="OrderNumber"/>
       <Item Value="Attribute11"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
@@ -208,9 +185,48 @@
       <Item Value="HeaderId"/>
       <Item Value="Salesordergdno"/>
     </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrderNumber"/>
+    </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>
   </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT PwcOdmGradingWeavingHeadersE1.ATTRIBUTE1, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE10, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE11, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE12, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE13, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE14, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE15, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE2, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE3, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE4, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE5, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE6, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE7, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE8, 
+       PwcOdmGradingWeavingHeadersE1.ATTRIBUTE9, 
+       PwcOdmGradingWeavingHeadersE1.CREATED_BY, 
+       PwcOdmGradingWeavingHeadersE1.CREATION_DATE, 
+       PwcOdmGradingWeavingHeadersE1.GD_DATE, 
+       PwcOdmGradingWeavingHeadersE1.GD_ID, 
+       PwcOdmGradingWeavingHeadersE1.GD_NO, 
+       PwcOdmGradingWeavingHeadersE1.ITEM_CODE, 
+       PwcOdmGradingWeavingHeadersE1.ITEM_DESCRIPTION, 
+       PwcOdmGradingWeavingHeadersE1.ITEM_ID, 
+       PwcOdmGradingWeavingHeadersE1.JOB, 
+       PwcOdmGradingWeavingHeadersE1.JOB_QUANTITY, 
+       PwcOdmGradingWeavingHeadersE1.LAST_UPDATED_BY, 
+       PwcOdmGradingWeavingHeadersE1.LAST_UPDATED_DATE, 
+       PwcOdmGradingWeavingHeadersE1.LAST_UPDATED_LOGIN, 
+       PwcOdmGradingWeavingHeadersE1.ORG_ID, 
+       PwcOdmGradingWeavingHeadersE1.QTY_RECEIVED_LOOMING, 
+       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_NUMBER, 
+       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_HEADER_ID
+FROM PWC_ODM_GRADING_WEAVING_HDRS PwcOdmGradingWeavingHeadersE1
+where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingHeadersE1.ORG_ID)]]>
+  </SQLQuery>
   <EntityUsage
     Name="PwcOdmGradingWeavingHeadersE1"
     Entity="model.GradingWeaving.EO.PwcOdmGradingWeavingHeadersEO"/>
@@ -354,10 +370,10 @@
       <SchemaBasedProperties>
         <LABEL
           ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.GdNo_LABEL"/>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -448,7 +464,9 @@
     PrecisionRule="true"
     EntityAttrName="OrgId"
     EntityUsage="PwcOdmGradingWeavingHeadersE1"
-    AliasName="ORG_ID"/>
+    AliasName="ORG_ID">
+    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="QtyReceivedLooming"
     PrecisionRule="true"
@@ -478,6 +496,12 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="SalesOrderHeaderId"
+    PrecisionRule="true"
+    EntityAttrName="SalesOrderHeaderId"
+    EntityUsage="PwcOdmGradingWeavingHeadersE1"
+    AliasName="SALES_ORDER_HEADER_ID"/>
   <ViewAttribute
     Name="SUMTOTQTY"
     IsSelected="false"
@@ -535,54 +559,6 @@
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Graded")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
-    Name="SalesOrderGdNo"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
-  <ViewAttribute
-    Name="SalesOrderHeaderId"
-    PrecisionRule="true"
-    EntityAttrName="SalesOrderHeaderId"
-    EntityUsage="PwcOdmGradingWeavingHeadersE1"
-    AliasName="SALES_ORDER_HEADER_ID"/>
-  <ViewAttribute
-    Name="SumGradeD0to1"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="BIGINT"
-    AliasName="VIEW_ATTR"
-    SQLType="NUMERIC">
-    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute1")]]></TransientExpression>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="SumGradeD1to5"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="INTEGER"
-    AliasName="VIEW_ATTR"
-    SQLType="INTEGER">
-    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute2")]]></TransientExpression>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="SumGradeD6to19"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="INTEGER"
-    AliasName="VIEW_ATTR"
-    SQLType="INTEGER">
-    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute3")]]></TransientExpression>
-  </ViewAttribute>
-  <ViewAttribute
     Name="SumGradeD20Above"
     IsSelected="false"
     IsPersistent="false"
@@ -593,6 +569,49 @@
     SQLType="INTEGER">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute4")]]></TransientExpression>
   </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeD0to1"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute1")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeD1to5"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Passivate="true">
+    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute2")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeD6to19"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute3")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SalesOrderGdNo"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewCriteria
     Name="PwcOdmGradingWeavingHeadersVOCriteria"
     ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"

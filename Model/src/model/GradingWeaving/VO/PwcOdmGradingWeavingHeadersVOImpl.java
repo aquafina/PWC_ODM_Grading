@@ -61,4 +61,20 @@ public class PwcOdmGradingWeavingHeadersVOImpl extends ViewObjectImpl {
     public void setP_JOB_NO(String value) {
         ensureVariableManager().setVariableValue("P_JOB_NO", value);
     }
+
+    /**
+     * Returns the bind variable value for p_org_id.
+     * @return bind variable value for p_org_id
+     */
+    public String getp_org_id() {
+        return (String)getNamedWhereClauseParam("p_org_id");
+    }
+
+    /**
+     * Sets <code>value</code> for bind variable p_org_id.
+     * @param value value to bind as p_org_id
+     */
+    public void setp_org_id(String value) {
+        setNamedWhereClauseParam("p_org_id", value);
+    }
 }

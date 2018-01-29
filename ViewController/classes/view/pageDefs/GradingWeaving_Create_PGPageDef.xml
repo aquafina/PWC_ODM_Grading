@@ -139,12 +139,8 @@
         <Item Value="false"/>
       </ValueList>
     </button>
-    <action IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator" id="Create"
-            RequiresUpdateModel="true" Action="createRow"/>
     <action IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator" id="Delete"
             RequiresUpdateModel="false" Action="removeCurrentRow"/>
-    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
-            DataControl="PwcOdmGradingWeavingAMDataControl"/>
     <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
                      id="ItemCode">
       <AttrNames>
@@ -196,5 +192,8 @@
                   DataControl="PwcOdmGradingWeavingAMDataControl"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="resetHeaderVO" IsViewObjectMethod="false"/>
+    <action IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+            id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
   </bindings>
 </pageDefinition>

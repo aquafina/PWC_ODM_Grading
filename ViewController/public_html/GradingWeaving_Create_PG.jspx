@@ -9,7 +9,7 @@
       <af:messages id="m1"/>
       <af:form id="f1">
         <af:panelGroupLayout layout="vertical" id="pgl9">
-          <af:panelHeader text="PwcOdmGradingWeavingHeadersEO" id="ph2">
+          <af:panelHeader text="Grading Weaving Form" id="ph2">
             <af:query id="qryId1" headerText="Search" disclosed="true"
                       value="#{bindings.PwcOdmGradingWeavingHeadersVOCriteria1Query.queryDescriptor}"
                       model="#{bindings.PwcOdmGradingWeavingHeadersVOCriteria1Query.queryModel}"
@@ -52,14 +52,14 @@
             <af:panelLabelAndMessage label="Item Code"
                                      id="plam1">
               <af:outputText value="#{bindings.ItemCode.inputValue}"
-                             id="itemCodeId"/>
+                             id="itemCodeId" partialTriggers="jobId"/>
             </af:panelLabelAndMessage>
             <af:inputText value="#{bindings.ItemDescription.inputValue}"
                           label="Description"
                           required="#{bindings.ItemDescription.hints.mandatory}"
                           columns="#{bindings.ItemDescription.hints.displayWidth}"
                           maximumLength="#{bindings.ItemDescription.hints.precision}"
-                          partialTriggers="itemCodeId" id="it1"
+                          partialTriggers="itemCodeId jobId" id="it1"
                           readOnly="true">
               <f:validator binding="#{bindings.ItemDescription.validator}"/>
             </af:inputText>
@@ -71,7 +71,7 @@
             <af:inputListOfValues id="jobId"
                                   popupTitle="Search and Select: #{bindings.Job.hints.label}"
                                   value="#{bindings.Job.inputValue}"
-                                  label="Job"
+                                  label="#{bindings.Job.hints.label}"
                                   model="#{bindings.Job.listOfValuesModel}"
                                   required="#{bindings.Job.hints.mandatory}"
                                   columns="#{bindings.Job.hints.displayWidth}"
@@ -101,18 +101,20 @@
             </af:inputText>
             <af:separator id="s1" inlineStyle="height:10px;"/>
             <af:toolbar id="t3">
-              <af:commandButton actionListener="#{bindings.Create.execute}"
+              <af:commandButton actionListener="#{bindings.CreateInsert1.execute}"
                                 text="Create"
-                                disabled="#{!bindings.Create.enabled}"
-                                id="cb8"/>
-              <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                disabled="#{!bindings.CreateInsert1.enabled}"
+                                id="cb1"/>
+              <af:commandButton
                                 text="Save"
                                 disabled="false"
-                                id="cb7"/>
-              <af:commandButton actionListener="#{bindings.Delete.execute}"
+                                id="cb7"
+                                actionListener="#{ManagedBean.saveChanges}"/>
+              <af:commandButton
                                 text="Delete"
                                 disabled="#{!bindings.Delete.enabled}"
-                                id="cb9"/>
+                                id="cb9"
+                                actionListener="#{ManagedBean.deleteHeaderRow}"/>
             </af:toolbar>
           </af:panelFormLayout>
         </af:panelHeader>
@@ -145,7 +147,8 @@
                     filterVisible="true" varStatus="vs"
                     selectedRowKeys="#{bindings.PwcOdmGradingWaveingLinesVO1.collectionModel.selectedRow}"
                     selectionListener="#{bindings.PwcOdmGradingWaveingLinesVO1.collectionModel.makeCurrent}"
-                    rowSelection="single" id="t1" partialTriggers="::cb3 ::cb4"
+                    rowSelection="single" id="t1"
+                    partialTriggers="::cb3 ::cb4"
                     styleClass="width:100%;">
             <af:column
                        id="c9" align="center" width="53">
@@ -203,7 +206,6 @@
                             id="it6"
                             contentStyle="text-align:right;"
                             autoSubmit="true"
-                            validator="#{ManagedBean.totalQtyValidator}"
                             binding="#{ManagedBean.totalQtyInputText}">
                 <f:validator binding="#{row.bindings.TotalQuantity.validator}"/>
                 <af:convertNumber groupingUsed="false"
@@ -234,7 +236,6 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.tooltip}"
                             id="it5"
                             contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeAQtyValidator}"
                             autoSubmit="true">
                 <f:validator binding="#{row.bindings.Gradea.validator}"/>
                 <af:convertNumber groupingUsed="false"
@@ -265,7 +266,6 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.tooltip}"
                             id="it4"
                             contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeBQtyValidator}"
                             autoSubmit="true">
                 <f:validator binding="#{row.bindings.Gradeb.validator}"/>
                 <af:convertNumber groupingUsed="false"
@@ -297,7 +297,6 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.tooltip}"
                             id="it7"
                             contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeCQtyValidator}"
                             autoSubmit="true">
                 <f:validator binding="#{row.bindings.Gradec.validator}"/>
                 <af:convertNumber groupingUsed="false"
@@ -327,8 +326,7 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.tooltip}"
-                            id="it11" autoSubmit="true"
-                            validator="#{ManagedBean.gradeD0to1QtyValidator}">
+                            id="it11" autoSubmit="true">
                 <f:validator binding="#{row.bindings.Attribute1.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.format}"/>
@@ -362,8 +360,7 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.tooltip}"
-                            id="it12" autoSubmit="true"
-                            validator="#{ManagedBean.gradeD1to5QtyValidator}">
+                            id="it12" autoSubmit="true">
                 <f:validator binding="#{row.bindings.Attribute2.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.format}"/>
@@ -392,8 +389,7 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.tooltip}"
-                            id="it13" partialTriggers="it13" autoSubmit="true"
-                            validator="#{ManagedBean.gradeD6to19QtyValidator}">
+                            id="it13" partialTriggers="it13" autoSubmit="true">
                 <f:validator binding="#{row.bindings.Attribute3.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.format}"/>
