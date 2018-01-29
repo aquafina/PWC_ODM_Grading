@@ -14,6 +14,7 @@ import oracle.adf.model.BindingContext;
 
 import oracle.adf.model.binding.DCDataControl;
 
+import oracle.adf.model.binding.DCIteratorBinding;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
 
 import oracle.binding.BindingContainer;
@@ -57,20 +58,20 @@ public class ManagedBean {
             FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    public void TotalQty_ValueChange(ValueChangeEvent valueChangeEvent) {
+    /*public void TotalQty_ValueChange(ValueChangeEvent valueChangeEvent) {
         // Calling Operation Binding with AM
         /*valueChangeEvent.getComponent().processUpdates(FacesContext.getCurrentInstance());
         // Customzied Method Name 
         OperationBinding operationBinding =  executeOperation("Exceed_TOTALQTY");
-        operationBinding.execute();*/
+        operationBinding.execute();
         Double totalQty = Double.parseDouble(valueChangeEvent.getNewValue().toString());
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         Double qtyReceivedLooming = Double.parseDouble(currVO.getCurrentRow().getAttribute("QtyReceivedLooming")!=null?currVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString():"0.0");
-        /*if (sumTotalQtyValue > qtyReceivedLooming) {
+        if (sumTotalQtyValue > qtyReceivedLooming) {
             showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
-        }*/
-    }
+        }
+    }*/
     
     
     public static PwcOdmGradingWeavingAMImpl getApplicationModule() {
@@ -97,7 +98,7 @@ public class ManagedBean {
                    message);
             ((RichInputText)uIComponent).setValid(false);
         }
-        System.out.println("totalQty = "+totalQty);
+//        System.out.println("totalQty = "+totalQty);
 }
 
 
@@ -115,8 +116,11 @@ public class ManagedBean {
         Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
         Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
         Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+//        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
+                System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+                System.out.println("totalQty = "+totalQty);
+//                System.out.println("currRowIndex = "+currVO.getC);
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
                        "Invalid Value",
@@ -141,7 +145,7 @@ public class ManagedBean {
         Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
         Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
         Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+//        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -167,7 +171,7 @@ public class ManagedBean {
         Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
         Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
         Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+//        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -193,7 +197,7 @@ public class ManagedBean {
         Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
         Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
         Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;        
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+//        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -219,7 +223,7 @@ public class ManagedBean {
         Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
         Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
         Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;        
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+//        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -245,7 +249,7 @@ public class ManagedBean {
         Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
         Double gradeD20AboveQty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute4")!=null?currVO.getCurrentRow().getAttribute("Attribute4").toString():"0.0");
         Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+//        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -271,7 +275,7 @@ public class ManagedBean {
         Double gradeD1to5Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute2")!=null?currVO.getCurrentRow().getAttribute("Attribute2").toString():"0.0");
         Double gradeD6to19Qty = Double.parseDouble(currVO.getCurrentRow().getAttribute("Attribute3")!=null?currVO.getCurrentRow().getAttribute("Attribute3").toString():"0.0");
         Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
-        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+//        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
             if (totalGradeQuantities.compareTo(totalQty)==1) {
                 FacesMessage message =
                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -327,11 +331,35 @@ public class ManagedBean {
         RowSetIterator rsi = linesVO.createRowSetIterator(null);
         while (rsi.next()!=null) {
             Row currRow = rsi.getCurrentRow();
-            /*if ((Boolean)currRow.getAttribute("SelectedRow")==true)
-                currRow.remove();*/
-            System.out.println("selected row = "+currRow.getAttribute("SelectedRow")); 
+            if(currRow.getAttribute("SelectedRow")!=null)
+            {
+                if ((Boolean)currRow.getAttribute("SelectedRow")==true)
+                    currRow.remove();
+            }
         }
         rsi.closeRowSetIterator();
         am.getDBTransaction().commit();
     }
+    
+    public String onRowCreate() {
+     BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
+     //access the name of the iterator the table is bound to. Its "allDepartmentsIterator"
+     //in this sample
+     DCIteratorBinding dciter = (DCIteratorBinding) bindings.get("allDepartmentsIterator");
+     //access the underlying RowSetIterator
+     RowSetIterator rsi = dciter.getRowSetIterator();
+     //get handle to the last row
+     Row lastRow = rsi.last();
+     //obtain the index of the last row
+     int lastRowIndex = rsi.getRangeIndexOf(lastRow);
+     //create a new row
+     Row newRow = rsi.createRow();
+     //initialize the row
+     newRow.setNewRowState(Row.STATUS_INITIALIZED);
+     //add row to last index + 1 so it becomes last in the range set
+     rsi.insertRowAtRangeIndex(lastRowIndex +1, newRow); 
+     //make row the current row so it is displayed correctly
+     rsi.setCurrentRow(newRow);                          
+     return null;
+    }  
 }

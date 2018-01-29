@@ -148,9 +148,6 @@
         <Item Value="ItemCode"/>
       </AttrNames>
     </attributeValues>
-    <listOfValues StaticList="false"
-                  IterBinding="PwcOdmGradingWaveingLinesVO1Iterator"
-                  Uses="LOV_MachineNumber" id="MachineNumber"/>
     <attributeValues IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
                      id="SumGradeD0to1">
       <AttrNames>

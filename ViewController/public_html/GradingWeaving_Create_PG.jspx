@@ -104,7 +104,7 @@
                                 id="cb8"/>
               <af:commandButton actionListener="#{bindings.Commit.execute}"
                                 text="Save"
-                                disabled="#{!bindings.Commit.enabled}"
+                                disabled="false"
                                 id="cb7"/>
               <af:commandButton actionListener="#{bindings.Delete.execute}"
                                 text="Delete"
@@ -119,10 +119,6 @@
             <af:toolbar id="t2">
               <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
                                 text="Insert" id="cb3"/>
-              <af:commandButton
-                                text=" Save        "
-                                id="cb1"
-                                actionListener="#{ManagedBean.saveChanges}"/>
               <af:commandButton actionListener="#{ManagedBean.deleteSelectedRows}"
                                 text="Delete  " id="cb4"/>
               <af:commandButton actionListener="#{bindings.Rollback.execute}"
@@ -178,18 +174,18 @@
                 </af:group>
               </f:facet>
             </af:column>
-            <af:column sortProperty="MachineNumber" filterable="true"
-                       sortable="true" headerText="Machine Number" id="c2"
-                       align="center">
+            <af:column sortProperty="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.name}"
+                       sortable="true"
+                       headerText="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.label}" id="c2"
+                       align="center" filterable="true">
               <af:inputListOfValues id="machineNumberId"
-                                    popupTitle="Search and Select: #{bindings.MachineNumber.hints.label}"
-                                    value="#{bindings.MachineNumber.inputValue}"
-                                    model="#{bindings.MachineNumber.listOfValuesModel}"
-                                    required="#{bindings.MachineNumber.hints.mandatory}"
-                                    columns="#{bindings.MachineNumber.hints.displayWidth}"
-                                    shortDesc="#{bindings.MachineNumber.hints.tooltip}"
-                                    label="#{bindings.MachineNumber.hints.label}">
-                <f:validator binding="#{bindings.MachineNumber.validator}"/>
+                                    popupTitle="Search and Select: #{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.label}"
+                                    value="#{row.bindings.MachineNumber.inputValue}"
+                                    model="#{row.bindings.MachineNumber.listOfValuesModel}"
+                                    required="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.mandatory}"
+                                    columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.displayWidth}"
+                                    shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.tooltip}">
+                <f:validator binding="#{row.bindings.MachineNumber.validator}"/>
               </af:inputListOfValues>
             </af:column>
             <af:column sortProperty="TotalQuantity" filterable="true"
@@ -203,7 +199,6 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.tooltip}"
                             id="it6"
                             contentStyle="text-align:right;"
-                            valueChangeListener="#{ManagedBean.TotalQty_ValueChange}"
                             autoSubmit="true"
                             validator="#{ManagedBean.totalQtyValidator}"
                             binding="#{ManagedBean.totalQtyInputText}">

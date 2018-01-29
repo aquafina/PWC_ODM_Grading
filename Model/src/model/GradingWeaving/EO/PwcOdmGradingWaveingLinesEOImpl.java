@@ -1067,7 +1067,7 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
      * @param operation the operation type
      * @param e the transaction event
      */
-    protected void doDML(int operation, TransactionEvent e) {
+    /*protected void doDML(int operation, TransactionEvent e) {
         //// Custom Code : Populate WHO Columns
         
         System.out.println("DML Method");
@@ -1092,5 +1092,5 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
            System.out.println("DML Update Ends");
           }
         super.doDML(operation, e);
-    }
+    }*/
 }
