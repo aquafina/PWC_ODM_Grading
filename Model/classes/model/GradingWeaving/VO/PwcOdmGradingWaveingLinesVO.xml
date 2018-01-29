@@ -59,7 +59,7 @@
   </Properties>
   <ViewAccessor
     Name="PwcOdmGradingWeavingLinesMachineNo1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo">
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1">
     <ParameterMap>
       <PIMap Variable="p_org_id">
         <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
