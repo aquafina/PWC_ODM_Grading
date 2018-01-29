@@ -16,6 +16,7 @@ public class PwcOdmGradingWeavingAMClient extends ApplicationModuleImpl implemen
     public PwcOdmGradingWeavingAMClient() {
     }
 
+
     public void Exceed_TOTALQTY() {
         Object _ret =
             this.riInvokeExportedMethod(this,"Exceed_TOTALQTY",null,null);
@@ -26,6 +27,11 @@ public class PwcOdmGradingWeavingAMClient extends ApplicationModuleImpl implemen
                                  String respAppl, String mfgOrgId) {
         Object _ret =
             this.riInvokeExportedMethod(this,"setSessionValues",new String [] {"java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"},new Object[] {orgId, userId, respId, respAppl, mfgOrgId});
+        return;
+    }
+
+    public void resetHeaderVO() {
+        Object _ret = this.riInvokeExportedMethod(this,"resetHeaderVO",null,null);
         return;
     }
 }

@@ -169,6 +169,9 @@
       <Item Value="QtyReceivedLooming"/>
       <Item Value="ItemCode"/>
       <Item Value="ItemDescription"/>
+      <Item Value="GdNo"/>
+      <Item Value="SalesOrderNumber"/>
+      <Item Value="SalesOrderGdNo"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="WipEntityName"/>
@@ -176,6 +179,9 @@
       <Item Value="StitchingQuantity"/>
       <Item Value="ConcatenatedSegments"/>
       <Item Value="Description"/>
+      <Item Value="Attribute11"/>
+      <Item Value="Attribute12"/>
+      <Item Value="Attribute11"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="WipEntityName"/>
@@ -536,11 +542,7 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    SQLType="VARCHAR"/>
   <ViewAttribute
     Name="SalesOrderHeaderId"
     PrecisionRule="true"

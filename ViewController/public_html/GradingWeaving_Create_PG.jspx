@@ -32,7 +32,8 @@
                                   model="#{bindings.GdNo.listOfValuesModel}"
                                   required="#{bindings.GdNo.hints.mandatory}"
                                   columns="#{bindings.GdNo.hints.displayWidth}"
-                                  shortDesc="#{bindings.GdNo.hints.tooltip}">
+                                  shortDesc="#{bindings.GdNo.hints.tooltip}"
+                                  partialTriggers="jobId">
               <f:validator binding="#{bindings.GdNo.validator}"/>
             </af:inputListOfValues>
             <af:inputListOfValues id="salesOrderNumberId"
@@ -42,7 +43,8 @@
                                   model="#{bindings.SalesOrderNumber.listOfValuesModel}"
                                   required="#{bindings.SalesOrderNumber.hints.mandatory}"
                                   columns="#{bindings.SalesOrderNumber.hints.displayWidth}"
-                                  shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}">
+                                  shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}"
+                                  partialTriggers="jobId">
               <f:validator binding="#{bindings.SalesOrderNumber.validator}"/>
               <af:convertNumber groupingUsed="false"
                                 pattern="#{bindings.SalesOrderNumber.format}"/>
@@ -73,7 +75,8 @@
                                   model="#{bindings.Job.listOfValuesModel}"
                                   required="#{bindings.Job.hints.mandatory}"
                                   columns="#{bindings.Job.hints.displayWidth}"
-                                  shortDesc="#{bindings.Job.hints.tooltip}">
+                                  shortDesc="#{bindings.Job.hints.tooltip}"
+                                  autoSubmit="true">
               <f:validator binding="#{bindings.Job.validator}"/>
             </af:inputListOfValues>
             <af:inputText value="#{bindings.JobQuantity.inputValue}"
