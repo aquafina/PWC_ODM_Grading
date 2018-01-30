@@ -63,9 +63,15 @@
         Type="java.lang.String"/>
     </Method>
     <Method
-      Name="resetHeaderVO">
+      Name="callJobCompleteProc">
       <Return
-        Type="void"/>
+        Type="java.lang.String"/>
+      <Parameter
+        Name="sqlReturnType"
+        Type="int"/>
+      <Parameter
+        Name="stmt"
+        Type="java.lang.String"/>
     </Method>
   </ClientInterface>
 </AppModule>

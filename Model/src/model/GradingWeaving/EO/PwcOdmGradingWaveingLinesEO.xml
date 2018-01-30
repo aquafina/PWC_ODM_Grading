@@ -389,6 +389,18 @@
       <Attr Name="_DisplaySize" Value="5"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="RequestStatus"
+    Precision="255"
+    ColumnName="REQUEST_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PWC_ODM_GRADING_WAVEING_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="PwcOdmGradingWeavingHeadersEO"
     Association="model.GradingWeaving.AO.PwcOdmGradingWeavingHeaderLinesAO"

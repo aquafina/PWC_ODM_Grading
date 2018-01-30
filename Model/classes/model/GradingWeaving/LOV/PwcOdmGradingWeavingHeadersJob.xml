@@ -63,7 +63,7 @@
         ,msi.DESCRIPTION
         ,wdj.ATTRIBUTE11
         ,ooha.ORDER_NUMBER
-        ,sum(mmt.TRANSACTION_QUANTITY) job_quantity    
+        ,sum(wdj.START_QUANTITY) job_quantity    
         ,sum(wdj.QUANTITY_COMPLETED) stitching_quantity
 from   wip_discrete_jobs wdj
        ,wip_entities we

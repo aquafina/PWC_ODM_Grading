@@ -373,6 +373,17 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
             }
         }
         ,
+        RequestStatus {
+            public Object get(PwcOdmGradingWaveingLinesEOImpl obj) {
+                return obj.getRequestStatus();
+            }
+
+            public void put(PwcOdmGradingWaveingLinesEOImpl obj,
+                            Object value) {
+                obj.setRequestStatus((String)value);
+            }
+        }
+        ,
         PwcOdmGradingWeavingHeadersEO {
             public Object get(PwcOdmGradingWaveingLinesEOImpl obj) {
                 return obj.getPwcOdmGradingWeavingHeadersEO();
@@ -445,6 +456,7 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
     public static final int LASTUPDATEDDATE = AttributesEnum.LastUpdatedDate.index();
     public static final int LASTUPDATEDLOGIN = AttributesEnum.LastUpdatedLogin.index();
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
+    public static final int REQUESTSTATUS = AttributesEnum.RequestStatus.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSEO = AttributesEnum.PwcOdmGradingWeavingHeadersEO.index();
 
     /**
@@ -974,6 +986,22 @@ public class PwcOdmGradingWaveingLinesEOImpl extends EntityImpl {
      */
     public void setRetrunFlag(String value) {
         setAttributeInternal(RETRUNFLAG, value);
+    }
+
+    /**
+     * Gets the attribute value for RequestStatus, using the alias name RequestStatus.
+     * @return the RequestStatus
+     */
+    public String getRequestStatus() {
+        return (String)getAttributeInternal(REQUESTSTATUS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for RequestStatus.
+     * @param value value to set the RequestStatus
+     */
+    public void setRequestStatus(String value) {
+        setAttributeInternal(REQUESTSTATUS, value);
     }
 
     /**

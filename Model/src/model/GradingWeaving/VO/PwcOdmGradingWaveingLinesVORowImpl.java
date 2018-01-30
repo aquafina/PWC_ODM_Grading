@@ -382,6 +382,17 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             }
         }
         ,
+        RequestStatus {
+            public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
+                return obj.getRequestStatus();
+            }
+
+            public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
+                            Object value) {
+                obj.setRequestStatus((String)value);
+            }
+        }
+        ,
         PwcOdmGradingWeavingHeadersVO {
             public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
                 return obj.getPwcOdmGradingWeavingHeadersVO();
@@ -431,6 +442,7 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int LINEID = AttributesEnum.LineId.index();
     public static final int MACHINENUMBER = AttributesEnum.MachineNumber.index();
     public static final int ROLLNUMBER = AttributesEnum.RollNumber.index();
@@ -464,6 +476,7 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
     public static final int LASTUPDATEDLOGIN = AttributesEnum.LastUpdatedLogin.index();
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
     public static final int SELECTEDROW = AttributesEnum.SelectedRow.index();
+    public static final int REQUESTSTATUS = AttributesEnum.RequestStatus.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSVO = AttributesEnum.PwcOdmGradingWeavingHeadersVO.index();
     public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1.index();
 
@@ -1007,6 +1020,22 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      */
     public void setSelectedRow(Boolean value) {
         setAttributeInternal(SELECTEDROW, value);
+    }
+
+    /**
+     * Gets the attribute value for REQUEST_STATUS using the alias name RequestStatus.
+     * @return the REQUEST_STATUS
+     */
+    public String getRequestStatus() {
+        return (String) getAttributeInternal(REQUESTSTATUS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for REQUEST_STATUS using the alias name RequestStatus.
+     * @param value value to set the REQUEST_STATUS
+     */
+    public void setRequestStatus(String value) {
+        setAttributeInternal(REQUESTSTATUS, value);
     }
 
     /**

@@ -2,6 +2,10 @@ package model.GradingWeaving;
 
 import java.sql.SQLException;
 
+import java.sql.Types;
+
+import java.util.Map;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -164,5 +168,26 @@ public class ManagedBean {
         newRow.setNewRowState(Row.STATUS_INITIALIZED);
         rsi.insertRowAtRangeIndex(0, newRow); 
         rsi.setCurrentRow(newRow);      
+    }
+    public void completeJobAPIActionListener(ActionEvent actionEvent) {
+        String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
+            ",?" +
+            ",?" +
+            ",?" +
+            ",?" +          
+            ",?)";
+        BindingContainer bindings = getBindingsCont();
+        OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
+        Map params =  operationBinding.getParamsMap();
+        params.put("sqlReturnType", Types.VARCHAR);
+        params.put("stmt", stmt);
+        String result =(String) operationBinding.execute();
+    //        System.out.println(result[0]+" "+result[1]);
+        if (result != null) {
+            if (result.equals("SUCCESSFUL"))
+                showMessage(result+"", 111);
+            else
+                showMessage(result+"", 112);
+        }
     }
 }

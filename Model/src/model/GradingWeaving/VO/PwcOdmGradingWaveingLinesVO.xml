@@ -41,7 +41,8 @@
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_BY, 
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_DATE, 
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_LOGIN, 
-       PwcOdmGradingWaveingLinesEO.RETRUN_FLAG"
+       PwcOdmGradingWaveingLinesEO.RETRUN_FLAG, 
+       PwcOdmGradingWaveingLinesEO.REQUEST_STATUS"
   FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO"
   FetchMode="FETCH_AS_NEEDED"
   FetchSize="20"
@@ -150,7 +151,9 @@
     PrecisionRule="true"
     EntityAttrName="OrgId"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
-    AliasName="ORG_ID"/>
+    AliasName="ORG_ID">
+    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="Remarks"
     PrecisionRule="true"
@@ -298,6 +301,12 @@
     ColumnType="BIT"
     AliasName="VIEW_ATTR"
     SQLType="BIT"/>
+  <ViewAttribute
+    Name="RequestStatus"
+    PrecisionRule="true"
+    EntityAttrName="RequestStatus"
+    EntityUsage="PwcOdmGradingWaveingLinesEO"
+    AliasName="REQUEST_STATUS"/>
   <ViewLinkAccessor
     Name="PwcOdmGradingWeavingHeadersVO"
     ViewLink="model.GradingWeaving.VL.PwcOdmGradingWeavingHeaderLinesVL"

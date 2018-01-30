@@ -131,7 +131,8 @@
                                 immediate="true" id="cb2" action="To Search">
                 <af:resetActionListener/>
               </af:commandButton>
-              <af:commandButton text="Complete" id="cb5"/>
+              <af:commandButton text="Complete" id="cb5"
+                                actionListener="#{ManagedBean.completeJobAPIActionListener}"/>
               <af:commandButton text="Return   " id="cb6"/>
             </af:toolbar>
           </f:facet>

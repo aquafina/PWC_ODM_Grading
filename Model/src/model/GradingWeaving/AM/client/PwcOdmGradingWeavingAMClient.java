@@ -30,8 +30,9 @@ public class PwcOdmGradingWeavingAMClient extends ApplicationModuleImpl implemen
         return;
     }
 
-    public void resetHeaderVO() {
-        Object _ret = this.riInvokeExportedMethod(this,"resetHeaderVO",null,null);
-        return;
+    public String callJobCompleteProc(int sqlReturnType, String stmt) {
+        Object _ret =
+            this.riInvokeExportedMethod(this,"callJobCompleteProc",new String [] {"int","java.lang.String"},new Object[] {new Integer(sqlReturnType), stmt});
+        return (String)_ret;
     }
 }

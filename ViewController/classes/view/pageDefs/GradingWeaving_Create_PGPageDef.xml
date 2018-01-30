@@ -20,8 +20,6 @@
                   Binds="PwcOdmGradingWeavingHeadersVO1Iterator"
                   id="PwcOdmGradingWeavingHeadersVOCriteria1Query"/>
     <invokeAction Binds="setSessionValues" id="setSession" Refresh="always"/>
-    <invokeAction id="initialResetHeaderVO" Binds="resetHeaderVO"
-                  Refresh="prepareModel"/>
   </executables>
   <bindings>
     <tree IterBinding="PwcOdmGradingWaveingLinesVO1Iterator"
@@ -195,5 +193,14 @@
     <action IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
             id="CreateInsert1" RequiresUpdateModel="true"
             Action="createInsertRow"/>
+    <methodAction id="callJobCompleteProc"
+                  InstanceName="PwcOdmGradingWeavingAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingWeavingAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="callJobCompleteProc" IsViewObjectMethod="false"
+                  ReturnName="data.PwcOdmGradingWeavingAMDataControl.methodResults.callJobCompleteProc_PwcOdmGradingWeavingAMDataControl_dataProvider_callJobCompleteProc_result">
+      <NamedData NDName="sqlReturnType" NDType="int"/>
+      <NamedData NDName="stmt" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>
