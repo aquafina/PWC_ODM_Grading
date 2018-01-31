@@ -623,7 +623,7 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
           Value="InAdvancedMode"/>
         <Property
           Name="autoExecute"
-          Value="false"/>
+          Value="true"/>
         <Property
           Name="allowConjunctionOverride"
           Value="true"/>
@@ -641,7 +641,7 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
       <ViewCriteriaItem
         Name="GdNo"
         ViewAttribute="GdNo"
-        Operator="CONTAINS"
+        Operator="="
         Conjunction="AND"
         Value=":P_GD_NUMBER"
         IsBindVarValue="true"
@@ -649,7 +649,7 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
       <ViewCriteriaItem
         Name="Job"
         ViewAttribute="Job"
-        Operator="CONTAINS"
+        Operator="="
         Conjunction="AND"
         Value=":P_JOB_NO"
         IsBindVarValue="true"
@@ -675,7 +675,7 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
           Value="InAdvancedMode"/>
         <Property
           Name="autoExecute"
-          Value="true"/>
+          Value="false"/>
         <Property
           Name="allowConjunctionOverride"
           Value="true"/>

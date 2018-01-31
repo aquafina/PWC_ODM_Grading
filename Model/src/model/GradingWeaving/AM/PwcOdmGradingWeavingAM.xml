@@ -22,7 +22,11 @@
   </Properties>
   <ViewUsage
     Name="PwcOdmGradingWeavingHeadersVO1"
-    ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"/>
+    ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO">
+    <ViewCriteriaUsage
+      Name="PwcOdmGradingWeavingHeadersVOCriteria1"
+      FullName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.PwcOdmGradingWeavingHeadersVOCriteria1"/>
+  </ViewUsage>
   <ViewUsage
     Name="PwcOdmGradingWaveingLinesVO1"
     ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO"/>

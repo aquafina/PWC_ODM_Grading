@@ -7,12 +7,14 @@
           usageId="view_GradingWeaving_Search_PGPageDef"/>
     <page path="/GradingWeaving_Create_PG.jspx"
           usageId="view_GradingWeaving_Create_PGPageDef"/>
+    <page path="/test.jspx" usageId="view_testPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_GradingWeaving_Search_PGPageDef"
           path="view.pageDefs.GradingWeaving_Search_PGPageDef"/>
     <page id="view_GradingWeaving_Create_PGPageDef"
           path="view.pageDefs.GradingWeaving_Create_PGPageDef"/>
+    <page id="view_testPageDef" path="view.pageDefs.testPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="PwcOdmGradingWeavingAMDataControl"

@@ -106,6 +106,18 @@ public class ManagedBean {
         }
     }
 
+    public void insertRowBeforePageLoad() {
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
+        RowSetIterator rsi = currHeadersVO.createRowSetIterator(null);
+        Row lastRow = rsi.last();
+        int lastRowIndex = rsi.getRangeIndexOf(lastRow);
+        Row newRow = rsi.createRow();
+        newRow.setNewRowState(Row.STATUS_INITIALIZED);
+        rsi.insertRowAtRangeIndex(0, newRow); 
+        rsi.setCurrentRow(newRow);      
+    }
+
     public void deleteSelectedRows(ActionEvent actionEvent) {
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject linesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");

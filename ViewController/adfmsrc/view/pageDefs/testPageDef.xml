@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="testPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PwcOdmGradingWeavingHeadersVO1" RangeSize="25"
+              DataControl="PwcOdmGradingWeavingAMDataControl"
+              id="PwcOdmGradingWeavingHeadersVO1Iterator"/>
+    <searchRegion Criteria="PwcOdmGradingWeavingHeadersVOCriteria1"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PwcOdmGradingWeavingHeadersVO1Iterator"
+                  id="PwcOdmGradingWeavingHeadersVOCriteria1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+          id="PwcOdmGradingWeavingHeadersVO1">
+      <nodeDefinition DefName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"
+                      Name="PwcOdmGradingWeavingHeadersVO10">
+        <AttrNames>
+          <Item Value="Attribute1"/>
+          <Item Value="Attribute10"/>
+          <Item Value="Attribute11"/>
+          <Item Value="Attribute12"/>
+          <Item Value="Attribute13"/>
+          <Item Value="Attribute14"/>
+          <Item Value="Attribute15"/>
+          <Item Value="Attribute2"/>
+          <Item Value="Attribute3"/>
+          <Item Value="Attribute4"/>
+          <Item Value="Attribute5"/>
+          <Item Value="Attribute6"/>
+          <Item Value="Attribute7"/>
+          <Item Value="Attribute8"/>
+          <Item Value="Attribute9"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="GdDate"/>
+          <Item Value="GdId"/>
+          <Item Value="GdNo"/>
+          <Item Value="ItemCode"/>
+          <Item Value="ItemDescription"/>
+          <Item Value="ItemId"/>
+          <Item Value="Job"/>
+          <Item Value="JobQuantity"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="LastUpdatedLogin"/>
+          <Item Value="OrgId"/>
+          <Item Value="QtyReceivedLooming"/>
+          <Item Value="SalesOrderNumber"/>
+          <Item Value="SalesOrderHeaderId"/>
+          <Item Value="SUMTOTQTY"/>
+          <Item Value="SumGradea"/>
+          <Item Value="SumGradeb"/>
+          <Item Value="SumGradec"/>
+          <Item Value="SumGraded"/>
+          <Item Value="SumGradeD20Above"/>
+          <Item Value="SumGradeD0to1"/>
+          <Item Value="SumGradeD1to5"/>
+          <Item Value="SumGradeD6to19"/>
+          <Item Value="SalesOrderGdNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
