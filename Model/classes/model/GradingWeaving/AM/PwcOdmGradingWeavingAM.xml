@@ -62,16 +62,5 @@
         Name="mfgOrgId"
         Type="java.lang.String"/>
     </Method>
-    <Method
-      Name="callJobCompleteProc">
-      <Return
-        Type="java.lang.String"/>
-      <Parameter
-        Name="sqlReturnType"
-        Type="int"/>
-      <Parameter
-        Name="stmt"
-        Type="java.lang.String"/>
-    </Method>
   </ClientInterface>
 </AppModule>

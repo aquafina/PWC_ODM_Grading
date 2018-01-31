@@ -10,12 +10,12 @@
   CustomQuery="true"
   PageIterMode="Full"
   UseGlueCode="false"
-  RowClass="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVORowImpl"
-  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVOImpl">
+  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVOImpl"
+  RowClass="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVORowImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
-    <Attr Name="_isCodegen" Value="true"/>
     <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <Properties>
     <SchemaBasedProperties>
@@ -149,6 +149,8 @@
       <Item Value="GdNo"/>
       <Item Value="SalesOrderNumber"/>
       <Item Value="SalesOrderGdNo"/>
+      <Item Value="ItemId"/>
+      <Item Value="JobId"/>
     </AttrArray>
     <AttrArray Name="ListAttrNames">
       <Item Value="WipEntityName"/>
@@ -159,6 +161,8 @@
       <Item Value="Attribute11"/>
       <Item Value="OrderNumber"/>
       <Item Value="Attribute11"/>
+      <Item Value="ItemId"/>
+      <Item Value="WipEntityId"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="WipEntityName"/>
@@ -223,7 +227,8 @@
        PwcOdmGradingWeavingHeadersE1.ORG_ID, 
        PwcOdmGradingWeavingHeadersE1.QTY_RECEIVED_LOOMING, 
        PwcOdmGradingWeavingHeadersE1.SALES_ORDER_NUMBER, 
-       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_HEADER_ID
+       PwcOdmGradingWeavingHeadersE1.SALES_ORDER_HEADER_ID,
+       PwcOdmGradingWeavingHeadersE1.JOB_ID
 FROM PWC_ODM_GRADING_WEAVING_HDRS PwcOdmGradingWeavingHeadersE1
 where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingHeadersE1.ORG_ID)]]>
   </SQLQuery>
@@ -612,6 +617,12 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="JobId"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="PwcOdmGradingWeavingHeadersE1"
+    AliasName="JOB_ID"/>
   <ViewCriteria
     Name="PwcOdmGradingWeavingHeadersVOCriteria"
     ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"

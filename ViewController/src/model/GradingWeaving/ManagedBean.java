@@ -182,7 +182,7 @@ public class ManagedBean {
         params.put("sqlReturnType", Types.VARCHAR);
         params.put("stmt", stmt);
         String result =(String) operationBinding.execute();
-    //        System.out.println(result[0]+" "+result[1]);
+            System.out.println("result = "+result);
         if (result != null) {
             if (result.equals("SUCCESSFUL"))
                 showMessage(result+"", 111);

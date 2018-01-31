@@ -138,7 +138,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
      String status = null;
      int user_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("user_id")!=null?ADFContext.getCurrent().getSessionScope().get("user_id").toString():"0") ;
      int resp_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("resp_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_id").toString():"0") ;
-     int resp_appl_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("resp_appl_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_appl_id").toString():"0");
+     String resp_appl_id = ADFContext.getCurrent().getSessionScope().get("resp_appl_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_appl_id").toString():"0";
      System.out.println("resp_appl_id = "+ADFContext.getCurrent().getSessionScope().get("resp_appl_id"));
      try {
          cst = this.getDBTransaction().createCallableStatement("{CALL " + stmt + " }", 0);
@@ -151,18 +151,16 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
          System.out.println("Gd id = "+Integer.parseInt(currRow.getAttribute("GdId").toString()));
          cst.setInt(2,Integer.parseInt(currRow.getAttribute("OrgId").toString()));
          System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("OrgId").toString()));
-         cst.setInt(3,user_id);
+         cst.setInt(3,1110);
          System.out.println("user id = "+1110);
          cst.setInt(4,resp_id);
-         cst.setInt(5,resp_appl_id);
+         cst.setInt(5,222);
          System.out.println("resp appl id = "+222);
          cst.registerOutParameter(6, sqlReturnType);
          cst.execute();
          //Finally get returned value
          status = cst.getString(6);
-         gradingWaveingLinesVO.executeQuery();
-         currRow = gradingWaveingLinesVO.getCurrentRow();
-         System.out.println("Receipt status: "+currRow.getAttribute("ReceiptStatus"));*/
+         //System.out.println("Receipt status: "+currRow.getAttribute("ReceiptStatus"));
          //getDBTransaction().commit();
      } catch (SQLException e) {
          throw new JboException(e.getMessage());

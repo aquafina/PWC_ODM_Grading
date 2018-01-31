@@ -73,10 +73,10 @@
                                   value="#{bindings.Job.inputValue}"
                                   label="#{bindings.Job.hints.label}"
                                   model="#{bindings.Job.listOfValuesModel}"
-                                  required="#{bindings.Job.hints.mandatory}"
+                                  required="true"
                                   columns="#{bindings.Job.hints.displayWidth}"
                                   shortDesc="#{bindings.Job.hints.tooltip}"
-                                  autoSubmit="true">
+                                  autoSubmit="true" showRequired="true">
               <f:validator binding="#{bindings.Job.validator}"/>
             </af:inputListOfValues>
             <af:inputText value="#{bindings.JobQuantity.inputValue}"
@@ -200,14 +200,15 @@
                        align="center">
               <af:inputText value="#{row.bindings.TotalQuantity.inputValue}"
                             label="Total Quantity"
-                            required="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.mandatory}"
+                            required="true"
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.tooltip}"
                             id="it6"
                             contentStyle="text-align:right;"
                             autoSubmit="true"
-                            binding="#{ManagedBean.totalQtyInputText}">
+                            binding="#{ManagedBean.totalQtyInputText}"
+                            showRequired="true">
                 <f:validator binding="#{row.bindings.TotalQuantity.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.format}"/>
@@ -419,8 +420,7 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.tooltip}"
-                            id="it14" partialTriggers="it14" autoSubmit="true"
-                            validator="#{ManagedBean.gradeD20AboveQtyValidator}">
+                            id="it14" partialTriggers="it14" autoSubmit="true">
                 <f:validator binding="#{row.bindings.Attribute4.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.format}"/>

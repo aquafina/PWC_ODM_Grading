@@ -46,8 +46,8 @@
   FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO"
   FetchMode="FETCH_AS_NEEDED"
   FetchSize="20"
-  RowClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVORowImpl"
-  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVOImpl">
+  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVOImpl"
+  RowClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVORowImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
