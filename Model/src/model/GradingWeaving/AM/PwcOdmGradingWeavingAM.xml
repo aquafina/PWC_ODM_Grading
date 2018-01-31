@@ -66,10 +66,5 @@
         Name="mfgOrgId"
         Type="java.lang.String"/>
     </Method>
-    <Method
-      Name="resetHeaderVO">
-      <Return
-        Type="void"/>
-    </Method>
   </ClientInterface>
 </AppModule>
