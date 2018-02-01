@@ -83,44 +83,38 @@ public class ManagedBean {
         ViewObject currLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
         Row currRow = currHeadersVO.getCurrentRow();
         String jobId = currRow.getAttribute("JobId").toString();
-        if (jobExists(jobId)) {
-            showMessage("Job already used", 112);
-        }
-        else
-        {
-            Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming")!=null?currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString():"0.0");
-            Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY")!=null?currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString():"0.0");
-            if (sumTotalQtyValue.compareTo(qtyReceivedLooming)==1)
-                showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
-            else {
-                RowSetIterator rsi = currLinesVO.createRowSetIterator(null);
-                boolean isValid = true;
-                while(rsi.next()!=null) {
-                currRow = rsi.getCurrentRow();
-                Double totalQty = Double.parseDouble(currRow.getAttribute("TotalQuantity")!=null?currRow.getAttribute("TotalQuantity").toString():"0.0");
-                Double gradeAQty = Double.parseDouble(currRow.getAttribute("Gradea")!=null?currRow.getAttribute("Gradea").toString():"0.0");
-                Double gradeBQty = Double.parseDouble(currRow.getAttribute("Gradeb")!=null?currRow.getAttribute("Gradeb").toString():"0.0");
-                Double gradeCQty = Double.parseDouble(currRow.getAttribute("Gradec")!=null?currRow.getAttribute("Gradec").toString():"0.0");
-                Double gradeD0to1Qty = Double.parseDouble(currRow.getAttribute("Attribute1")!=null?currRow.getAttribute("Attribute1").toString():"0.0");
-                Double gradeD1to5Qty = Double.parseDouble(currRow.getAttribute("Attribute2")!=null?currRow.getAttribute("Attribute2").toString():"0.0");
-                Double gradeD6to19Qty = Double.parseDouble(currRow.getAttribute("Attribute3")!=null?currRow.getAttribute("Attribute3").toString():"0.0");
-                Double gradeD20AboveQty = Double.parseDouble(currRow.getAttribute("Attribute4")!=null?currRow.getAttribute("Attribute4").toString():"0.0");
-                Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
-                //        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
-                    if (totalGradeQuantities.compareTo(totalQty)!=0) {
-                        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
-                        System.out.println("totalQty = "+totalQty);
-                //                System.out.println("currRowIndex = "+currVO.getC);
-                        String message = "Sum of Grade Quantities must be equal to Total Quantity";
-                        showMessage(message,112);
-                        isValid = false;
-                        break;
-                    }
+        Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming")!=null?currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString():"0.0");
+        Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY")!=null?currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString():"0.0");
+        if (sumTotalQtyValue.compareTo(qtyReceivedLooming)==1)
+            showMessage("Sum of Total Quantities cannot exceed Quantity Received for Looming", 112);
+        else {
+            RowSetIterator rsi = currLinesVO.createRowSetIterator(null);
+            boolean isValid = true;
+            while(rsi.next()!=null) {
+            currRow = rsi.getCurrentRow();
+            Double totalQty = Double.parseDouble(currRow.getAttribute("TotalQuantity")!=null?currRow.getAttribute("TotalQuantity").toString():"0.0");
+            Double gradeAQty = Double.parseDouble(currRow.getAttribute("Gradea")!=null?currRow.getAttribute("Gradea").toString():"0.0");
+            Double gradeBQty = Double.parseDouble(currRow.getAttribute("Gradeb")!=null?currRow.getAttribute("Gradeb").toString():"0.0");
+            Double gradeCQty = Double.parseDouble(currRow.getAttribute("Gradec")!=null?currRow.getAttribute("Gradec").toString():"0.0");
+            Double gradeD0to1Qty = Double.parseDouble(currRow.getAttribute("Attribute1")!=null?currRow.getAttribute("Attribute1").toString():"0.0");
+            Double gradeD1to5Qty = Double.parseDouble(currRow.getAttribute("Attribute2")!=null?currRow.getAttribute("Attribute2").toString():"0.0");
+            Double gradeD6to19Qty = Double.parseDouble(currRow.getAttribute("Attribute3")!=null?currRow.getAttribute("Attribute3").toString():"0.0");
+            Double gradeD20AboveQty = Double.parseDouble(currRow.getAttribute("Attribute4")!=null?currRow.getAttribute("Attribute4").toString():"0.0");
+            Double totalGradeQuantities = gradeAQty + gradeBQty + gradeCQty + gradeD0to1Qty + gradeD1to5Qty + gradeD6to19Qty + gradeD20AboveQty;
+            //        System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+                if (totalGradeQuantities.compareTo(totalQty)!=0) {
+                    System.out.println("totalGradeQuantities = "+totalGradeQuantities);
+                    System.out.println("totalQty = "+totalQty);
+            //                System.out.println("currRowIndex = "+currVO.getC);
+                    String message = "Sum of Grade Quantities must be equal to Total Quantity";
+                    showMessage(message,112);
+                    isValid = false;
+                    break;
                 }
-                if (isValid)
-                    am.getTransaction().commit();
-                rsi.closeRowSetIterator();
             }
+            if (isValid)
+                am.getTransaction().commit();
+            rsi.closeRowSetIterator();
         }
     }
 
@@ -200,43 +194,25 @@ public class ManagedBean {
         ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         Row currRow = currHeadersVO.getCurrentRow();
         String jobId = currRow.getAttribute("JobId").toString();
-        if (jobExists(jobId)) {
-            showMessage("Job already used", 112);
+        String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
+            ",?" +
+            ",?" +
+            ",?" +
+            ",?" +          
+            ",?)";
+        BindingContainer bindings = getBindingsCont();
+        OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
+        Map params =  operationBinding.getParamsMap();
+        params.put("sqlReturnType", Types.VARCHAR);
+        params.put("stmt", stmt);
+        String result =(String) operationBinding.execute();
+            System.out.println("result = "+result);
+        if (result != null) {
+            if (result.equals("SUCCESSFUL"))
+                showMessage(result+"", 111);
+            else
+                showMessage(result+"", 112);
         }
-        else
-        {
-                String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
-                ",?" +
-                ",?" +
-                ",?" +
-                ",?" +          
-                ",?)";
-            BindingContainer bindings = getBindingsCont();
-            OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
-            Map params =  operationBinding.getParamsMap();
-            params.put("sqlReturnType", Types.VARCHAR);
-            params.put("stmt", stmt);
-            String result =(String) operationBinding.execute();
-                System.out.println("result = "+result);
-            if (result != null) {
-                if (result.equals("SUCCESSFUL"))
-                    showMessage(result+"", 111);
-                else
-                    showMessage(result+"", 112);
-            }
-        }
-    }
-    
-    public boolean jobExists(String jobId) {
-        ApplicationModuleImpl am = getApplicationModule();
-        ViewObject existingJobsVO = am.findViewObject("PwcOdmWeavingExistingJobsVO1");
-        RowSetIterator rsi = existingJobsVO.createRowSetIterator(null);
-        while (rsi.next()!=null) {
-            if (rsi.getCurrentRow().getAttribute("JobId").toString().equals(jobId)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public void setJobLov(RichInputListOfValues jobLov) {
