@@ -373,6 +373,28 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
             }
         }
         ,
+        JobId {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getJobId();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setJobId((BigDecimal)value);
+            }
+        }
+        ,
+        Jobsearch {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getJobsearch();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setJobsearch((String)value);
+            }
+        }
+        ,
         SUMTOTQTY {
             public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
                 return obj.getSUMTOTQTY();
@@ -439,39 +461,6 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
             }
         }
         ,
-        SumGradeD0to1 {
-            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
-                return obj.getSumGradeD0to1();
-            }
-
-            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
-                            Object value) {
-                obj.setSumGradeD0to1((Number)value);
-            }
-        }
-        ,
-        SumGradeD1to5 {
-            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
-                return obj.getSumGradeD1to5();
-            }
-
-            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
-                            Object value) {
-                obj.setSumGradeD1to5((Number)value);
-            }
-        }
-        ,
-        SumGradeD6to19 {
-            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
-                return obj.getSumGradeD6to19();
-            }
-
-            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
-                            Object value) {
-                obj.setSumGradeD6to19((Number)value);
-            }
-        }
-        ,
         SalesOrderGdNo {
             public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
                 return obj.getSalesOrderGdNo();
@@ -483,14 +472,36 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
             }
         }
         ,
-        JobId {
+        SumGradeD0to1 {
             public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
-                return obj.getJobId();
+                return obj.getSumGradeD0to1();
             }
 
             public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
                             Object value) {
-                obj.setJobId((BigDecimal)value);
+                obj.setSumGradeD0to1((String)value);
+            }
+        }
+        ,
+        SumGradeD1to5 {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getSumGradeD1to5();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setSumGradeD1to5((String)value);
+            }
+        }
+        ,
+        SumGradeD6to19 {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getSumGradeD6to19();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setSumGradeD6to19((String)value);
             }
         }
         ,
@@ -541,6 +552,17 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
         PwcOdmGradingWeavingHeadersJob1 {
             public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
                 return obj.getPwcOdmGradingWeavingHeadersJob1();
+            }
+
+            public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
+                            Object value) {
+                obj.setAttributeInternal(index(), value);
+            }
+        }
+        ,
+        PwcOdmGradingWeavingJobSearch1 {
+            public Object get(PwcOdmGradingWeavingHeadersVORowImpl obj) {
+                return obj.getPwcOdmGradingWeavingJobSearch1();
             }
 
             public void put(PwcOdmGradingWeavingHeadersVORowImpl obj,
@@ -610,22 +632,24 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
     public static final int QTYRECEIVEDLOOMING = AttributesEnum.QtyReceivedLooming.index();
     public static final int SALESORDERNUMBER = AttributesEnum.SalesOrderNumber.index();
     public static final int SALESORDERHEADERID = AttributesEnum.SalesOrderHeaderId.index();
+    public static final int JOBID = AttributesEnum.JobId.index();
+    public static final int JOBSEARCH = AttributesEnum.Jobsearch.index();
     public static final int SUMTOTQTY = AttributesEnum.SUMTOTQTY.index();
     public static final int SUMGRADEA = AttributesEnum.SumGradea.index();
     public static final int SUMGRADEB = AttributesEnum.SumGradeb.index();
     public static final int SUMGRADEC = AttributesEnum.SumGradec.index();
     public static final int SUMGRADED = AttributesEnum.SumGraded.index();
     public static final int SUMGRADED20ABOVE = AttributesEnum.SumGradeD20Above.index();
+    public static final int SALESORDERGDNO = AttributesEnum.SalesOrderGdNo.index();
     public static final int SUMGRADED0TO1 = AttributesEnum.SumGradeD0to1.index();
     public static final int SUMGRADED1TO5 = AttributesEnum.SumGradeD1to5.index();
     public static final int SUMGRADED6TO19 = AttributesEnum.SumGradeD6to19.index();
-    public static final int SALESORDERGDNO = AttributesEnum.SalesOrderGdNo.index();
-    public static final int JOBID = AttributesEnum.JobId.index();
     public static final int PWCODMGRADINGWAVEINGLINESVO = AttributesEnum.PwcOdmGradingWaveingLinesVO.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSGDNO1 = AttributesEnum.PwcOdmGradingWeavingHeadersGdNo1.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSSALEORDERNO1 = AttributesEnum.PwcOdmGradingWeavingHeadersSaleOrderNo1.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSITEMCODE1 = AttributesEnum.PwcOdmGradingWeavingHeadersItemCode1.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSJOB1 = AttributesEnum.PwcOdmGradingWeavingHeadersJob1.index();
+    public static final int PWCODMGRADINGWEAVINGJOBSEARCH1 = AttributesEnum.PwcOdmGradingWeavingJobSearch1.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -1249,19 +1273,20 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
         setAttributeInternal(SUMGRADED20ABOVE, value);
     }
 
+
     /**
      * Gets the attribute value for the calculated attribute SumGradeD0to1.
      * @return the SumGradeD0to1
      */
-    public Number getSumGradeD0to1() {
-        return (Number)getAttributeInternal(SUMGRADED0TO1);
+    public String getSumGradeD0to1() {
+        return (String)getAttributeInternal(SUMGRADED0TO1);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for the calculated attribute SumGradeD0to1.
      * @param value value to set the  SumGradeD0to1
      */
-    public void setSumGradeD0to1(Number value) {
+    public void setSumGradeD0to1(String value) {
         setAttributeInternal(SUMGRADED0TO1, value);
     }
 
@@ -1269,15 +1294,15 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
      * Gets the attribute value for the calculated attribute SumGradeD1to5.
      * @return the SumGradeD1to5
      */
-    public Number getSumGradeD1to5() {
-        return (Number)getAttributeInternal(SUMGRADED1TO5);
+    public String getSumGradeD1to5() {
+        return (String)getAttributeInternal(SUMGRADED1TO5);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for the calculated attribute SumGradeD1to5.
      * @param value value to set the  SumGradeD1to5
      */
-    public void setSumGradeD1to5(Number value) {
+    public void setSumGradeD1to5(String value) {
         setAttributeInternal(SUMGRADED1TO5, value);
     }
 
@@ -1285,15 +1310,15 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
      * Gets the attribute value for the calculated attribute SumGradeD6to19.
      * @return the SumGradeD6to19
      */
-    public Number getSumGradeD6to19() {
-        return (Number)getAttributeInternal(SUMGRADED6TO19);
+    public String getSumGradeD6to19() {
+        return (String)getAttributeInternal(SUMGRADED6TO19);
     }
 
     /**
      * Sets <code>value</code> as the attribute value for the calculated attribute SumGradeD6to19.
      * @param value value to set the  SumGradeD6to19
      */
-    public void setSumGradeD6to19(Number value) {
+    public void setSumGradeD6to19(String value) {
         setAttributeInternal(SUMGRADED6TO19, value);
     }
 
@@ -1329,6 +1354,24 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
         setAttributeInternal(JOBID, value);
     }
 
+
+    /**
+     * Gets the attribute value for the calculated attribute Jobsearch.
+     * @return the Jobsearch
+     */
+    public String getJobsearch() {
+        return (String) getAttributeInternal(JOBSEARCH);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute Jobsearch.
+     * @param value value to set the  Jobsearch
+     */
+    public void setJobsearch(String value) {
+        setAttributeInternal(JOBSEARCH, value);
+    }
+
+
     /**
      * Gets the associated <code>RowIterator</code> using master-detail link PwcOdmGradingWaveingLinesVO.
      */
@@ -1362,6 +1405,13 @@ public class PwcOdmGradingWeavingHeadersVORowImpl extends ViewRowImpl {
      */
     public RowSet getPwcOdmGradingWeavingHeadersJob1() {
         return (RowSet)getAttributeInternal(PWCODMGRADINGWEAVINGHEADERSJOB1);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> PwcOdmGradingWeavingJobSearch1.
+     */
+    public RowSet getPwcOdmGradingWeavingJobSearch1() {
+        return (RowSet)getAttributeInternal(PWCODMGRADINGWEAVINGJOBSEARCH1);
     }
 
     /**

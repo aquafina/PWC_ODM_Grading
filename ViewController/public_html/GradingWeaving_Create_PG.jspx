@@ -77,7 +77,8 @@
                                   required="true"
                                   columns="#{bindings.Job.hints.displayWidth}"
                                   shortDesc="#{bindings.Job.hints.tooltip}"
-                                  autoSubmit="true" showRequired="true">
+                                  showRequired="true" autoSubmit="true"
+                                  binding="#{ManagedBean.jobLov}">
               <f:validator binding="#{bindings.Job.validator}"/>
             </af:inputListOfValues>
             <af:inputText value="#{bindings.JobQuantity.inputValue}"
@@ -127,11 +128,6 @@
                                 text="Insert" id="cb3"/>
               <af:commandButton actionListener="#{ManagedBean.deleteSelectedRows}"
                                 text="Delete  " id="cb4"/>
-              <af:commandButton actionListener="#{bindings.Rollback.execute}"
-                                text=" Back    "
-                                immediate="true" id="cb2" action="To Search">
-                <af:resetActionListener/>
-              </af:commandButton>
               <af:commandButton text="Complete" id="cb5"
                                 actionListener="#{ManagedBean.completeJobAPIActionListener}"/>
               <af:commandButton text="Return   " id="cb6"/>

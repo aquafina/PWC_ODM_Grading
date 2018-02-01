@@ -60,13 +60,8 @@
   </Properties>
   <ViewAccessor
     Name="PwcOdmGradingWeavingLinesMachineNo1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1">
-    <ParameterMap>
-      <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
-      </PIMap>
-    </ParameterMap>
-  </ViewAccessor>
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_MachineNumber"
     ListVOName="PwcOdmGradingWeavingLinesMachineNo1"

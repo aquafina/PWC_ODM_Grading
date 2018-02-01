@@ -55,7 +55,7 @@
   </Variable>
   <ViewAccessor
     Name="PwcOdmGradingWeavingJobNames1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobNames"
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch"
     RowLevelBinds="true"/>
   <SQLQuery>
     <![CDATA[select  we.WIP_ENTITY_ID,
@@ -83,10 +83,9 @@ and mmt.ORGANIZATION_ID = msi.ORGANIZATION_ID
 and wdj.ATTRIBUTE12 = to_char(ooha.header_id(+)) 
 and wdj.ATTRIBUTE11 = nvl(:p_gd_no,wdj.ATTRIBUTE11)
 and ooha.ORDER_NUMBER = nvl(:p_sales_order,ooha.ORDER_NUMBER)
-and msi.ORGANIZATION_ID = nvl(:p_org_id,msi.ORGANIZATION_ID)         
-and we.WIP_ENTITY_ID not in(select job_id from PWC_ODM_GRADING_WeavING_hdrs)
-group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIBUTE11,wdj.ATTRIBUTE12,ooha.ORDER_NUMBER,msi.inventory_item_id,we.WIP_ENTITY_ID
-ORDER BY 3]]>
+and msi.ORGANIZATION_ID = nvl(:p_org_id,msi.ORGANIZATION_ID)
+and we.WIP_ENTITY_ID not in (select job_id from PWC_ODM_GRADING_WeavING_hdrs)
+group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIBUTE11,wdj.ATTRIBUTE12,ooha.ORDER_NUMBER,msi.inventory_item_id,we.WIP_ENTITY_ID]]>
   </SQLQuery>
   <ViewAttribute
     Name="WipEntityId"
@@ -102,6 +101,12 @@ ORDER BY 3]]>
     <DesignTime>
       <Attr Name="_DisplaySize" Value="22"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="WipEntityName"
@@ -189,6 +194,8 @@ ORDER BY 3]]>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.Description_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -227,6 +234,12 @@ ORDER BY 3]]>
     <DesignTime>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CATEGORY
+          Value="Order Number"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="JobQuantity"
@@ -247,6 +260,8 @@ ORDER BY 3]]>
           ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.JobQuantity_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <DISPLAYHINT
+          Value="Display"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -269,6 +284,8 @@ ORDER BY 3]]>
           ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.StitchingQuantity_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <DISPLAYHINT
+          Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

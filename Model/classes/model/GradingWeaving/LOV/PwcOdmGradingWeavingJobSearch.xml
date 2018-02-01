@@ -3,23 +3,38 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="PwcOdmGradingWeavingHeadersJob"
+  Name="PwcOdmGradingWeavingJobSearch"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
-  OrderBy="3"
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  UseGlueCode="false">
+  UseGlueCode="false"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20"
+  RangeSize="21">
   <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
     <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
   <Properties>
     <SchemaBasedProperties>
       <LABEL
-        ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob_LABEL"/>
+        ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+  </Variable>
   <Variable
     Name="p_gd_no"
     Kind="where"
@@ -42,21 +57,6 @@
       </SchemaBasedProperties>
     </Properties>
   </Variable>
-  <Variable
-    Name="p_org_id"
-    Kind="where"
-    Type="java.lang.String">
-    <Properties>
-      <SchemaBasedProperties>
-        <DISPLAYHINT
-          Value="Hide"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </Variable>
-  <ViewAccessor
-    Name="PwcOdmGradingWeavingJobNames1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch"
-    RowLevelBinds="true"/>
   <SQLQuery>
     <![CDATA[select  we.WIP_ENTITY_ID,
         we.WIP_ENTITY_NAME
@@ -84,7 +84,6 @@ and wdj.ATTRIBUTE12 = to_char(ooha.header_id(+))
 and wdj.ATTRIBUTE11 = nvl(:p_gd_no,wdj.ATTRIBUTE11)
 and ooha.ORDER_NUMBER = nvl(:p_sales_order,ooha.ORDER_NUMBER)
 and msi.ORGANIZATION_ID = nvl(:p_org_id,msi.ORGANIZATION_ID)
-and we.WIP_ENTITY_ID not in (select job_id from PWC_ODM_GRADING_WeavING_hdrs)
 group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIBUTE11,wdj.ATTRIBUTE12,ooha.ORDER_NUMBER,msi.inventory_item_id,we.WIP_ENTITY_ID]]>
   </SQLQuery>
   <ViewAttribute
@@ -99,7 +98,7 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     Expression="WIP_ENTITY_ID"
     SQLType="NUMERIC">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
@@ -114,9 +113,8 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     IsPersistent="false"
     IsNotNull="true"
     PrecisionRule="true"
-    Precision="240"
     Type="java.lang.String"
-    ColumnType="VARCHAR2"
+    ColumnType="CHAR"
     AliasName="WIP_ENTITY_NAME"
     Expression="WIP_ENTITY_NAME"
     SQLType="VARCHAR">
@@ -125,10 +123,10 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.WipEntityName_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch.WipEntityName_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -144,7 +142,7 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     Expression="ITEM_ID"
     SQLType="NUMERIC">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
@@ -169,10 +167,10 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.ConcatenatedSegments_LABEL"/>
         <DISPLAYWIDTH
           Value="30"/>
+        <LABEL
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch.ConcatenatedSegments_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -195,7 +193,7 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
         <DISPLAYWIDTH
           Value="30"/>
         <LABEL
-          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.Description_LABEL"/>
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch.Description_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -215,6 +213,8 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
+        <LABEL
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch.Attribute11_LABEL"/>
         <DISPLAYHINT
           Value="Hide"/>
       </SchemaBasedProperties>
@@ -236,8 +236,8 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <CATEGORY
-          Value="Order Number"/>
+        <DISPLAYHINT
+          Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -246,22 +246,18 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
+    Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     AliasName="JOB_QUANTITY"
     Expression="JOB_QUANTITY"
     SQLType="NUMERIC">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.JobQuantity_LABEL"/>
-        <DISPLAYWIDTH
-          Value="30"/>
         <DISPLAYHINT
-          Value="Display"/>
+          Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -270,27 +266,23 @@ group by we.WIP_ENTITY_NAME,msi.concatenated_segments,msi.DESCRIPTION,wdj.ATTRIB
     IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
+    Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     AliasName="STITCHING_QUANTITY"
     Expression="STITCHING_QUANTITY"
     SQLType="NUMERIC">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="22"/>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
     <Properties>
       <SchemaBasedProperties>
-        <LABEL
-          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersJob.StitchingQuantity_LABEL"/>
-        <DISPLAYWIDTH
-          Value="30"/>
         <DISPLAYHINT
           Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
-    <Item Value="WipEntityName"/>
+    <Item Value="WipEntityId"/>
   </AttrArray>
   <ResourceBundle>
     <PropertiesBundle

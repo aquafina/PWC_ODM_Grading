@@ -26,15 +26,36 @@
   <Variable
     Name="P_GD_NUMBER"
     Kind="viewcriteria"
-    Type="java.lang.String"/>
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <Variable
     Name="P_SALES_ORDER_NO"
     Kind="viewcriteria"
-    Type="java.lang.String"/>
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <Variable
     Name="P_JOB_NO"
     Kind="viewcriteria"
-    Type="java.lang.String"/>
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <Variable
     Name="p_org_id"
     Kind="where"
@@ -89,6 +110,21 @@
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
+  <ViewAccessor
+    Name="PwcOdmGradingWeavingJobSearch1"
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch">
+    <ParameterMap>
+      <PIMap Variable="p_org_id">
+        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_gd_no">
+        <TransientExpression><![CDATA[GdNo]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_sales_order">
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
   <ListBinding
     Name="PWC_ODM_REP_GDNO_LOV"
     ListVOName="PwcOdmGradingWeavingHeadersGdNo1"
@@ -132,11 +168,11 @@
       Hint="showAndExecute"/>
   </ListBinding>
   <ListBinding
-    Name="PWC_ODM_REP_JOB_LOV"
+    Name="PWC_ODM_JOB_LOV_CREATE"
     ListVOName="PwcOdmGradingWeavingHeadersJob1"
     ListRangeSize="10"
     NullValueFlag="none"
-    NullValueId="PWC_ODM_REP_JOB_LOV_LOVUIHints_NullValueId"
+    NullValueId="PWC_ODM_JOB_LOV_CREATE_LOVUIHints_NullValueId"
     MRUCount="0">
     <AttrArray Name="AttrNames">
       <Item Value="Job"/>
@@ -195,6 +231,27 @@
     <DisplayCriteria
       Hint="showAndExecute"/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_Jobsearch"
+    ListVOName="PwcOdmGradingWeavingJobSearch1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Jobsearch_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobsearch"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="WipEntityName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="WipEntityName"/>
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
   <SQLQuery>
     <![CDATA[SELECT PwcOdmGradingWeavingHeadersE1.ATTRIBUTE1, 
        PwcOdmGradingWeavingHeadersE1.ATTRIBUTE10, 
@@ -228,7 +285,8 @@
        PwcOdmGradingWeavingHeadersE1.QTY_RECEIVED_LOOMING, 
        PwcOdmGradingWeavingHeadersE1.SALES_ORDER_NUMBER, 
        PwcOdmGradingWeavingHeadersE1.SALES_ORDER_HEADER_ID,
-       PwcOdmGradingWeavingHeadersE1.JOB_ID
+       PwcOdmGradingWeavingHeadersE1.JOB_ID,
+        PwcOdmGradingWeavingHeadersE1.JOB jobSearch  
 FROM PWC_ODM_GRADING_WEAVING_HDRS PwcOdmGradingWeavingHeadersE1
 where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingHeadersE1.ORG_ID)]]>
   </SQLQuery>
@@ -423,7 +481,7 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     EntityAttrName="Job"
     EntityUsage="PwcOdmGradingWeavingHeadersE1"
     AliasName="JOB"
-    LOVName="PWC_ODM_REP_JOB_LOV">
+    LOVName="PWC_ODM_JOB_LOV_CREATE">
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
@@ -498,6 +556,8 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
           Value="30"/>
         <CONTROLTYPE
           Value="input_text_lov"/>
+        <LABEL
+          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.SalesOrderNumber_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -507,6 +567,38 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     EntityAttrName="SalesOrderHeaderId"
     EntityUsage="PwcOdmGradingWeavingHeadersE1"
     AliasName="SALES_ORDER_HEADER_ID"/>
+  <ViewAttribute
+    Name="JobId"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="PwcOdmGradingWeavingHeadersE1"
+    AliasName="JOB_ID"/>
+  <ViewAttribute
+    Name="Jobsearch"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOBSEARCH"
+    Expression="JOBSEARCH"
+    SQLType="VARCHAR"
+    LOVName="LOV_Jobsearch">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.Jobsearch_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="SUMTOTQTY"
     IsSelected="false"
@@ -575,11 +667,20 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute4")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
+    Name="SalesOrderGdNo"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
     Name="SumGradeD0to1"
     IsSelected="false"
     IsPersistent="false"
     PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
+    Type="java.lang.String"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
@@ -590,11 +691,10 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     IsSelected="false"
     IsPersistent="false"
     PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
+    Type="java.lang.String"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"
-    Passivate="true">
+    SQLType="VARCHAR">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute2")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
@@ -602,27 +702,12 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     IsSelected="false"
     IsPersistent="false"
     PrecisionRule="true"
-    Type="oracle.jbo.domain.Number"
+    Type="java.lang.String"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
     <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Attribute3")]]></TransientExpression>
   </ViewAttribute>
-  <ViewAttribute
-    Name="SalesOrderGdNo"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
-  <ViewAttribute
-    Name="JobId"
-    PrecisionRule="true"
-    EntityAttrName="JobId"
-    EntityUsage="PwcOdmGradingWeavingHeadersE1"
-    AliasName="JOB_ID"/>
   <ViewCriteria
     Name="PwcOdmGradingWeavingHeadersVOCriteria"
     ViewObjectName="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO"
@@ -710,19 +795,19 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
         IsBindVarValue="true"
         Required="Optional"/>
       <ViewCriteriaItem
-        Name="Job"
-        ViewAttribute="Job"
-        Operator="="
-        Conjunction="OR"
-        Value=":P_JOB_NO"
-        IsBindVarValue="true"
-        Required="Optional"/>
-      <ViewCriteriaItem
         Name="SalesOrderNumber"
         ViewAttribute="SalesOrderNumber"
         Operator="="
         Conjunction="OR"
         Value=":P_SALES_ORDER_NO"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Jobsearch"
+        ViewAttribute="Jobsearch"
+        Operator="="
+        Conjunction="OR"
+        Value=":P_JOB_NO"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>

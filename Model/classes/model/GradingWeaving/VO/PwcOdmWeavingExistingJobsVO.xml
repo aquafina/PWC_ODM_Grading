@@ -3,42 +3,37 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="PwcOdmGradingWeavingJobNames"
+  Name="PwcOdmWeavingExistingJobsVO"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
   BindingStyle="OracleName"
   CustomQuery="true"
   PageIterMode="Full"
-  UseGlueCode="false"
-  FetchMode="FETCH_AS_NEEDED"
-  FetchSize="20"
-  RangeSize="21">
+  UseGlueCode="false">
   <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
     <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
   <Properties>
     <SchemaBasedProperties>
       <LABEL
-        ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobNames_LABEL"/>
+        ResId="model.GradingWeaving.VO.PwcOdmWeavingExistingJobsVO_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
   <SQLQuery>
-    <![CDATA[select  wip_entity_name from wip_entities we]]>
+    <![CDATA[select job_id from PWC_ODM_GRADING_WeavING_hdrs]]>
   </SQLQuery>
   <ViewAttribute
-    Name="WipEntityName"
+    Name="JobId"
     IsUpdateable="false"
     IsPersistent="false"
-    IsNotNull="true"
     PrecisionRule="true"
-    Type="java.lang.String"
-    ColumnType="CHAR"
-    AliasName="WIP_ENTITY_NAME"
-    Expression="WIP_ENTITY_NAME"
-    SQLType="VARCHAR">
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="JOB_ID"
+    Expression="JOB_ID"
+    SQLType="NUMERIC">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="240"/>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
   </ViewAttribute>
   <ResourceBundle>

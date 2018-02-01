@@ -7,8 +7,7 @@
     <variableIterator id="variables"/>
     <iterator Binds="PwcOdmGradingWeavingHeadersVO1" RangeSize="25"
               DataControl="PwcOdmGradingWeavingAMDataControl"
-              id="PwcOdmGradingWeavingHeadersVO1Iterator"
-              RefreshCondition="#{!adfFacesContext.initialRender}"/>
+              id="PwcOdmGradingWeavingHeadersVO1Iterator"/>
     <iterator Binds="PwcOdmGradingWaveingLinesVO1" RangeSize="25"
               DataControl="PwcOdmGradingWeavingAMDataControl"
               id="PwcOdmGradingWaveingLinesVO1Iterator"/>
@@ -44,14 +43,8 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <action id="Rollback" RequiresUpdateModel="false"
-            Action="rollbackTransaction"
-            DataControl="PwcOdmGradingWeavingAMDataControl"/>
     <action IterBinding="PwcOdmGradingWaveingLinesVO1Iterator" id="CreateInsert"
             RequiresUpdateModel="true" Action="createInsertRow"/>
-    <listOfValues StaticList="false"
-                  IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
-                  Uses="PWC_ODM_REP_JOB_LOV" id="Job"/>
     <listOfValues StaticList="false"
                   IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
                   Uses="PWC_ODM_REP_GDNO_LOV" id="GdNo"/>
@@ -202,5 +195,8 @@
       <NamedData NDName="sqlReturnType" NDType="int"/>
       <NamedData NDName="stmt" NDType="java.lang.String"/>
     </methodAction>
+    <listOfValues StaticList="false"
+                  IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
+                  Uses="PWC_ODM_JOB_LOV_CREATE" id="Job"/>
   </bindings>
 </pageDefinition>
