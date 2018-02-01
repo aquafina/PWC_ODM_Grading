@@ -36,11 +36,12 @@
     </Properties>
   </Variable>
   <SQLQuery>
-    <![CDATA[select ooha.HEADER_ID, ooha.ORDER_NUMBER, oola.ATTRIBUTE1 Sales_Order_Gd_No
- from oe_order_headers_all ooha, oe_order_lines_all oola 
+    <![CDATA[select distinct ooha.HEADER_ID, ooha.ORDER_NUMBER, party.PARTY_NAME, oola.ATTRIBUTE1 Sales_Order_Gd_No
+ from oe_order_headers_all ooha, oe_order_lines_all oola,hz_parties party,hz_cust_accounts cust_acct
  where ooha.HEADER_ID = oola.HEADER_ID
- and oola.ATTRIBUTE1 = nvl(:p_gd_no,oola.ATTRIBUTE1)
-ORDER BY 1]]>
+ AND ooha.sold_to_org_id = cust_acct.cust_account_id(+)
+ AND cust_acct.party_id = party.party_id(+)
+ and oola.ATTRIBUTE1 = nvl(:p_gd_no,oola.ATTRIBUTE1)]]>
   </SQLQuery>
   <ViewAttribute
     Name="HeaderId"
@@ -85,6 +86,29 @@ ORDER BY 1]]>
     </Properties>
   </ViewAttribute>
   <ViewAttribute
+    Name="PartyName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="360"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTY_NAME"
+    Expression="PARTY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="360"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersSaleOrderNo.PartyName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
     Name="Salesordergdno"
     IsUpdateable="false"
     IsPersistent="false"
@@ -102,6 +126,8 @@ ORDER BY 1]]>
       <SchemaBasedProperties>
         <DISPLAYHINT
           Value="Hide"/>
+        <LABEL
+          ResId="model.GradingWeaving.LOV.PwcOdmGradingWeavingHeadersSaleOrderNo.Salesordergdno_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

@@ -227,6 +227,8 @@
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="OrderNumber"/>
+      <Item Value="PartyName"/>
+      <Item Value="Salesordergdno"/>
     </AttrArray>
     <DisplayCriteria
       Hint="showAndExecute"/>
@@ -554,10 +556,10 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
       <SchemaBasedProperties>
         <DISPLAYWIDTH
           Value="30"/>
-        <CONTROLTYPE
-          Value="input_text_lov"/>
         <LABEL
           ResId="model.GradingWeaving.VO.PwcOdmGradingWeavingHeadersVO.SalesOrderNumber_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
