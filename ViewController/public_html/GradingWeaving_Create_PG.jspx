@@ -146,7 +146,7 @@
                     selectedRowKeys="#{bindings.PwcOdmGradingWaveingLinesVO1.collectionModel.selectedRow}"
                     selectionListener="#{bindings.PwcOdmGradingWaveingLinesVO1.collectionModel.makeCurrent}"
                     rowSelection="single" id="t1"
-                    partialTriggers="::cb3 ::cb4"
+                    partialTriggers="::cb3 ::cb4 :::qryId1"
                     styleClass="width:100%;">
             <af:column
                        id="c9" align="center" width="53">

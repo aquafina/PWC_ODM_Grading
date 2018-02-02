@@ -147,13 +147,14 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
          ViewObject gradingWaveingLinesVO = this.getPwcOdmGradingWaveingLinesVO1();
          Row currRow = gradingWaveingLinesVO.getCurrentRow();
          cst.setInt(1,Integer.parseInt(currRow.getAttribute("GdId").toString()));
+         cst.setInt(2,Integer.parseInt(currRow.getAttribute("LineId").toString()));
          System.out.println("Gd id = "+Integer.parseInt(currRow.getAttribute("GdId").toString()));
-         cst.setInt(2,Integer.parseInt(currRow.getAttribute("OrgId").toString()));
+         cst.setInt(3,Integer.parseInt(currRow.getAttribute("OrgId").toString()));
          System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("OrgId").toString()));
-         cst.setInt(3,1110);
+         cst.setInt(4,1110);
          System.out.println("user id = "+1110);
-         cst.setInt(4,resp_id);
-         cst.setInt(5,222);
+         cst.setInt(5,resp_id);
+         cst.setInt(6,222);
          System.out.println("resp appl id = "+222);
          cst.registerOutParameter(6, sqlReturnType);
          cst.execute();
