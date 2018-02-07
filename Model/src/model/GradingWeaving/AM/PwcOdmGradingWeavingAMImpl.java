@@ -129,39 +129,39 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
         ADFContext.getCurrent().getSessionScope().put("org_id", orgId);
         ADFContext.getCurrent().getSessionScope().put("resp_id", respId);
         ADFContext.getCurrent().getSessionScope().put("resp_appl_id", respAppl);
+        System.out.println("respAppl = "+respAppl);
         ADFContext.getCurrent().getSessionScope().put("mfg_org_id", mfgOrgId);
     }
  // End of AM
     
- public String callJobCompleteProc(int sqlReturnType, String stmt){
+ /*public String callJobCompleteProc(int sqlReturnType, String stmt){
      System.out.println(sqlReturnType+ " "+stmt);
      CallableStatement cst = null;
      String status = null;
      int user_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("user_id")!=null?ADFContext.getCurrent().getSessionScope().get("user_id").toString():"0");
      int resp_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("resp_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_id").toString():"0");
-     String resp_appl_id = ADFContext.getCurrent().getSessionScope().get("resp_appl_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_appl_id").toString():"0";
+     int resp_appl_id = Integer.parseInt(ADFContext.getCurrent().getSessionScope().get("resp_appl_id")!=null?ADFContext.getCurrent().getSessionScope().get("resp_appl_id").toString():"0");
      System.out.println("resp_appl_id = "+ADFContext.getCurrent().getSessionScope().get("resp_appl_id"));
      try {
          cst = this.getDBTransaction().createCallableStatement("{CALL " + stmt + " }", 0);
          //Pass input parameters value
          ViewObject gradingWaveingLinesVO = this.getPwcOdmGradingWaveingLinesVO1();
          Row currRow = gradingWaveingLinesVO.getCurrentRow();
-         cst.setInt(1,Integer.parseInt(currRow.getAttribute("GdId").toString()));
-         cst.setInt(2,Integer.parseInt(currRow.getAttribute("LineId").toString()));
+         cst.setInt(1,Integer.parseInt(currRow.getAttribute("GdId")!=null?currRow.getAttribute("GdId").toString():"0"));
          System.out.println("Gd id = "+Integer.parseInt(currRow.getAttribute("GdId").toString()));
-         cst.setInt(3,Integer.parseInt(currRow.getAttribute("OrgId").toString()));
+         cst.setInt(2,Integer.parseInt(currRow.getAttribute("LineId")!=null?currRow.getAttribute("LineId").toString():"0"));
+         System.out.println("Line id = "+Integer.parseInt(currRow.getAttribute("LineId").toString()));
+         cst.setInt(3,Integer.parseInt(currRow.getAttribute("OrgId")!=null?currRow.getAttribute("OrgId").toString():"0"));
          System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("OrgId").toString()));
          cst.setInt(4,1110);
          System.out.println("user id = "+1110);
          cst.setInt(5,resp_id);
-         cst.setInt(6,222);
-         System.out.println("resp appl id = "+222);
-         cst.registerOutParameter(6, sqlReturnType);
+         System.out.println("resp id = "+resp_id);
+         cst.setInt(6,resp_appl_id);
+         System.out.println("resp appl id = "+resp_appl_id);
+         cst.registerOutParameter(7, sqlReturnType);
          cst.execute();
-         //Finally get returned value
-         status = cst.getString(6);
-         //System.out.println("Receipt status: "+currRow.getAttribute("ReceiptStatus"));
-         //getDBTransaction().commit();
+         status = cst.getString(7);
      } catch (SQLException e) {
          throw new JboException(e.getMessage());
      } finally {
@@ -175,7 +175,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
      }
      return status;
 //     return "";
- }
+ }*/
 
     /**
      * Container's getter for PwcOdmWeavingExistingJobsVO1.

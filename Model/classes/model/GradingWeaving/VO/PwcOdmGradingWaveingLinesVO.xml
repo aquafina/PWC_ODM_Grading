@@ -7,10 +7,61 @@
   Version="11.1.1.64.93"
   InheritPersonalization="true"
   BindingStyle="OracleName"
-  CustomQuery="false"
+  CustomQuery="true"
   PageIterMode="Full"
   UseGlueCode="false"
-  SelectList="PwcOdmGradingWaveingLinesEO.LINE_ID, 
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20"
+  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVOImpl"
+  RowClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVORowImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_org_id"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+  </Variable>
+  <ViewAccessor
+    Name="PwcOdmGradingWeavingLinesMachineNo1"
+    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_MachineNumber"
+    ListVOName="PwcOdmGradingWeavingLinesMachineNo1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_MachineNumber_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="MachineNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SerialNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SerialNumber"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT PwcOdmGradingWaveingLinesEO.LINE_ID, 
        PwcOdmGradingWaveingLinesEO.MACHINE_NUMBER, 
        PwcOdmGradingWaveingLinesEO.ROLL_NUMBER, 
        PwcOdmGradingWaveingLinesEO.TOTAL_QUANTITY, 
@@ -42,45 +93,10 @@
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_DATE, 
        PwcOdmGradingWaveingLinesEO.LAST_UPDATED_LOGIN, 
        PwcOdmGradingWaveingLinesEO.RETRUN_FLAG, 
-       PwcOdmGradingWaveingLinesEO.REQUEST_STATUS"
-  FromList="PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO"
-  FetchMode="FETCH_AS_NEEDED"
-  FetchSize="20"
-  ComponentClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVOImpl"
-  RowClass="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVORowImpl">
-  <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
-    <Attr Name="_isCodegen" Value="true"/>
-  </DesignTime>
-  <Properties>
-    <SchemaBasedProperties>
-      <LABEL
-        ResId="model.GradingWeaving.VO.PwcOdmGradingWaveingLinesVO_LABEL"/>
-    </SchemaBasedProperties>
-  </Properties>
-  <ViewAccessor
-    Name="PwcOdmGradingWeavingLinesMachineNo1"
-    ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingLinesMachineNo1"
-    RowLevelBinds="true"/>
-  <ListBinding
-    Name="LOV_MachineNumber"
-    ListVOName="PwcOdmGradingWeavingLinesMachineNo1"
-    ListRangeSize="10"
-    NullValueFlag="none"
-    NullValueId="LOV_MachineNumber_LOVUIHints_NullValueId"
-    MRUCount="0">
-    <AttrArray Name="AttrNames">
-      <Item Value="MachineNumber"/>
-    </AttrArray>
-    <AttrArray Name="ListAttrNames">
-      <Item Value="SerialNumber"/>
-    </AttrArray>
-    <AttrArray Name="ListDisplayAttrNames">
-      <Item Value="SerialNumber"/>
-    </AttrArray>
-    <DisplayCriteria
-      Hint="showAndExecute"/>
-  </ListBinding>
+       PwcOdmGradingWaveingLinesEO.REQUEST_STATUS
+FROM PWC_ODM_GRADING_WAVEING_LINES PwcOdmGradingWaveingLinesEO
+where PwcOdmGradingWaveingLinesEO.ORG_ID = nvl(:p_org_id, PwcOdmGradingWaveingLinesEO.ORG_ID)]]>
+  </SQLQuery>
   <EntityUsage
     Name="PwcOdmGradingWaveingLinesEO"
     Entity="model.GradingWeaving.EO.PwcOdmGradingWaveingLinesEO"/>
@@ -302,6 +318,15 @@
     EntityAttrName="RequestStatus"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="REQUEST_STATUS"/>
+  <ViewAttribute
+    Name="TotalGraded"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewLinkAccessor
     Name="PwcOdmGradingWeavingHeadersVO"
     ViewLink="model.GradingWeaving.VL.PwcOdmGradingWeavingHeaderLinesVL"

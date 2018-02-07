@@ -82,6 +82,8 @@ public class ManagedBean {
         ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         ViewObject currLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
         Row currRow = currHeadersVO.getCurrentRow();
+        System.out.println("total Grade D = "+currLinesVO.getCurrentRow().getAttribute("TotalGraded"));
+        System.out.println("Grade D = "+currLinesVO.getCurrentRow().getAttribute("Graded"));
         String jobId = currRow.getAttribute("JobId").toString();
         Double qtyReceivedLooming = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming")!=null?currHeadersVO.getCurrentRow().getAttribute("QtyReceivedLooming").toString():"0.0");
         Double sumTotalQtyValue = Double.parseDouble(currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY")!=null?currHeadersVO.getCurrentRow().getAttribute("SUMTOTQTY").toString():"0.0");
@@ -92,6 +94,7 @@ public class ManagedBean {
             boolean isValid = true;
             while(rsi.next()!=null) {
             currRow = rsi.getCurrentRow();
+            currRow.setAttribute("Graded", currRow.getAttribute("TotalGraded"));
             Double totalQty = Double.parseDouble(currRow.getAttribute("TotalQuantity")!=null?currRow.getAttribute("TotalQuantity").toString():"0.0");
             Double gradeAQty = Double.parseDouble(currRow.getAttribute("Gradea")!=null?currRow.getAttribute("Gradea").toString():"0.0");
             Double gradeBQty = Double.parseDouble(currRow.getAttribute("Gradeb")!=null?currRow.getAttribute("Gradeb").toString():"0.0");
@@ -179,40 +182,53 @@ public class ManagedBean {
     public void deleteHeaderRow(ActionEvent actionEvent) {
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
-        currHeadersVO.getCurrentRow().remove();
-        am.getDBTransaction().commit();
-        RowSetIterator rsi = currHeadersVO.createRowSetIterator(null);
-        Row lastRow = rsi.last();
-        int lastRowIndex = rsi.getRangeIndexOf(lastRow);
-        Row newRow = rsi.createRow();
-        newRow.setNewRowState(Row.STATUS_INITIALIZED);
-        rsi.insertRowAtRangeIndex(0, newRow); 
-        rsi.setCurrentRow(newRow);      
+        ViewObject linesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        RowSetIterator rsi = linesVO.createRowSetIterator(null);
+        System.out.println("lines = "+rsi.getAllRowsInRange().length);
+        if (linesVO.getAllRowsInRange().length>0)
+            showMessage("Delete all lines before deleting the header", 112);
+//            System.out.println("Delete all lines before deleting the header");        
+        else
+        {
+            currHeadersVO.getCurrentRow().remove();
+            am.getDBTransaction().commit();
+            rsi = currHeadersVO.createRowSetIterator(null);
+            Row lastRow = rsi.last();
+            int lastRowIndex = rsi.getRangeIndexOf(lastRow);
+            Row newRow = rsi.createRow();
+            newRow.setNewRowState(Row.STATUS_INITIALIZED);
+            rsi.insertRowAtRangeIndex(0, newRow); 
+            rsi.setCurrentRow(newRow);      
+        }
     }
     public void completeJobAPIActionListener(ActionEvent actionEvent) {
-        ApplicationModuleImpl am = getApplicationModule();
+        /*ApplicationModuleImpl am = getApplicationModule();
         ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         Row currRow = currHeadersVO.getCurrentRow();
-        String jobId = currRow.getAttribute("JobId").toString();
-        String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
-            ",?" +
-            ",?" +
-            ",?" +
-            ",?" +          
-            ",?)";
-        BindingContainer bindings = getBindingsCont();
-        OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
-        Map params =  operationBinding.getParamsMap();
-        params.put("sqlReturnType", Types.VARCHAR);
-        params.put("stmt", stmt);
-        String result =(String) operationBinding.execute();
-            System.out.println("result = "+result);
-        if (result != null) {
-            if (result.equals("SUCCESSFUL"))
-                showMessage(result+"", 111);
-            else
-                showMessage(result+"", 112);
-        }
+        if (currRow!=null)
+        {
+            String jobId = currRow.getAttribute("JobId").toString();
+            String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
+                ",?" +
+                ",?" +
+                ",?" +
+                ",?" +
+                ",?" +          
+                ",?)";
+            BindingContainer bindings = getBindingsCont();
+            OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
+            Map params =  operationBinding.getParamsMap();
+            params.put("sqlReturnType", Types.VARCHAR);
+            params.put("stmt", stmt);
+            String result =(String) operationBinding.execute();
+                System.out.println("result = "+result);
+            if (result != null) {
+                if (result.equals("SUCCESSFUL"))
+                    showMessage(result+"", 111);
+                else
+                    showMessage(result+"", 112);
+            }
+        }*/
     }
 
     public void setJobLov(RichInputListOfValues jobLov) {

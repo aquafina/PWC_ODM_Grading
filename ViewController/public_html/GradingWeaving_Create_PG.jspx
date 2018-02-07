@@ -341,11 +341,6 @@
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.SumGradeD0to1.format}"/>
                     </af:outputText>
-                    <af:outputText value="#{bindings.SumGraded.inputValue}"
-                                   id="ot6">
-                      <af:convertNumber groupingUsed="false"
-                                        pattern="#{bindings.SumGraded.format}"/>
-                    </af:outputText>
                   </af:panelGroupLayout>
                 </af:group>
               </f:facet>
@@ -437,23 +432,8 @@
                 </af:group>
               </f:facet>
             </af:column>
-            <af:column sortProperty="Graded" filterable="true" sortable="true"
-                       headerText="Total Grade D" id="c5" align="center">
-              <af:inputText value="#{row.bindings.Attribute1.inputValue+row.bindings.Attribute2.inputValue+row.bindings.Attribute3.inputValue+row.bindings.Attribute4.inputValue}"
-                            label="Grade D"
-                            required="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.mandatory}"
-                            columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.displayWidth}"
-                            maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.precision}"
-                            shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.tooltip}"
-                            id="it8"
-                            contentStyle="text-align:right;"
-                            validator="#{ManagedBean.gradeDQtyValidator}"
-                            autoSubmit="true" readOnly="true"
-                            partialTriggers="it11 it12 it13 it14">
-                <f:validator binding="#{row.bindings.Graded.validator}"/>
-                <af:convertNumber groupingUsed="false"
-                                  pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Graded.format}"/>
-              </af:inputText>
+            <af:column sortProperty="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.name}" sortable="true"
+                       headerText="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.label}" id="c5" align="center">
               <f:facet name="footer">
                 <af:group id="g6">
                   <af:panelGroupLayout id="pgl6"
@@ -469,6 +449,18 @@
                   </af:panelGroupLayout>
                 </af:group>
               </f:facet>
+              <af:inputText value="#{row.bindings.Attribute1.inputValue+row.bindings.Attribute2.inputValue+row.bindings.Attribute3.inputValue+row.bindings.Attribute4.inputValue}"
+                            label="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.label}"
+                            required="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.mandatory}"
+                            columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.precision}"
+                            shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.tooltip}"
+                            id="it8" autoSubmit="true"
+                            partialTriggers="it11 it12 it13 it14">
+                <f:validator binding="#{row.bindings.TotalGraded.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.format}"/>
+              </af:inputText>
             </af:column>
             <af:column sortProperty="Remarks" filterable="true" sortable="true"
                        headerText="Remarks" id="c8" align="center">

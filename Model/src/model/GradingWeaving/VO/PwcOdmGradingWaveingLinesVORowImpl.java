@@ -1,5 +1,7 @@
 package model.GradingWeaving.VO;
 
+import java.sql.SQLException;
+
 import model.GradingWeaving.EO.PwcOdmGradingWaveingLinesEOImpl;
 
 import oracle.jbo.Row;
@@ -393,6 +395,17 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             }
         }
         ,
+        TotalGraded {
+            public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
+                return obj.getTotalGraded();
+            }
+
+            public void put(PwcOdmGradingWaveingLinesVORowImpl obj,
+                            Object value) {
+                obj.setTotalGraded((Integer)value);
+            }
+        }
+        ,
         PwcOdmGradingWeavingHeadersVO {
             public Object get(PwcOdmGradingWaveingLinesVORowImpl obj) {
                 return obj.getPwcOdmGradingWeavingHeadersVO();
@@ -442,6 +455,8 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
+
     public static final int LINEID = AttributesEnum.LineId.index();
     public static final int MACHINENUMBER = AttributesEnum.MachineNumber.index();
     public static final int ROLLNUMBER = AttributesEnum.RollNumber.index();
@@ -476,6 +491,7 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
     public static final int RETRUNFLAG = AttributesEnum.RetrunFlag.index();
     public static final int SELECTEDROW = AttributesEnum.SelectedRow.index();
     public static final int REQUESTSTATUS = AttributesEnum.RequestStatus.index();
+    public static final int TOTALGRADED = AttributesEnum.TotalGraded.index();
     public static final int PWCODMGRADINGWEAVINGHEADERSVO = AttributesEnum.PwcOdmGradingWeavingHeadersVO.index();
     public static final int PWCODMGRADINGWEAVINGLINESMACHINENO1 = AttributesEnum.PwcOdmGradingWeavingLinesMachineNo1.index();
 
@@ -611,6 +627,11 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      */
     public Number getGraded() {
         return (Number)getAttributeInternal(GRADED);
+        /*try {
+            return new Number(getTotalGraded());
+        } catch (SQLException e) {
+        }
+        return new Number(0);*/
     }
 
     /**
@@ -674,7 +695,9 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      * @return the ATTRIBUTE1
      */
     public Integer getAttribute1() {
-        return (Integer) getAttributeInternal(ATTRIBUTE1);
+        if (getAttributeInternal(ATTRIBUTE1)!=null)
+            return (Integer) getAttributeInternal(ATTRIBUTE1);
+        else return 0;
     }
 
     /**
@@ -786,7 +809,9 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      * @return the ATTRIBUTE2
      */
     public Integer getAttribute2() {
-        return (Integer) getAttributeInternal(ATTRIBUTE2);
+        if (getAttributeInternal(ATTRIBUTE2)!=null)
+            return (Integer) getAttributeInternal(ATTRIBUTE2);
+        else return 0;
     }
 
     /**
@@ -802,7 +827,9 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      * @return the ATTRIBUTE3
      */
     public Integer getAttribute3() {
-        return (Integer) getAttributeInternal(ATTRIBUTE3);
+        if (getAttributeInternal(ATTRIBUTE3)!=null)
+            return (Integer) getAttributeInternal(ATTRIBUTE3);
+        else return 0;
     }
 
     /**
@@ -818,7 +845,9 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      * @return the ATTRIBUTE4
      */
     public Integer getAttribute4() {
-        return (Integer) getAttributeInternal(ATTRIBUTE4);
+        if (getAttributeInternal(ATTRIBUTE4)!=null)
+            return (Integer) getAttributeInternal(ATTRIBUTE4);
+        else return 0;
     }
 
     /**
@@ -1035,6 +1064,24 @@ public class PwcOdmGradingWaveingLinesVORowImpl extends ViewRowImpl {
      */
     public void setRequestStatus(String value) {
         setAttributeInternal(REQUESTSTATUS, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute TotalGraded.
+     * @return the TotalGraded
+     */
+    public Integer getTotalGraded() {
+//        return (Number)getAttributeInternal(TOTALGRADED);
+        int sum = getAttribute1()+getAttribute2()+getAttribute3()+getAttribute4();
+        return sum;
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute TotalGraded.
+     * @param value value to set the  TotalGraded
+     */
+    public void setTotalGraded(Integer value) {
+        setAttributeInternal(TOTALGRADED, value);
     }
 
     /**

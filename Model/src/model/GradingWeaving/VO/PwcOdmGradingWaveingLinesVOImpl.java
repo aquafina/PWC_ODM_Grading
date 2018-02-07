@@ -30,4 +30,21 @@ public class PwcOdmGradingWaveingLinesVOImpl extends ViewObjectImpl {
           }
           }
 
+    /**
+     * Returns the bind variable value for p_org_id.
+     * @return bind variable value for p_org_id
+     */
+    public String getp_org_id() {
+        return (String)getNamedWhereClauseParam("p_org_id");
+    }
+
+    /**
+     * Sets <code>value</code> for bind variable p_org_id.
+     * @param value value to bind as p_org_id
+     */
+    public void setp_org_id(String value) {
+        setNamedWhereClauseParam("p_org_id", value);
+    }
+
+
 }

@@ -40,6 +40,7 @@
           <Item Value="Attribute2"/>
           <Item Value="Attribute3"/>
           <Item Value="Attribute4"/>
+          <Item Value="TotalGraded"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
