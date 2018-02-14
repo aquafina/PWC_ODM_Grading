@@ -163,7 +163,7 @@ where PwcOdmGradingWaveingLinesEO.ORG_ID = nvl(:p_org_id, PwcOdmGradingWaveingLi
     EntityAttrName="OrgId"
     EntityUsage="PwcOdmGradingWaveingLinesEO"
     AliasName="ORG_ID">
-    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
     Name="Remarks"
@@ -326,7 +326,7 @@ where PwcOdmGradingWaveingLinesEO.ORG_ID = nvl(:p_org_id, PwcOdmGradingWaveingLi
     Type="java.lang.Integer"
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+    SQLType="INTEGER"/>
   <ViewLinkAccessor
     Name="PwcOdmGradingWeavingHeadersVO"
     ViewLink="model.GradingWeaving.VL.PwcOdmGradingWeavingHeaderLinesVL"

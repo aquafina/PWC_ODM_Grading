@@ -130,6 +130,27 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
         ADFContext.getCurrent().getSessionScope().put("resp_id", respId);
         ADFContext.getCurrent().getSessionScope().put("resp_appl_id", respAppl);
         System.out.println("respAppl = "+respAppl);
+        String   MfgOrgName = null;      
+        ViewObject mfgVO = this.getDBTransaction().createViewObjectFromQueryStmt("SELECT ORGANIZATION_ID,ORGANIZATION_NAME FROM ORG_ACCESS_V WHERE RESP_APPLICATION_ID = "+respAppl+" AND RESPONSIBILITY_ID = "+respId);
+//        ViewObject mfgVO = this.getDBTransaction().createViewObjectFromQueryStmt("SELECT ORGANIZATION_ID,ORGANIZATION_NAME FROM ORG_ACCESS_V WHERE RESP_APPLICATION_ID = 706 AND RESPONSIBILITY_ID = 51776");
+                 if(mfgVO != null){
+                     if(mfgVO.getRowCount() == 1){
+                         Row mfgRow = mfgVO.first();
+                         try{
+                             mfgOrgId = mfgRow.getAttribute(0).toString();
+                             ADFContext.getCurrent().getSessionScope().put("mfg_org_id", mfgOrgId);
+                         }catch(Exception e){
+                                 ;
+                         }
+                         try{
+                             MfgOrgName = mfgRow.getAttribute(1).toString();
+                             ADFContext.getCurrent().getSessionScope().put("mfg_org_name", MfgOrgName);
+                         }catch(Exception e){
+                                 ;
+                         }       
+                     }    
+                 }
+                 System.out.println("mfg_org_id = "+mfgOrgId);
         ADFContext.getCurrent().getSessionScope().put("mfg_org_id", mfgOrgId);
     }
  // End of AM

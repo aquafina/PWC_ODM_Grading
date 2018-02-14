@@ -106,7 +106,7 @@
         <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+        <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
       </PIMap>
     </ParameterMap>
   </ViewAccessor>
@@ -115,7 +115,7 @@
     ViewObjectName="model.GradingWeaving.LOV.PwcOdmGradingWeavingJobSearch">
     <ParameterMap>
       <PIMap Variable="p_org_id">
-        <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+        <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
       </PIMap>
       <PIMap Variable="p_gd_no">
         <TransientExpression><![CDATA[GdNo]]></TransientExpression>
@@ -530,7 +530,7 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     EntityAttrName="OrgId"
     EntityUsage="PwcOdmGradingWeavingHeadersE1"
     AliasName="ORG_ID">
-    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
     Name="QtyReceivedLooming"
