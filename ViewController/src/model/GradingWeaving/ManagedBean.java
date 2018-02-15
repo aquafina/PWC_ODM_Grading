@@ -92,6 +92,7 @@ public class ManagedBean {
         else {
             RowSetIterator rsi = currLinesVO.createRowSetIterator(null);
             boolean isValid = true;
+            String rollNumbers = "";
             while(rsi.next()!=null) {
             currRow = rsi.getCurrentRow();
             currRow.setAttribute("Graded", currRow.getAttribute("TotalGraded"));
@@ -108,15 +109,19 @@ public class ManagedBean {
                 if (totalGradeQuantities.compareTo(totalQty)!=0) {
                     System.out.println("totalGradeQuantities = "+totalGradeQuantities);
                     System.out.println("totalQty = "+totalQty);
+                    if (rsi.getCurrentRowIndex()==0)
+                        rollNumbers = rollNumbers + currRow.getAttribute("RollNumber");
+                    else rollNumbers = rollNumbers + ","+currRow.getAttribute("RollNumber");
             //                System.out.println("currRowIndex = "+currVO.getC);
-                    String message = "Sum of Grade Quantities must be equal to Total Quantity: Line "+rsi.getCurrentRowIndex()+1;
-                    showMessage(message,112);
                     isValid = false;
-                    break;
                 }
             }
             if (isValid)
                 am.getTransaction().commit();
+            else {
+                String message = "Sum of Grade Quantities must be equal to Total Quantity: Roll Number(s) = "+rollNumbers;
+                showMessage(message,112);
+            }
             rsi.closeRowSetIterator();
         }
     }
@@ -202,7 +207,7 @@ public class ManagedBean {
         }
     }
     public void completeJobAPIActionListener(ActionEvent actionEvent) {
-        /*ApplicationModuleImpl am = getApplicationModule();
+        ApplicationModuleImpl am = getApplicationModule();
         ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
         Row currRow = currHeadersVO.getCurrentRow();
         if (currRow!=null)
@@ -228,7 +233,7 @@ public class ManagedBean {
                 else
                     showMessage(result+"", 112);
             }
-        }*/
+        }
     }
 
     public void setJobLov(RichInputListOfValues jobLov) {

@@ -155,7 +155,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
     }
  // End of AM
     
- /*public String callJobCompleteProc(int sqlReturnType, String stmt){
+ public String callJobCompleteProc(int sqlReturnType, String stmt){
      System.out.println(sqlReturnType+ " "+stmt);
      CallableStatement cst = null;
      String status = null;
@@ -196,7 +196,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
      }
      return status;
 //     return "";
- }*/
+ }
 
     /**
      * Container's getter for PwcOdmWeavingExistingJobsVO1.
