@@ -66,7 +66,7 @@
           Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
-    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </Variable>
   <ViewAccessor
     Name="PwcOdmGradingWeavingHeadersGdNo1"
@@ -647,7 +647,6 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
   </ViewAttribute>
   <ViewAttribute
     Name="SumGraded"
-    IsUpdateable="false"
     IsSelected="false"
     IsPersistent="false"
     PrecisionRule="true"
@@ -655,7 +654,7 @@ where PwcOdmGradingWeavingHeadersE1.ORG_ID = nvl(:p_org_id,PwcOdmGradingWeavingH
     ColumnType="NUMBER"
     AliasName="VIEW_ATTR"
     SQLType="NUMERIC">
-    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("Graded")]]></TransientExpression>
+    <TransientExpression><![CDATA[PwcOdmGradingWaveingLinesVO.sum("TotalGraded")]]></TransientExpression>
   </ViewAttribute>
   <ViewAttribute
     Name="SumGradeD20Above"

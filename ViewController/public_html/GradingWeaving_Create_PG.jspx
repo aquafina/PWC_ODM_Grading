@@ -433,7 +433,7 @@
               </f:facet>
             </af:column>
             <af:column sortProperty="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.name}" sortable="true"
-                       headerText="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalGraded.label}" id="c5" align="center">
+                       headerText="Total Grade D" id="c5" align="center">
               <f:facet name="footer">
                 <af:group id="g6">
                   <af:panelGroupLayout id="pgl6"

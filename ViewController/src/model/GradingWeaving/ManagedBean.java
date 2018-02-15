@@ -109,7 +109,7 @@ public class ManagedBean {
                     System.out.println("totalGradeQuantities = "+totalGradeQuantities);
                     System.out.println("totalQty = "+totalQty);
             //                System.out.println("currRowIndex = "+currVO.getC);
-                    String message = "Sum of Grade Quantities must be equal to Total Quantity";
+                    String message = "Sum of Grade Quantities must be equal to Total Quantity: Line "+rsi.getCurrentRowIndex()+1;
                     showMessage(message,112);
                     isValid = false;
                     break;

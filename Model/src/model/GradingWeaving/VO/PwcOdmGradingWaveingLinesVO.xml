@@ -35,7 +35,7 @@
           Value="Hide"/>
       </SchemaBasedProperties>
     </Properties>
-    <TransientExpression><![CDATA[adf.context.sessionScope.org_id]]></TransientExpression>
+    <TransientExpression><![CDATA[adf.context.sessionScope.mfg_org_id]]></TransientExpression>
   </Variable>
   <ViewAccessor
     Name="PwcOdmGradingWeavingLinesMachineNo1"
