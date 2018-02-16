@@ -188,17 +188,16 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
                  }
                  catch (SQLException e) {
                           throw new JboException(e.getMessage());
-                      } finally {
-                          if (cst != null) {
-                              try {
-                                  cst.close();
-                              } catch (SQLException e) {
-                                  e.printStackTrace();
-                              }
-                          }
                       }
                     currRow.setAttribute("RequestStatus", "S");
          }
+         if (cst != null) {
+         try {
+             cst.close();
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+     }
          getDBTransaction().commit();
      return status;
 //     return "";

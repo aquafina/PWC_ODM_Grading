@@ -209,8 +209,14 @@ public class ManagedBean {
     }
     
     public void completeJobAPIActionListener(ActionEvent actionEvent) {
-        RichPopup.PopupHints hints = new RichPopup.PopupHints();
-        completeJobPopup.show(hints);
+        if (checkJobCompletion()) {
+            showMessage("Job already completed.", 112);
+        }
+        else
+        {
+            RichPopup.PopupHints hints = new RichPopup.PopupHints();
+            completeJobPopup.show(hints);
+        }
     }
 
     public void setJobLov(RichInputListOfValues jobLov) {
@@ -232,7 +238,6 @@ public class ManagedBean {
     public void completeJobDialogListener(DialogEvent dialogEvent) {
         Outcome outcome = dialogEvent.getOutcome();
         if (outcome == Outcome.yes) {
-        System.out.println("into complete job api check");
             ApplicationModuleImpl am = getApplicationModule();
             ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
             Row currRow = currHeadersVO.getCurrentRow();
@@ -255,14 +260,31 @@ public class ManagedBean {
                     System.out.println("result = "+result);
                 if (result != null) {
                     if (result.equals("SUCCESSFUL"))
-                        showMessage(result+"", 111);
+                        showMessage("Job Completed Successfully!", 111);
                     else
                         showMessage(result+"", 112);
                 }
             }
+            else showMessage("No job found", 112);
+            completeJobPopup.hide();
         }
         else {
             completeJobPopup.hide();
         }
+    }
+    
+    public Boolean checkJobCompletion() {
+        Boolean result = true;
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject gradingWaveingLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        RowSetIterator rsi = gradingWaveingLinesVO.createRowSetIterator(null);
+        while (rsi.next()!=null) {
+            Row currRow = rsi.getCurrentRow();
+            if (currRow.getAttribute("RequestStatus")==null) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 }
