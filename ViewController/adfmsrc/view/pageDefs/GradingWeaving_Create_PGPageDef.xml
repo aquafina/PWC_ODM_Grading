@@ -41,6 +41,7 @@
           <Item Value="Attribute3"/>
           <Item Value="Attribute4"/>
           <Item Value="TotalGraded"/>
+          <Item Value="RequestStatus"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

@@ -129,7 +129,8 @@
               <af:commandButton actionListener="#{ManagedBean.deleteSelectedRows}"
                                 text="Delete  " id="cb4"/>
               <af:commandButton text="Complete" id="cb5"
-                                actionListener="#{ManagedBean.completeJobAPIActionListener}"/>
+                                actionListener="#{ManagedBean.completeJobAPIActionListener}"
+                                partialSubmit="true"/>
               <af:commandButton text="Return   " id="cb6"/>
             </af:toolbar>
           </f:facet>
@@ -154,6 +155,7 @@
                                         label="#{row.bindings.SelectedRow.label}"
                                         shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.SelectedRow.tooltip}"
                                         id="sbc1"/>
+              <f:facet name="header"/>
             </af:column>
             <af:column sortProperty="RollNumber" filterable="true"
                        sortable="true" headerText="Roll Number" id="c6"
@@ -164,7 +166,8 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RollNumber.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RollNumber.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RollNumber.tooltip}"
-                            id="it9">
+                            id="it9"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.RollNumber.validator}"/>
               </af:inputText>
               <f:facet name="footer">
@@ -475,7 +478,29 @@
                 <f:validator binding="#{row.bindings.Remarks.validator}"/>
               </af:inputText>
             </af:column>
+            <af:column headerText="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RequestStatus.label}"
+                       id="c14" rendered="false">
+              <af:inputText value="#{row.bindings.RequestStatus.inputValue}"
+                            label="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RequestStatus.label}"
+                            required="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RequestStatus.mandatory}"
+                            columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RequestStatus.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RequestStatus.precision}"
+                            shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.RequestStatus.tooltip}"
+                            id="it15">
+                <f:validator binding="#{row.bindings.RequestStatus.validator}"/>
+              </af:inputText>
+            </af:column>
           </af:table>
+          <af:popup id="p1" binding="#{ManagedBean.completeJobPopup}">
+            <af:dialog id="d2"
+                       title="Are you sure you want to complete the Job?"
+                       type="yesNo"
+                       dialogListener="#{ManagedBean.completeJobDialogListener}"/>
+          </af:popup>
+          <af:popup id="p2">
+            <af:dialog id="d3" type="yesNo"
+                       title="Are you sure you want to Return selected transactions?"/>
+          </af:popup>
         </af:panelCollection>
       </af:form>
     </af:document>

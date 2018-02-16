@@ -12,8 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 
-import javax.faces.validator.ValidatorException;
-
 import model.GradingWeaving.AM.PwcOdmGradingWeavingAMImpl;
 
 import oracle.adf.model.BindingContext;
@@ -21,12 +19,13 @@ import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCDataControl;
 
 import oracle.adf.model.binding.DCIteratorBinding;
-import oracle.adf.view.rich.component.rich.data.RichTable;
+import oracle.adf.view.rich.component.rich.RichPopup;
 import oracle.adf.view.rich.component.rich.input.RichInputListOfValues;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
 
 import oracle.adf.view.rich.context.AdfFacesContext;
 
+import oracle.adf.view.rich.event.DialogEvent;
 import oracle.adf.view.rich.event.ReturnPopupEvent;
 
 import oracle.binding.BindingContainer;
@@ -38,10 +37,12 @@ import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewObject;
 
 import oracle.jbo.server.ApplicationModuleImpl;
+import oracle.adf.view.rich.event.DialogEvent.Outcome;
 
 public class ManagedBean {
     private RichInputText totalQtyInputText;
     private RichInputListOfValues jobLov;
+    private RichPopup completeJobPopup;
 
     public ManagedBean() { }
 
@@ -206,34 +207,10 @@ public class ManagedBean {
             rsi.setCurrentRow(newRow);      
         }
     }
+    
     public void completeJobAPIActionListener(ActionEvent actionEvent) {
-        ApplicationModuleImpl am = getApplicationModule();
-        ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
-        Row currRow = currHeadersVO.getCurrentRow();
-        if (currRow!=null)
-        {
-            String jobId = currRow.getAttribute("JobId").toString();
-            String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
-                ",?" +
-                ",?" +
-                ",?" +
-                ",?" +
-                ",?" +          
-                ",?)";
-            BindingContainer bindings = getBindingsCont();
-            OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
-            Map params =  operationBinding.getParamsMap();
-            params.put("sqlReturnType", Types.VARCHAR);
-            params.put("stmt", stmt);
-            String result =(String) operationBinding.execute();
-                System.out.println("result = "+result);
-            if (result != null) {
-                if (result.equals("SUCCESSFUL"))
-                    showMessage(result+"", 111);
-                else
-                    showMessage(result+"", 112);
-            }
-        }
+        RichPopup.PopupHints hints = new RichPopup.PopupHints();
+        completeJobPopup.show(hints);
     }
 
     public void setJobLov(RichInputListOfValues jobLov) {
@@ -242,5 +219,50 @@ public class ManagedBean {
 
     public RichInputListOfValues getJobLov() {
         return jobLov;
+    }
+
+    public void setCompleteJobPopup(RichPopup completeJobPopup) {
+        this.completeJobPopup = completeJobPopup;
+    }
+
+    public RichPopup getCompleteJobPopup() {
+        return completeJobPopup;
+    }
+
+    public void completeJobDialogListener(DialogEvent dialogEvent) {
+        Outcome outcome = dialogEvent.getOutcome();
+        if (outcome == Outcome.yes) {
+        System.out.println("into complete job api check");
+            ApplicationModuleImpl am = getApplicationModule();
+            ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
+            Row currRow = currHeadersVO.getCurrentRow();
+            if (currRow!=null)
+            {
+                String jobId = currRow.getAttribute("JobId").toString();
+                String stmt = "PWC_ODM_WO_LESS_COMPL_WEAV_API(? " +
+                    ",?" +
+                    ",?" +
+                    ",?" +
+                    ",?" +
+                    ",?" +          
+                    ",?)";
+                BindingContainer bindings = getBindingsCont();
+                OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
+                Map params =  operationBinding.getParamsMap();
+                params.put("sqlReturnType", Types.VARCHAR);
+                params.put("stmt", stmt);
+                String result =(String) operationBinding.execute();
+                    System.out.println("result = "+result);
+                if (result != null) {
+                    if (result.equals("SUCCESSFUL"))
+                        showMessage(result+"", 111);
+                    else
+                        showMessage(result+"", 112);
+                }
+            }
+        }
+        else {
+            completeJobPopup.hide();
+        }
     }
 }
