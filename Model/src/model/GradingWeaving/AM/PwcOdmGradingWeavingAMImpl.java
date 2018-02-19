@@ -130,7 +130,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
         ADFContext.getCurrent().getSessionScope().put("resp_id", respId);
         ADFContext.getCurrent().getSessionScope().put("resp_appl_id", respAppl);
         System.out.println("respAppl = "+respAppl);
-        String   MfgOrgName = null;      
+        String   MfgOrgName = null;
         ViewObject mfgVO = this.getDBTransaction().createViewObjectFromQueryStmt("SELECT ORGANIZATION_ID,ORGANIZATION_NAME FROM ORG_ACCESS_V WHERE RESP_APPLICATION_ID = "+respAppl+" AND RESPONSIBILITY_ID = "+respId);
 //        ViewObject mfgVO = this.getDBTransaction().createViewObjectFromQueryStmt("SELECT ORGANIZATION_ID,ORGANIZATION_NAME FROM ORG_ACCESS_V WHERE RESP_APPLICATION_ID = 706 AND RESPONSIBILITY_ID = 51776");
                  if(mfgVO != null){
@@ -155,7 +155,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
     }
  // End of AM
     
- public String callJobCompleteProc(int sqlReturnType, String stmt){
+ public String callAPIProc(int sqlReturnType, String stmt, String requestStatus){
      System.out.println(sqlReturnType+ " "+stmt);
      CallableStatement cst = null;
      String status = null;
@@ -177,7 +177,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
                      cst.setInt(3,Integer.parseInt(currRow.getAttribute("OrgId")!=null?currRow.getAttribute("OrgId").toString():"0"));
                      System.out.println("org id = "+Integer.parseInt(currRow.getAttribute("OrgId").toString()));
                      cst.setInt(4,1110);
-                     System.out.println("user id = "+1110);
+                     System.out.println("user id = "+user_id);
                      cst.setInt(5,resp_id);
                      System.out.println("resp id = "+resp_id);
                      cst.setInt(6,resp_appl_id);

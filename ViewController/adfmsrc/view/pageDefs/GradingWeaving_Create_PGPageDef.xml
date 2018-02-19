@@ -188,17 +188,18 @@
     <action IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
             id="CreateInsert1" RequiresUpdateModel="true"
             Action="createInsertRow"/>
-    <methodAction id="callJobCompleteProc"
-                  InstanceName="PwcOdmGradingWeavingAMDataControl.dataProvider"
-                  DataControl="PwcOdmGradingWeavingAMDataControl"
-                  RequiresUpdateModel="true" Action="invokeMethod"
-                  MethodName="callJobCompleteProc" IsViewObjectMethod="false"
-                  ReturnName="data.PwcOdmGradingWeavingAMDataControl.methodResults.callJobCompleteProc_PwcOdmGradingWeavingAMDataControl_dataProvider_callJobCompleteProc_result">
-      <NamedData NDName="sqlReturnType" NDType="int"/>
-      <NamedData NDName="stmt" NDType="java.lang.String"/>
-    </methodAction>
     <listOfValues StaticList="false"
                   IterBinding="PwcOdmGradingWeavingHeadersVO1Iterator"
                   Uses="PWC_ODM_JOB_LOV_CREATE" id="Job"/>
+    <methodAction id="callAPIProc"
+                  InstanceName="PwcOdmGradingWeavingAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingWeavingAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="callAPIProc" IsViewObjectMethod="false"
+                  ReturnName="data.PwcOdmGradingWeavingAMDataControl.methodResults.callAPIProc_PwcOdmGradingWeavingAMDataControl_dataProvider_callAPIProc_result">
+      <NamedData NDName="sqlReturnType" NDValue="" NDType="int"/>
+      <NamedData NDName="stmt" NDType="java.lang.String"/>
+      <NamedData NDName="requestStatus" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

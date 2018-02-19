@@ -131,7 +131,9 @@
               <af:commandButton text="Complete" id="cb5"
                                 actionListener="#{ManagedBean.completeJobAPIActionListener}"
                                 partialSubmit="true"/>
-              <af:commandButton text="Return   " id="cb6"/>
+              <af:commandButton text="Return   " id="cb6"
+                                actionListener="#{ManagedBean.returnJobAPIActionListener}"
+                                partialSubmit="true"/>
             </af:toolbar>
           </f:facet>
           <f:facet name="statusbar"/>
@@ -497,9 +499,10 @@
                        type="yesNo"
                        dialogListener="#{ManagedBean.completeJobDialogListener}"/>
           </af:popup>
-          <af:popup id="p2">
+          <af:popup id="p2" binding="#{ManagedBean.returnJobPopup}">
             <af:dialog id="d3" type="yesNo"
-                       title="Are you sure you want to Return selected transactions?"/>
+                       title="Are you sure you want to Return selected transactions?"
+                       dialogListener="#{ManagedBean.returnJobDialogListener}"/>
           </af:popup>
         </af:panelCollection>
       </af:form>

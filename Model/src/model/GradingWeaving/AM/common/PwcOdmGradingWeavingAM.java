@@ -11,4 +11,5 @@ public interface PwcOdmGradingWeavingAM extends ApplicationModule {
     void setSessionValues(String orgId, String userId, String respId,
                           String respAppl, String mfgOrgId);
 
+    String callAPIProc(int sqlReturnType, String stmt, String requestStatus);
 }

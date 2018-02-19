@@ -43,6 +43,7 @@ public class ManagedBean {
     private RichInputText totalQtyInputText;
     private RichInputListOfValues jobLov;
     private RichPopup completeJobPopup;
+    private RichPopup returnJobPopup;
 
     public ManagedBean() { }
 
@@ -207,17 +208,6 @@ public class ManagedBean {
             rsi.setCurrentRow(newRow);      
         }
     }
-    
-    public void completeJobAPIActionListener(ActionEvent actionEvent) {
-        if (checkJobCompletion()) {
-            showMessage("Job already completed.", 112);
-        }
-        else
-        {
-            RichPopup.PopupHints hints = new RichPopup.PopupHints();
-            completeJobPopup.show(hints);
-        }
-    }
 
     public void setJobLov(RichInputListOfValues jobLov) {
         this.jobLov = jobLov;
@@ -233,6 +223,79 @@ public class ManagedBean {
 
     public RichPopup getCompleteJobPopup() {
         return completeJobPopup;
+    }
+    
+    public void setReturnJobPopup(RichPopup returnJobPopup) {
+        this.returnJobPopup = returnJobPopup;
+    }
+
+    public RichPopup getReturnJobPopup() {
+        return returnJobPopup;
+    }
+    
+    public void completeJobAPIActionListener(ActionEvent actionEvent) {
+        if (isJobCompleted()) {
+            showMessage("Job already completed.", 112);
+        }
+        else
+        {
+            RichPopup.PopupHints hints = new RichPopup.PopupHints();
+            completeJobPopup.show(hints);
+        }
+    }
+    
+    public void returnJobAPIActionListener(ActionEvent actionEvent) {
+        if (checkIfAnyRowSelected())
+        {
+            if (isJobReturned()) {
+                showMessage("Job not completed yet", 112);
+            }
+            else
+            {
+                RichPopup.PopupHints hints = new RichPopup.PopupHints();
+                returnJobPopup.show(hints);
+            }
+        }
+        else showMessage("No line(s) selected", 112);
+            
+    }
+    
+    public Boolean isJobCompleted() {
+        Boolean result = true;
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject gradingWaveingLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        RowSetIterator rsi = gradingWaveingLinesVO.createRowSetIterator(null);
+        while (rsi.next()!=null) {
+            Row currRow = rsi.getCurrentRow();
+            if (currRow.getAttribute("RequestStatus")==null) {
+                result = false;
+                break;
+            }
+            else if (currRow.getAttribute("RequestStatus").equals("R"))
+            {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public Boolean isJobReturned() {
+        Boolean result = true;
+        ApplicationModuleImpl am = getApplicationModule();
+        ViewObject gradingWaveingLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+        RowSetIterator rsi = gradingWaveingLinesVO.createRowSetIterator(null);
+        while (rsi.next()!=null) {
+            Row currRow = rsi.getCurrentRow();
+            if ((Boolean)currRow.getAttribute("SelectedRow")==Boolean.TRUE)
+            {
+                if (currRow.getAttribute("RequestStatus").equals("S")) {
+                    result = false;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     public void completeJobDialogListener(DialogEvent dialogEvent) {
@@ -252,10 +315,11 @@ public class ManagedBean {
                     ",?" +          
                     ",?)";
                 BindingContainer bindings = getBindingsCont();
-                OperationBinding operationBinding = bindings.getOperationBinding("callJobCompleteProc");
+                OperationBinding operationBinding = bindings.getOperationBinding("callAPIProc");
                 Map params =  operationBinding.getParamsMap();
                 params.put("sqlReturnType", Types.VARCHAR);
                 params.put("stmt", stmt);
+                params.put("requestStatus", "S");
                 String result =(String) operationBinding.execute();
                     System.out.println("result = "+result);
                 if (result != null) {
@@ -272,16 +336,56 @@ public class ManagedBean {
             completeJobPopup.hide();
         }
     }
+
+    public void returnJobDialogListener(DialogEvent dialogEvent) {
+        Outcome outcome = dialogEvent.getOutcome();
+        if (outcome == Outcome.yes) {
+            ApplicationModuleImpl am = getApplicationModule();
+            ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
+            Row currRow = currHeadersVO.getCurrentRow();
+            if (currRow!=null)
+            {
+                String jobId = currRow.getAttribute("JobId").toString();
+                String stmt = "PWC_ODM_WO_LESS_RET_WEAV_API(? " +
+                    ",?" +
+                    ",?" +
+                    ",?" +
+                    ",?" +
+                    ",?" +          
+                    ",?)";
+                BindingContainer bindings = getBindingsCont();
+                OperationBinding operationBinding = bindings.getOperationBinding("callAPIProc");
+                Map params =  operationBinding.getParamsMap();
+                params.put("sqlReturnType", Types.VARCHAR);
+                params.put("stmt", stmt);
+                params.put("requestStatus", "R");
+                String result =(String) operationBinding.execute();
+                    System.out.println("result = "+result);
+                if (result != null) {
+                    if (result.equals("SUCCESSFUL"))
+                        showMessage("Line(s) Returned Successfully!", 111);
+                    else
+                        showMessage(result+"", 112);
+                }
+            }
+            else showMessage("No job found", 112);
+            returnJobPopup.hide();
+        }
+        else {
+            returnJobPopup.hide();
+        }
+    }
     
-    public Boolean checkJobCompletion() {
-        Boolean result = true;
+    public Boolean checkIfAnyRowSelected() {
+        Boolean result = false;
         ApplicationModuleImpl am = getApplicationModule();
         ViewObject gradingWaveingLinesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
         RowSetIterator rsi = gradingWaveingLinesVO.createRowSetIterator(null);
         while (rsi.next()!=null) {
             Row currRow = rsi.getCurrentRow();
-            if (currRow.getAttribute("RequestStatus")==null) {
-                result = false;
+            if ((Boolean)currRow.getAttribute("SelectedRow")==Boolean.TRUE)
+            {
+                result = true;
                 break;
             }
         }

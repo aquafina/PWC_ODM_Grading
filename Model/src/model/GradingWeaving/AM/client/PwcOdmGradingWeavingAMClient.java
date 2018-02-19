@@ -23,6 +23,7 @@ public class PwcOdmGradingWeavingAMClient extends ApplicationModuleImpl implemen
         return (String)_ret;
     }
 
+
     public void Exceed_TOTALQTY() {
         Object _ret =
             this.riInvokeExportedMethod(this,"Exceed_TOTALQTY",null,null);
@@ -34,5 +35,12 @@ public class PwcOdmGradingWeavingAMClient extends ApplicationModuleImpl implemen
         Object _ret =
             this.riInvokeExportedMethod(this,"setSessionValues",new String [] {"java.lang.String","java.lang.String","java.lang.String","java.lang.String","java.lang.String"},new Object[] {orgId, userId, respId, respAppl, mfgOrgId});
         return;
+    }
+
+    public String callAPIProc(int sqlReturnType, String stmt,
+                              String requestStatus) {
+        Object _ret =
+            this.riInvokeExportedMethod(this,"callAPIProc",new String [] {"int","java.lang.String","java.lang.String"},new Object[] {new Integer(sqlReturnType), stmt, requestStatus});
+        return (String)_ret;
     }
 }
