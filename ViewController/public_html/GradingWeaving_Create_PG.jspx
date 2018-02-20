@@ -193,7 +193,8 @@
                                     model="#{row.bindings.MachineNumber.listOfValuesModel}"
                                     required="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.mandatory}"
                                     columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.displayWidth}"
-                                    shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.tooltip}">
+                                    shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.MachineNumber.tooltip}"
+                                    disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.MachineNumber.validator}"/>
               </af:inputListOfValues>
             </af:column>
@@ -210,7 +211,8 @@
                             contentStyle="text-align:right;"
                             autoSubmit="true"
                             binding="#{ManagedBean.totalQtyInputText}"
-                            showRequired="true">
+                            showRequired="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.TotalQuantity.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.TotalQuantity.format}"/>
@@ -240,7 +242,8 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.tooltip}"
                             id="it5"
                             contentStyle="text-align:right;"
-                            autoSubmit="true">
+                            autoSubmit="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Gradea.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradea.format}"/>
@@ -270,7 +273,8 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.tooltip}"
                             id="it4"
                             contentStyle="text-align:right;"
-                            autoSubmit="true">
+                            autoSubmit="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Gradeb.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradeb.format}"/>
@@ -301,7 +305,8 @@
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.tooltip}"
                             id="it7"
                             contentStyle="text-align:right;"
-                            autoSubmit="true">
+                            autoSubmit="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Gradec.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Gradec.format}"/>
@@ -330,7 +335,8 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.tooltip}"
-                            id="it11" autoSubmit="true">
+                            id="it11" autoSubmit="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Attribute1.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute1.format}"/>
@@ -359,7 +365,8 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.tooltip}"
-                            id="it12" autoSubmit="true">
+                            id="it12" autoSubmit="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Attribute2.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute2.format}"/>
@@ -388,7 +395,8 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.tooltip}"
-                            id="it13" partialTriggers="it13" autoSubmit="true">
+                            id="it13" partialTriggers="it13" autoSubmit="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Attribute3.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute3.format}"/>
@@ -417,7 +425,8 @@
                             columns="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.displayWidth}"
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.tooltip}"
-                            id="it14" partialTriggers="it14" autoSubmit="true">
+                            id="it14" partialTriggers="it14" autoSubmit="true"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Attribute4.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Attribute4.format}"/>
@@ -476,7 +485,8 @@
                             maximumLength="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Remarks.precision}"
                             shortDesc="#{bindings.PwcOdmGradingWaveingLinesVO1.hints.Remarks.tooltip}"
                             id="it10" contentStyle="text-align:left;"
-                            inlineStyle="text-align:left;">
+                            inlineStyle="text-align:left;"
+                            disabled='#{row.bindings.RequestStatus.inputValue=="S"}'>
                 <f:validator binding="#{row.bindings.Remarks.validator}"/>
               </af:inputText>
             </af:column>
