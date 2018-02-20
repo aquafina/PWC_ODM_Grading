@@ -23,6 +23,7 @@ import oracle.adf.view.rich.component.rich.RichPopup;
 import oracle.adf.view.rich.component.rich.input.RichInputListOfValues;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
 
+import oracle.adf.view.rich.component.rich.nav.RichCommandButton;
 import oracle.adf.view.rich.context.AdfFacesContext;
 
 import oracle.adf.view.rich.event.DialogEvent;
@@ -44,6 +45,9 @@ public class ManagedBean {
     private RichInputListOfValues jobLov;
     private RichPopup completeJobPopup;
     private RichPopup returnJobPopup;
+    private Boolean jobCompleted = false;
+    private Boolean jobReturned = false;
+    private RichCommandButton deleteJobBtn;
 
     public ManagedBean() { }
 
@@ -148,8 +152,21 @@ public class ManagedBean {
             Row currRow = rsi.getCurrentRow();
             if(currRow.getAttribute("SelectedRow")!=null)
             {
-                if ((Boolean)currRow.getAttribute("SelectedRow")==true)
-                    currRow.remove();
+                if (currRow.getAttribute("RequestStatus")!=null)
+                {
+                    if(currRow.getAttribute("RequestStatus").equals("S"))
+                        showMessage("Completed Line(s) cannot be deleted",112);
+                    else 
+                    {
+                        if ((Boolean)currRow.getAttribute("SelectedRow")==true)
+                            currRow.remove();
+                    }
+                }
+                else 
+                {
+                    if ((Boolean)currRow.getAttribute("SelectedRow")==true)
+                        currRow.remove();
+                }
             }
         }
         rsi.closeRowSetIterator();
@@ -187,25 +204,30 @@ public class ManagedBean {
     }
 
     public void deleteHeaderRow(ActionEvent actionEvent) {
-        ApplicationModuleImpl am = getApplicationModule();
-        ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
-        ViewObject linesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
-        RowSetIterator rsi = linesVO.createRowSetIterator(null);
-        System.out.println("lines = "+rsi.getAllRowsInRange().length);
-        if (linesVO.getAllRowsInRange().length>0)
-            showMessage("Delete all lines before deleting the header", 112);
-//            System.out.println("Delete all lines before deleting the header");        
+        if (isJobCompleted())
+            showMessage("Job cannot be deleted because it's completed", 112);
         else
         {
-            currHeadersVO.getCurrentRow().remove();
-            am.getDBTransaction().commit();
-            rsi = currHeadersVO.createRowSetIterator(null);
-            Row lastRow = rsi.last();
-            int lastRowIndex = rsi.getRangeIndexOf(lastRow);
-            Row newRow = rsi.createRow();
-            newRow.setNewRowState(Row.STATUS_INITIALIZED);
-            rsi.insertRowAtRangeIndex(0, newRow); 
-            rsi.setCurrentRow(newRow);      
+            ApplicationModuleImpl am = getApplicationModule();
+            ViewObject currHeadersVO = am.findViewObject("PwcOdmGradingWeavingHeadersVO1");
+            ViewObject linesVO = am.findViewObject("PwcOdmGradingWaveingLinesVO1");
+            RowSetIterator rsi = linesVO.createRowSetIterator(null);
+            System.out.println("lines = "+rsi.getAllRowsInRange().length);
+            if (linesVO.getAllRowsInRange().length>0)
+                showMessage("Delete all lines before deleting the header", 112);
+    //            System.out.println("Delete all lines before deleting the header");        
+            else
+            {
+                currHeadersVO.getCurrentRow().remove();
+                am.getDBTransaction().commit();
+                rsi = currHeadersVO.createRowSetIterator(null);
+                Row lastRow = rsi.last();
+                int lastRowIndex = rsi.getRangeIndexOf(lastRow);
+                Row newRow = rsi.createRow();
+                newRow.setNewRowState(Row.STATUS_INITIALIZED);
+                rsi.insertRowAtRangeIndex(0, newRow); 
+                rsi.setCurrentRow(newRow);      
+            }
         }
     }
 
@@ -277,6 +299,7 @@ public class ManagedBean {
                 break;
             }
         }
+        jobCompleted = result;
         return result;
     }
 
@@ -295,6 +318,7 @@ public class ManagedBean {
                 }
             }
         }
+        jobReturned = result;
         return result;
     }
 
