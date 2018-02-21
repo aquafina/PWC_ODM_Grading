@@ -45,9 +45,6 @@ public class ManagedBean {
     private RichInputListOfValues jobLov;
     private RichPopup completeJobPopup;
     private RichPopup returnJobPopup;
-    private Boolean jobCompleted = false;
-    private Boolean jobReturned = false;
-    private RichCommandButton deleteJobBtn;
 
     public ManagedBean() { }
 
@@ -279,7 +276,6 @@ public class ManagedBean {
             }
         }
         else showMessage("No line(s) selected", 112);
-            
     }
     
     public Boolean isJobCompleted() {
@@ -299,7 +295,6 @@ public class ManagedBean {
                 break;
             }
         }
-        jobCompleted = result;
         return result;
     }
 
@@ -318,7 +313,6 @@ public class ManagedBean {
                 }
             }
         }
-        jobReturned = result;
         return result;
     }
 

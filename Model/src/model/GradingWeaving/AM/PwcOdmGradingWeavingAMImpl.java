@@ -203,7 +203,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
 //     return "";
  }
 
-    public String callJobReturnProc(int sqlReturnType, String stmt){
+   /* public String callJobReturnProc(int sqlReturnType, String stmt){
         System.out.println(sqlReturnType+ " "+stmt);
         CallableStatement cst = null;
         String status = null;
@@ -250,7 +250,7 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
             getDBTransaction().commit();
         return status;
     //     return "";
-    }
+    }*/
 
     /**
      * Container's getter for PwcOdmWeavingExistingJobsVO1.
