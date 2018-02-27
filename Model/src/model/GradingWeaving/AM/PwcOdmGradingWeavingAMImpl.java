@@ -189,7 +189,8 @@ public class PwcOdmGradingWeavingAMImpl extends ApplicationModuleImpl implements
                  catch (SQLException e) {
                           throw new JboException(e.getMessage());
                       }
-                    currRow.setAttribute("RequestStatus", "S");
+             if (status.equals("SUCCESSFUL"))
+                    currRow.setAttribute("RequestStatus", requestStatus);
          }
          if (cst != null) {
          try {
